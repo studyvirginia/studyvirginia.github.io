@@ -1,58 +1,165 @@
-<h2>VA SOL Study Bot</h2>
-<p>
-This study bot helps Virginia K–12 students review and practice for Standards of Learning (SOL) courses and tests. 
-It provides structured support across all subjects and grade levels, including Math, English, Science, and History/Social Science.
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VA SOL Study Bot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f9f9f9;
+      color: #111;
+      line-height: 1.6;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      background-color: #4a90e2;
+      color: #fff;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .embed-section {
+      background-color: #ffffff;
+      border: 2px dashed #4a90e2;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .embed-section h3 {
+      margin-bottom: 16px;
+      color: #4a90e2;
+      font-size: 20px;
+    }
+    iframe {
+      width: 100%;
+      height: 700px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .description {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .description h2 {
+      margin-top: 24px;
+      font-size: 20px;
+    }
+    .courses {
+      margin-top: 20px;
+    }
+    .course-category {
+      margin-bottom: 12px;
+    }
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 6px;
+    }
+    ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>VA SOL Study Bot</header>
 
-<h2>Core Functions</h2>
-<ul>
-  <li><strong>Setup:</strong> Collects grade, course, and learning context; gives a short diagnostic SOL-style test to identify weak areas.</li>
-  <li><strong>Review:</strong> Reinforces learning with notes, study guides, and flashcards.</li>
-  <li><strong>Mastery:</strong> Uses mnemonics, tips, analogies, and targeted questions to deepen understanding.</li>
-  <li><strong>Practice:</strong> Provides adaptive exercises and full SOL-style tests; focuses on weak areas and realistic assessment experience.</li>
-</ul>
+  <div class="container">
 
-<h2>Supported Courses</h2>
-<div class="courses">
-  <details>
-    <summary>Math</summary>
-    <ul>
-      <li>Kindergarten – Grade 8 Math</li>
-      <li>Algebra 1, Geometry, Algebra 2, Trigonometry</li>
-      <li>Data Science, Algebra Functions Data Analysis, Mathematical Analysis</li>
-      <li>Discrete Mathematics, Probability and Statistics, Computer Mathematics</li>
-    </ul>
-  </details>
+    <div class="description">
+      <h2>Supported Courses</h2>
+      <div class="courses">
 
-  <details>
-    <summary>English</summary>
-    <ul>
-      <li>Kindergarten – Grade 12 English</li>
-    </ul>
-  </details>
+        <details class="course-category">
+          <summary>Math</summary>
+          <ul>
+            <li>Kindergarten Math, Grade 1 Math, Grade 2 Math, Grade 3 Math, Grade 4 Math, Grade 5 Math, Grade 6 Math, Grade 7 Math, Grade 8 Math</li>
+            <li>Algebra 1, Geometry, Algebra 2, Trigonometry</li>
+            <li>Data Science, Algebra Functions Data Analysis, Mathematical Analysis</li>
+            <li>Discrete Mathematics, Probability and Statistics, Computer Mathematics</li>
+          </ul>
+        </details>
 
-  <details>
-    <summary>History</summary>
-    <ul>
-      <li>Kindergarten – Grade 12 History/Social Science (Virginia, US, World, Civics, Geography)</li>
-    </ul>
-  </details>
+        <details class="course-category">
+          <summary>English</summary>
+          <ul>
+            <li>Kindergarten English, Grade 1 English, Grade 2 English, Grade 3 English, Grade 4 English, Grade 5 English, Grade 6 English, Grade 7 English, Grade 8 English, Grade 9 English, Grade 10 English, Grade 11 English, Grade 12 English</li>
+          </ul>
+        </details>
 
-  <details>
-    <summary>Science</summary>
-    <ul>
-      <li>Kindergarten – Grade 6 Science</li>
-      <li>Biology I & II, Chemistry I & II, Physics I & II</li>
-      <li>Earth Science I & II, Environmental Science, Life Science, Physical Science</li>
-    </ul>
-  </details>
-</div>
+        <details class="course-category">
+          <summary>History / Social Science</summary>
+          <ul>
+            <li>Kindergarten History, Grade 1 History, Grade 2 History, Grade 3 History</li>
+            <li>Grade 4 – Virginia Studies</li>
+            <li>Grade 5 – United States History to 1865</li>
+            <li>Grade 6 – United States History 1865 to Present</li>
+            <li>Grade 7 – Civics and Economics</li>
+            <li>Grade 8 – World Geography</li>
+            <li>Grade 9 – World History and Geography to 1500 A.D.</li>
+            <li>Grade 10 – World History and Geography 1500 A.D. to Present</li>
+            <li>Grade 11 – Virginia and United States History</li>
+            <li>Grade 12 – Virginia and United States Government</li>
+          </ul>
+        </details>
 
-<h2>Key Strengths</h2>
-<ul>
-  <li>Structured workflow: Setup → Review → Mastery → Practice</li>
-  <li>Full alignment with Virginia SOL standards and K–12 courses</li>
-  <li>Realistic SOL-style questions and tests</li>
-  <li>Personalized learning paths based on diagnostics</li>
-  <li>Accessible and clear guidance without collecting personal data</li>
-</ul>
+        <details class="course-category">
+          <summary>Science</summary>
+          <ul>
+            <li>Kindergarten Science, Grade 1 Science, Grade 2 Science, Grade 3 Science, Grade 4 Science, Grade 5 Science, Grade 6 Science</li>
+            <li>Biology I, Chemistry I, Physics I, Earth Science I</li>
+            <li>Environmental Science, Environmental Science Level II Expanded</li>
+            <li>Life Science, Physical Science</li>
+            <li>Biology II Genetics, Biology II Anatomy and Physiology, Biology II Ecology, Biology II Advanced Survey</li>
+            <li>Chemistry II Advanced Survey, Physics II Advanced Survey</li>
+            <li>Earth Science II Advanced Survey, Earth Science II Oceanography, Earth Science II Astronomy, Earth Science II Geology</li>
+          </ul>
+        </details>
+
+      </div>
+
+      <h2>About the Study Bot</h2>
+      <p>
+        This study bot provides structured guidance for Virginia Standards of Learning (SOL) courses and tests. 
+        It helps students review concepts, practice questions, and prepare for SOL assessments across all subjects and grades.
+      </p>
+
+      <h2>Core Functions</h2>
+      <ul>
+        <li><strong>Setup:</strong> Collects grade and course; gives a diagnostic SOL-style test to identify weak areas.</li>
+        <li><strong>Review:</strong> Reinforces learning with notes, study guides, and flashcards.</li>
+        <li><strong>Mastery:</strong> Deepens understanding through mnemonics, tips, analogies, and targeted questions.</li>
+        <li><strong>Practice:</strong> Adaptive exercises and full SOL-style tests; focuses on weak areas and realistic test conditions.</li>
+      </ul>
+
+      <h2>Key Strengths</h2>
+      <ul>
+        <li>Structured workflow: Setup → Review → Mastery → Practice</li>
+        <li>Full alignment with Virginia SOL standards</li>
+        <li>Realistic SOL-style questions and tests</li>
+        <li>Personalized learning paths based on diagnostics</li>
+        <li>Accessible and clear guidance without collecting personal data</li>
+      </ul>
+    </div>
+
+    <div class="embed-section">
+      <h3>Start Using the Study Bot</h3>
+      <iframe
+        src="https://www.playlab.ai/embedded/cmjx66y3i03dylb0uw833x7ix"
+        allow="clipboard-write">
+      </iframe>
+    </div>
+
+  </div>
+</body>
+</html>
