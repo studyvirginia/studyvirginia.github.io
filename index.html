@@ -20,16 +20,17 @@
     --primary-color: #4a90e2;
     --secondary-color: #f39c12;
     --accent-color: #27ae60;
-    --bg-color: rgba(255,255,255,0.95);
-    --text-color: #111;
     --highlight-color: #e74c3c;
+    --text-color: #111;
+    --bg-light: #f5f7fa;
     --section-padding: 80px 20px;
   }
   * { box-sizing: border-box; margin:0; padding:0; }
-  body { font-family: 'Inter', sans-serif; color: var(--text-color); background: #f5f7fa; line-height: 1.6; scroll-behavior: smooth; }
-  a { color: var(--primary-color); text-decoration: none; }
+  body { font-family: 'Inter', sans-serif; color: var(--text-color); background: var(--bg-light); line-height: 1.6; scroll-behavior: smooth; }
+  a { color: var(--primary-color); text-decoration:none; }
+  a:hover { text-decoration: underline; }
 
-  /* Sticky Navbar */
+  /* Navbar */
   nav {
     position: sticky;
     top:0;
@@ -37,51 +38,58 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255,255,255,0.9);
+    padding:15px 40px;
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(8px);
-    padding: 15px 40px;
-    border-bottom: 1px solid #ddd;
-    font-weight: 600;
+    border-bottom:1px solid #ddd;
+    font-weight:600;
   }
-  nav .nav-left { font-size: 1.5rem; color: var(--primary-color); font-weight: 800; }
+  nav .nav-left { font-size:1.5rem; font-weight:800; color: var(--primary-color);}
   nav .nav-right { display:flex; gap:25px; font-size:1rem; }
   nav .nav-right a:hover { color: var(--secondary-color); transition:0.3s; }
-  nav button {
-    background: var(--accent-color);
-    color: #fff;
-    border:none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor:pointer;
-    font-weight: 600;
-    transition:0.3s;
-  }
+  nav button { background: var(--accent-color); color:#fff; border:none; padding:8px 18px; border-radius:6px; cursor:pointer; font-weight:600; transition:0.3s; }
   nav button:hover { background: var(--secondary-color); }
 
-  section { padding: var(--section-padding); max-width:1200px; margin:0 auto; }
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #4a90e2, #27ae60);
+    color:#fff;
+    text-align:center;
+    padding:120px 20px 80px 20px;
+  }
+  .hero h1 { font-size:3rem; font-weight:800; margin-bottom:20px; }
+  .hero p { font-size:1.3rem; margin-bottom:40px; font-weight:500; }
+  .hero button { font-size:1.2rem; padding:12px 28px; border-radius:8px; }
 
-  /* Section Styles */
-  .section-title { font-size:2.2rem; font-weight:800; margin-bottom:25px; color: var(--primary-color); text-align:center; }
-  .section-subtitle { font-size:1.2rem; color:#555; text-align:center; margin-bottom:40px; }
+  /* Sections */
+  section { padding: var(--section-padding); max-width:1200px; margin:0 auto; }
+  .section-title { font-size:2rem; font-weight:800; margin-bottom:20px; }
+  .section-subtitle { font-size:1.2rem; margin-bottom:40px; color:#555; }
+
+  /* Problem Section */
+  #problem { background:#fff3f3; border-left:6px solid var(--highlight-color); padding:60px 20px; }
   .problem-list { display:flex; flex-direction:column; gap:18px; font-size:1.1rem; }
   .problem-list a { color: var(--highlight-color); font-weight:600; }
-  .app-info { display:flex; flex-wrap: wrap; gap:40px; justify-content:center; text-align:center; }
-  .app-card { background: var(--bg-color); padding:30px; border-radius:12px; flex:1 1 250px; box-shadow:0 8px 20px rgba(0,0,0,0.08); transition:0.3s; }
+
+  /* Solution Section */
+  #solution { background:#f5f7fa; }
+  .app-info { display:flex; flex-wrap: wrap; gap:30px; justify-content:center; text-align:center; }
+  .app-card { background:#fff; padding:30px; border-radius:12px; flex:1 1 250px; box-shadow:0 8px 20px rgba(0,0,0,0.08); transition:0.3s; }
   .app-card:hover { transform: translateY(-6px); box-shadow:0 12px 30px rgba(0,0,0,0.12); }
   .app-card h3 { color: var(--secondary-color); margin-bottom:12px; font-size:1.3rem; font-weight:700; }
   .app-card p { font-size:1rem; line-height:1.5; color:#333; }
 
   /* Embed Section */
-  .embed-section { text-align:center; margin-top:60px; }
+  #app { background:#e8f0fe; text-align:center; padding:80px 20px; }
   .embed-section h2 { font-size:2rem; margin-bottom:20px; color: var(--primary-color); }
-  .embed-section iframe { width:90%; max-width:1000px; height:700px; border-radius:12px; border:2px solid #ddd; }
+  iframe { width:90%; max-width:1000px; height:700px; border-radius:12px; border:2px solid #ddd; }
 
   /* Footer */
   footer { padding:30px 20px; text-align:center; font-size:0.9rem; color:#555; background: #f1f3f6; border-top:1px solid #ddd; }
   footer a { color: var(--primary-color); }
 
   /* Responsive */
-  @media(max-width:900px){ .app-info { flex-direction:column; } nav { flex-direction: column; gap:10px; } }
+  @media(max-width:900px){ .app-info { flex-direction:column; } nav { flex-direction: column; gap:10px; } .hero h1 { font-size:2.2rem;} }
 </style>
 </head>
 
@@ -98,13 +106,20 @@
   </div>
 </nav>
 
+<!-- Hero Section -->
+<section class="hero">
+  <h1>Master Every Virginia SOL with AI</h1>
+  <p>Comprehensive K-12 SOL guidance, adaptive practice, and real SOL tests—optimized for student success.</p>
+  <button onclick="document.getElementById('embed').scrollIntoView({behavior:'smooth'})">Start Practicing Now</button>
+</section>
+
 <!-- Problem Section -->
 <section id="problem">
   <div class="section-title">The Challenge Facing Virginia Students</div>
-  <div class="section-subtitle">Why structured SOL practice matters now</div>
+  <div class="section-subtitle">SOL pressures, pandemic learning loss, and rising standards</div>
   <div class="problem-list">
     <p>• Higher SOL cut scores are coming, putting extra pressure on students. <a href="https://www.doe.virginia.gov" target="_blank">Virginia Board of Education</a></p>
-    <p>• SOL tests now account for 10% of final grades, increasing stakes. <a href="https://www.wavy.com" target="_blank">WAVY.com</a></p>
+    <p>• SOL tests now account for 10% of final grades, raising stakes. <a href="https://www.wavy.com" target="_blank">WAVY.com</a></p>
     <p>• Pandemic learning loss has left knowledge gaps for many students. <a href="https://www.doe.virginia.gov" target="_blank">Virginia DOE</a></p>
   </div>
 </section>
@@ -112,19 +127,19 @@
 <!-- Solution Section -->
 <section id="solution">
   <div class="section-title">Our Solution</div>
-  <div class="section-subtitle">AI-powered, comprehensive, and personalized</div>
+  <div class="section-subtitle">Adaptive, comprehensive, and student-focused</div>
   <div class="app-info">
     <div class="app-card">
-      <h3>All K-12 SOL Courses</h3>
-      <p>Covering 70 complete courses across Math, Science, English, and History. Structured, aligned, and ready for every grade.</p>
+      <h3>Full K-12 Coverage</h3>
+      <p>70 courses in Math, Science, English, and History. Structured, aligned, and ready for every grade.</p>
     </div>
     <div class="app-card">
-      <h3>Thousands of Questions</h3>
-      <p>Over 8,500 authentic SOL questions and 214+ released tests from 2001–2015+. Multiple formats including multiple choice and tech-enhanced items.</p>
+      <h3>Thousands of SOL Questions</h3>
+      <p>8,500+ authentic questions and 214+ released tests. Multiple formats: multiple choice, tech-enhanced items, and constructed responses.</p>
     </div>
     <div class="app-card">
       <h3>Adaptive Learning</h3>
-      <p>Diagnostic testing identifies weak areas, guiding practice, review, and mastery dynamically to optimize learning efficiency.</p>
+      <p>Diagnostic testing identifies weak areas, guiding practice, review, and mastery dynamically.</p>
     </div>
     <div class="app-card">
       <h3>Graduation-Focused</h3>
@@ -141,7 +156,10 @@
 
 <!-- Footer -->
 <footer>
-  <p>Citations: <a href="https://www.solpass.org" target="_blank">SOLpass.org</a>, <a href="https://www.doe.virginia.gov/testing/sol/practice-items" target="_blank">SOL Practice Items | Virginia DOE</a>, <a href="https://www.doe.virginia.gov/testing/sol/released-tests" target="_blank">Released Tests & Item Sets | Virginia DOE</a>, <a href="https://www.doe.virginia.gov/instruction/k-12-standards" target="_blank">K-12 Standards & Instruction | Virginia DOE</a></p>
+  <p>Citations: <a href="https://www.solpass.org" target="_blank">SOLpass.org</a>, 
+  <a href="https://www.doe.virginia.gov/testing/sol/practice-items" target="_blank">SOL Practice Items | Virginia DOE</a>, 
+  <a href="https://www.doe.virginia.gov/testing/sol/released-tests" target="_blank">Released Tests & Item Sets | Virginia DOE</a>, 
+  <a href="https://www.doe.virginia.gov/instruction/k-12-standards" target="_blank">K-12 Standards & Instruction | Virginia DOE</a></p>
   <p>© 2026 AI SOL Study Assistant</p>
 </footer>
 
