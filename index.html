@@ -1,212 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI SOL Study Assistant</title>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI SOL Study Assistant</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
-  <style>
-    :root {
-      --accent: #4a90e2;
-      --accent-light: rgba(74,144,226,0.1);
-      --bg: #fefefe;
-      --card-bg: rgba(255,255,255,0.85);
-      --shadow: rgba(0,0,0,0.1);
-      --text: #111;
-      --text-muted: #555;
-    }
+<!-- GA4 Tracking -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DHD1KSS512"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DHD1KSS512');
+</script>
 
-    * { box-sizing: border-box; margin:0; padding:0; }
+<style>
+  :root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f39c12;
+    --accent-color: #27ae60;
+    --bg-color: rgba(255,255,255,0.95);
+    --text-color: #111;
+    --highlight-color: #e74c3c;
+    --section-padding: 80px 20px;
+  }
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: 'Inter', sans-serif; color: var(--text-color); background: #f5f7fa; line-height: 1.6; scroll-behavior: smooth; }
+  a { color: var(--primary-color); text-decoration: none; }
 
-    html { scroll-behavior: smooth; }
+  /* Sticky Navbar */
+  nav {
+    position: sticky;
+    top:0;
+    z-index:1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(8px);
+    padding: 15px 40px;
+    border-bottom: 1px solid #ddd;
+    font-weight: 600;
+  }
+  nav .nav-left { font-size: 1.5rem; color: var(--primary-color); font-weight: 800; }
+  nav .nav-right { display:flex; gap:25px; font-size:1rem; }
+  nav .nav-right a:hover { color: var(--secondary-color); transition:0.3s; }
+  nav button {
+    background: var(--accent-color);
+    color: #fff;
+    border:none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor:pointer;
+    font-weight: 600;
+    transition:0.3s;
+  }
+  nav button:hover { background: var(--secondary-color); }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+  section { padding: var(--section-padding); max-width:1200px; margin:0 auto; }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+  /* Section Styles */
+  .section-title { font-size:2.2rem; font-weight:800; margin-bottom:25px; color: var(--primary-color); text-align:center; }
+  .section-subtitle { font-size:1.2rem; color:#555; text-align:center; margin-bottom:40px; }
+  .problem-list { display:flex; flex-direction:column; gap:18px; font-size:1.1rem; }
+  .problem-list a { color: var(--highlight-color); font-weight:600; }
+  .app-info { display:flex; flex-wrap: wrap; gap:40px; justify-content:center; text-align:center; }
+  .app-card { background: var(--bg-color); padding:30px; border-radius:12px; flex:1 1 250px; box-shadow:0 8px 20px rgba(0,0,0,0.08); transition:0.3s; }
+  .app-card:hover { transform: translateY(-6px); box-shadow:0 12px 30px rgba(0,0,0,0.12); }
+  .app-card h3 { color: var(--secondary-color); margin-bottom:12px; font-size:1.3rem; font-weight:700; }
+  .app-card p { font-size:1rem; line-height:1.5; color:#333; }
 
-    /* Navigation */
-    nav {
-      position: sticky;
-      top:0;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
-      padding: 16px 32px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 32px;
-      box-shadow: 0 2px 10px var(--shadow);
-      z-index: 1000;
-    }
-    nav a { font-weight: 600; transition: color 0.2s; }
-    nav a:hover { color: #2c6cd3; }
+  /* Embed Section */
+  .embed-section { text-align:center; margin-top:60px; }
+  .embed-section h2 { font-size:2rem; margin-bottom:20px; color: var(--primary-color); }
+  .embed-section iframe { width:90%; max-width:1000px; height:700px; border-radius:12px; border:2px solid #ddd; }
 
-    /* Hero Section */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 20px 60px;
-      background: linear-gradient(135deg, #e0f7ff, #fdfbff);
-    }
-    .hero h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 3rem;
-      margin-bottom: 16px;
-      color: var(--accent);
-    }
-    .hero p {
-      font-size: 1.3rem;
-      margin-bottom: 24px;
-      max-width: 650px;
-    }
-    .hero button {
-      padding: 16px 32px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #fff;
-      background: var(--accent);
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .hero button:hover { 
-      transform: translateY(-2px); 
-      box-shadow: 0 6px 20px var(--shadow);
-    }
+  /* Footer */
+  footer { padding:30px 20px; text-align:center; font-size:0.9rem; color:#555; background: #f1f3f6; border-top:1px solid #ddd; }
+  footer a { color: var(--primary-color); }
 
-    /* Sections */
-    section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-    section h2 { font-family: 'Poppins', sans-serif; font-size: 2rem; margin-bottom: 24px; color: var(--accent); text-align:center; }
-    .card { background: var(--card-bg); padding: 24px; border-radius: 12px; box-shadow: 0 6px 20px var(--shadow); margin-bottom: 40px; transition: transform 0.3s; }
-    .card:hover { transform: translateY(-4px); }
-    .card p { font-size: 1.05rem; color: var(--text-muted); }
-    .highlight { color: var(--accent); font-weight: 600; }
-
-    /* Problem Section */
-    .problem ul { list-style: disc; margin-left: 24px; }
-    .problem a { font-weight: 500; }
-
-    /* Stats / Solution */
-    .stats { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 24px; margin-top:40px; }
-    .stat-card { text-align:center; padding:32px 20px; border-radius:12px; background: var(--accent-light); font-weight:500; transition: transform 0.3s; }
-    .stat-card h3 { font-family: 'Poppins', sans-serif; font-size:2rem; color: var(--accent); margin-bottom:12px; }
-    .stat-card p { font-size:1.1rem; color: var(--text); }
-
-    /* Embed */
-    .embed-section { margin-top:60px; text-align:center; }
-    .embed-section iframe {
-      width: 100%;
-      max-width:900px;
-      height:700px;
-      border-radius:12px;
-      border:none;
-      box-shadow:0 10px 25px var(--shadow);
-      transition: transform 0.3s;
-    }
-    .embed-section iframe:hover { transform: scale(1.02); }
-
-    /* Footer */
-    footer {
-      text-align:center;
-      font-size:0.85rem;
-      padding:32px 20px;
-      color:var(--text-muted);
-    }
-    footer a { color: var(--accent); }
-
-    /* Dynamic counters */
-    .counter { font-family:'Poppins',sans-serif; font-size:2.5rem; color: var(--accent); margin-bottom:8px; }
-  </style>
+  /* Responsive */
+  @media(max-width:900px){ .app-info { flex-direction:column; } nav { flex-direction: column; gap:10px; } }
+</style>
 </head>
+
 <body>
 
-  <!-- Navigation -->
-  <nav>
+<!-- Navbar -->
+<nav>
+  <div class="nav-left">AI SOL Study Assistant</div>
+  <div class="nav-right">
     <a href="#problem">Problem</a>
     <a href="#solution">Solution</a>
     <a href="#app">Our App</a>
-  </nav>
+    <button onclick="document.getElementById('embed').scrollIntoView({behavior:'smooth'})">Start Now</button>
+  </div>
+</nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>AI SOL Study Assistant</h1>
-    <p>Master every Virginia SOL with structured guidance, real practice questions, and adaptive learning designed for every student.</p>
-    <button onclick="document.getElementById('app').scrollIntoView({behavior:'smooth'})">Start Now</button>
-  </section>
+<!-- Problem Section -->
+<section id="problem">
+  <div class="section-title">The Challenge Facing Virginia Students</div>
+  <div class="section-subtitle">Why structured SOL practice matters now</div>
+  <div class="problem-list">
+    <p>• Higher SOL cut scores are coming, putting extra pressure on students. <a href="https://www.doe.virginia.gov" target="_blank">Virginia Board of Education</a></p>
+    <p>• SOL tests now account for 10% of final grades, increasing stakes. <a href="https://www.wavy.com" target="_blank">WAVY.com</a></p>
+    <p>• Pandemic learning loss has left knowledge gaps for many students. <a href="https://www.doe.virginia.gov" target="_blank">Virginia DOE</a></p>
+  </div>
+</section>
 
-  <!-- Problem Section -->
-  <section id="problem" class="problem">
-    <h2>The Challenge Students Face</h2>
-    <div class="card">
-      <p>Students face rising SOL cut scores (Virginia Board of Education) and the SOL tests now count for 10% of final grades (WAVY.com). Pandemic learning loss has left gaps in foundational knowledge, making structured practice essential.</p>
-      <ul>
-        <li><a href="https://www.doe.virginia.gov/testing/sol/" target="_blank">Virginia DOE: SOL Overview</a></li>
-        <li><a href="https://www.wavy.com/news/education/sol-test-grades-impact/" target="_blank">SOL scores and grade impact - WAVY.com</a></li>
-        <li><a href="https://www.doe.virginia.gov/testing/assessment-pandemic-learning-loss.shtml" target="_blank">Pandemic Learning Loss Report - Virginia DOE</a></li>
-      </ul>
+<!-- Solution Section -->
+<section id="solution">
+  <div class="section-title">Our Solution</div>
+  <div class="section-subtitle">AI-powered, comprehensive, and personalized</div>
+  <div class="app-info">
+    <div class="app-card">
+      <h3>All K-12 SOL Courses</h3>
+      <p>Covering 70 complete courses across Math, Science, English, and History. Structured, aligned, and ready for every grade.</p>
     </div>
-  </section>
-
-  <!-- Solution / Stats Section -->
-  <section id="solution">
-    <h2>Why Our App Works</h2>
-    <div class="stats">
-      <div class="stat-card">
-        <div class="counter">70+</div>
-        <p>Courses Covered (K-12, all subjects)</p>
-      </div>
-      <div class="stat-card">
-        <div class="counter">8,500+</div>
-        <p>Authentic SOL Questions</p>
-      </div>
-      <div class="stat-card">
-        <div class="counter">214+</div>
-        <p>Released Practice Tests</p>
-      </div>
-      <div class="stat-card">
-        <div class="counter">23</div>
-        <p>Graduation-Critical Courses</p>
-      </div>
+    <div class="app-card">
+      <h3>Thousands of Questions</h3>
+      <p>Over 8,500 authentic SOL questions and 214+ released tests from 2001–2015+. Multiple formats including multiple choice and tech-enhanced items.</p>
     </div>
-  </section>
+    <div class="app-card">
+      <h3>Adaptive Learning</h3>
+      <p>Diagnostic testing identifies weak areas, guiding practice, review, and mastery dynamically to optimize learning efficiency.</p>
+    </div>
+    <div class="app-card">
+      <h3>Graduation-Focused</h3>
+      <p>Supports all 23 SOL-tested courses required for Virginia high school graduation, helping students achieve verified credits confidently.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- App Embed Section -->
-  <section id="app" class="embed-section">
-    <h2>Try AI SOL Study Assistant</h2>
-    <iframe src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc" allow="clipboard-write"></iframe>
-  </section>
+<!-- App Embed Section -->
+<section id="app" class="embed-section">
+  <h2>Try AI SOL Study Assistant Now</h2>
+  <iframe id="embed" src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc" allow="clipboard-write"></iframe>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>©2026 AI SOL Study Assistant | <span>Transparent, professional, and Virginia-specific.</span></p>
-    <p>Citations: 
-      <a href="https://www.solpass.org/" target="_blank">SOLpass.org</a>, 
-      <a href="https://www.doe.virginia.gov/testing/sol/" target="_blank">Virginia DOE SOL Items</a>, 
-      <a href="https://www.doe.virginia.gov/instruction/k12/" target="_blank">K-12 Standards & Instruction</a>
-    </p>
-  </footer>
-
-  <!-- Google Analytics Example (insert your GA4 ID below) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHD1KSS512"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-DHD1KSS512');
-  </script>
+<!-- Footer -->
+<footer>
+  <p>Citations: <a href="https://www.solpass.org" target="_blank">SOLpass.org</a>, <a href="https://www.doe.virginia.gov/testing/sol/practice-items" target="_blank">SOL Practice Items | Virginia DOE</a>, <a href="https://www.doe.virginia.gov/testing/sol/released-tests" target="_blank">Released Tests & Item Sets | Virginia DOE</a>, <a href="https://www.doe.virginia.gov/instruction/k-12-standards" target="_blank">K-12 Standards & Instruction | Virginia DOE</a></p>
+  <p>© 2026 AI SOL Study Assistant</p>
+</footer>
 
 </body>
 </html>
