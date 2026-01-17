@@ -7,50 +7,105 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
       background: #f4f6f8;
       color: #111;
       line-height: 1.6;
     }
+
+    /* Header */
     header {
+      position: sticky;
+      top: 0;
       background: linear-gradient(90deg, #4a90e2, #357ABD);
       color: #fff;
-      padding: 2rem 1rem;
+      padding: 1.5rem 1rem;
       text-align: center;
       font-size: 2rem;
       font-weight: 700;
       letter-spacing: 0.5px;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(to right, #4a90e2, #357ABD);
+      color: #fff;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      color: #e0eaff;
+    }
+    .scroll-btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: #fff;
+      color: #357ABD;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    .scroll-btn:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+    }
+
+    /* Floating sticky CTA */
+    .sticky-cta {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #4a90e2;
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+      z-index: 1000;
+      text-decoration: none;
+    }
+    .sticky-cta:hover {
+      background: #357ABD;
+      transform: translateY(-3px);
+    }
+
+    /* Container */
     .container {
       max-width: 1000px;
-      margin: 2rem auto;
+      margin: 3rem auto;
       padding: 0 1rem;
     }
 
-    /* Call-to-action / Embed */
-    .hero {
-      background: #fff;
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      margin-bottom: 3rem;
-    }
-    .hero h1 {
-      color: #4a90e2;
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      color: #333;
-    }
+    /* Embed */
     .embed-container {
-      border-radius: 12px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      margin-bottom: 3rem;
+      transition: transform 0.3s ease;
+    }
+    .embed-container:hover {
+      transform: scale(1.01);
     }
     iframe {
       width: 100%;
@@ -61,59 +116,63 @@
     /* Sections */
     section {
       background: #fff;
-      border-radius: 12px;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.05);
       margin-bottom: 3rem;
+      transition: transform 0.3s ease;
     }
+    section:hover { transform: translateY(-3px); }
+
     section h2 {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       color: #222;
       margin-bottom: 1rem;
-      border-bottom: 2px solid #4a90e2;
+      border-bottom: 3px solid #4a90e2;
       display: inline-block;
       padding-bottom: 0.25rem;
     }
-    p, ul { margin-bottom: 1rem; }
-    ul li { margin-bottom: 0.5rem; }
 
     /* Courses */
     .courses details {
       margin-bottom: 1rem;
-      border-left: 3px solid #4a90e2;
-      padding-left: 0.75rem;
+      border-left: 4px solid #4a90e2;
+      padding-left: 1rem;
       background: #f9f9f9;
-      border-radius: 6px;
-      padding: 0.75rem;
+      border-radius: 10px;
+      padding: 1rem;
+      transition: background 0.2s ease;
     }
+    .courses details[open] { background: #eaf1fc; }
     summary {
       font-weight: 600;
       cursor: pointer;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    ul {
+      padding-left: 1rem;
+    }
+    ul li {
       margin-bottom: 0.5rem;
     }
 
-    /* Buttons / CTA */
-    .scroll-btn {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: #4a90e2;
-      color: #fff;
-      font-weight: 600;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.2s ease;
-      margin-top: 1rem;
-      text-decoration: none;
-    }
-    .scroll-btn:hover {
-      background: #357ABD;
+    /* Responsive */
+    @media (max-width: 768px) {
+      iframe { height: 70vh; }
+      .hero h1 { font-size: 2rem; }
+      header { font-size: 1.75rem; }
+      .scroll-btn { padding: 0.75rem 1.5rem; }
     }
 
-    @media (max-width: 768px) {
-      iframe { height: 80vh; }
-      .hero h1 { font-size: 1.75rem; }
-      header { font-size: 1.75rem; padding: 1.5rem 1rem; }
+    /* Subtle fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -121,25 +180,25 @@
 
   <header>VA SOL Study Bot</header>
 
+  <!-- Hero Section -->
+  <div class="hero fade-in">
+    <h1>Interactive AI Study Assistant</h1>
+    <p>Prepare for Virginia Standards of Learning (SOL) tests efficiently. Review concepts, practice questions, and master content across Math, English, History, and Science.</p>
+    <a class="scroll-btn" href="#embed">Start Studying →</a>
+  </div>
+
   <div class="container">
 
-    <!-- Hero Section / Immediate Attention -->
-    <div class="hero">
-      <h1>Interactive AI Study Assistant</h1>
-      <p>Start preparing for Virginia Standards of Learning (SOL) tests now. Review, practice, and master concepts across Math, English, History, and Science—all in one interactive AI experience.</p>
-      <a class="scroll-btn" href="#embed">Start Studying →</a>
-    </div>
-
-    <!-- Embed Section -->
-    <div id="embed" class="embed-container">
+    <!-- Embed -->
+    <div id="embed" class="embed-container fade-in">
       <iframe
         src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc"
         allow="clipboard-write">
       </iframe>
     </div>
 
-    <!-- Courses / Overview -->
-    <section>
+    <!-- Courses -->
+    <section class="fade-in">
       <h2>Supported Courses</h2>
       <div class="courses">
         <details>
@@ -188,21 +247,21 @@
     </section>
 
     <!-- About & Functions -->
-    <section>
+    <section class="fade-in">
       <h2>About the Study Bot</h2>
-      <p>This AI study bot provides structured guidance for Virginia Standards of Learning (SOL) courses. It helps students review concepts, practice questions, and prepare for SOL assessments across all subjects and grade levels.</p>
+      <p>An AI study bot designed for Virginia SOL courses. Review concepts, practice questions, and prepare for tests efficiently across all subjects and grade levels.</p>
 
       <h2>Core Functions</h2>
       <ul>
-        <li><strong>Setup:</strong> Collects grade and course, delivers diagnostic SOL-style test.</li>
-        <li><strong>Review:</strong> Notes, study guides, and flashcards for all subjects.</li>
+        <li><strong>Setup:</strong> Collects grade and course, provides diagnostic SOL-style tests.</li>
+        <li><strong>Review:</strong> Notes, study guides, and flashcards.</li>
         <li><strong>Mastery:</strong> Reinforces learning with mnemonics, patterns, and analogies.</li>
-        <li><strong>Practice:</strong> Adaptive exercises and SOL-style practice tests focused on weak areas.</li>
+        <li><strong>Practice:</strong> Adaptive exercises and SOL-style tests focused on weak areas.</li>
       </ul>
 
       <h2>Key Strengths</h2>
       <ul>
-        <li>Clear workflow: Setup → Review → Mastery → Practice</li>
+        <li>Structured workflow: Setup → Review → Mastery → Practice</li>
         <li>Full alignment with Virginia SOL standards</li>
         <li>Realistic SOL-style questions and tests</li>
         <li>Personalized learning paths based on diagnostics</li>
@@ -211,6 +270,9 @@
     </section>
 
   </div>
+
+  <!-- Floating CTA -->
+  <a class="sticky-cta" href="#embed">Start Studying</a>
 
 </body>
 </html>
