@@ -4,142 +4,179 @@
   <meta charset="UTF-8">
   <title>VA SOL Study Bot</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* Reset & Base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f9f9f9;
+      font-family: 'Inter', sans-serif;
+      background: #f4f6f8;
       color: #111;
       line-height: 1.6;
     }
+    a { text-decoration: none; color: inherit; }
+
+    /* Header */
     header {
-      padding: 20px;
-      text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      background-color: #4a90e2;
+      background: linear-gradient(90deg, #4a90e2, #357ABD);
       color: #fff;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    .embed-section {
-      background-color: #ffffff;
-      border: 2px dashed #4a90e2;
-      padding: 20px;
-      border-radius: 8px;
+      padding: 2rem 1rem;
       text-align: center;
-      margin-bottom: 40px;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    /* Embed Section */
+    .embed-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      margin-bottom: 3rem;
     }
     .embed-section h3 {
-      margin-bottom: 16px;
       color: #4a90e2;
-      font-size: 20px;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
     iframe {
       width: 100%;
       height: 700px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .description {
-      background-color: #fff;
-      padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border: none;
+    }
+
+    /* Description Sections */
+    .description {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      margin-bottom: 3rem;
     }
     .description h2 {
-      margin-top: 24px;
-      font-size: 20px;
+      font-size: 1.5rem;
+      color: #222;
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+      border-bottom: 2px solid #4a90e2;
+      display: inline-block;
+      padding-bottom: 0.25rem;
     }
-    .courses {
-      margin-top: 20px;
+    .description p {
+      margin-bottom: 1.25rem;
     }
-    .course-category {
-      margin-bottom: 12px;
+
+    /* Courses */
+    .courses details {
+      margin-bottom: 1rem;
+      border-left: 3px solid #4a90e2;
+      padding-left: 0.75rem;
+      background: #f9f9f9;
+      border-radius: 6px;
+      padding: 0.75rem;
     }
     summary {
-      font-weight: bold;
+      font-weight: 600;
       cursor: pointer;
-      margin-bottom: 6px;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
     }
     ul {
-      padding-left: 20px;
-      margin: 0;
+      padding-left: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Lists */
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      iframe { height: 80vh; }
+      header { font-size: 1.75rem; padding: 1.5rem 1rem; }
     }
   </style>
 </head>
 <body>
+
   <header>VA SOL Study Bot</header>
 
   <div class="container">
- <div class="embed-section">
+
+    <div class="embed-section">
       <h3>Start Using the Study Bot</h3>
       <iframe
-        src="https://www.playlab.ai/embedded/cmjx66y3i03dylb0uw833x7ix"
+        src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc"
         allow="clipboard-write">
       </iframe>
     </div>
 
- 
     <div class="description">
+
       <h2>Supported Courses</h2>
       <div class="courses">
-
-        <details class="course-category">
+        <details>
           <summary>Math</summary>
           <ul>
-            <li>Kindergarten Math, Grade 1 Math, Grade 2 Math, Grade 3 Math, Grade 4 Math, Grade 5 Math, Grade 6 Math, Grade 7 Math, Grade 8 Math</li>
+            <li>Kindergarten – Grade 8 Math</li>
             <li>Algebra 1, Geometry, Algebra 2, Trigonometry</li>
-            <li>Data Science, Algebra Functions Data Analysis, Mathematical Analysis</li>
+            <li>Data Science, Algebra Functions, Mathematical Analysis</li>
             <li>Discrete Mathematics, Probability and Statistics, Computer Mathematics</li>
           </ul>
         </details>
 
-        <details class="course-category">
+        <details>
           <summary>English</summary>
           <ul>
-            <li>Kindergarten English, Grade 1 English, Grade 2 English, Grade 3 English, Grade 4 English, Grade 5 English, Grade 6 English, Grade 7 English, Grade 8 English, Grade 9 English, Grade 10 English, Grade 11 English, Grade 12 English</li>
+            <li>Kindergarten – Grade 12 English</li>
           </ul>
         </details>
 
-        <details class="course-category">
+        <details>
           <summary>History / Social Science</summary>
           <ul>
-            <li>Kindergarten History, Grade 1 History, Grade 2 History, Grade 3 History</li>
+            <li>Kindergarten – Grade 3 History</li>
             <li>Grade 4 – Virginia Studies</li>
-            <li>Grade 5 – United States History to 1865</li>
-            <li>Grade 6 – United States History 1865 to Present</li>
+            <li>Grade 5 – U.S. History to 1865</li>
+            <li>Grade 6 – U.S. History 1865 to Present</li>
             <li>Grade 7 – Civics and Economics</li>
             <li>Grade 8 – World Geography</li>
             <li>Grade 9 – World History and Geography to 1500 A.D.</li>
             <li>Grade 10 – World History and Geography 1500 A.D. to Present</li>
-            <li>Grade 11 – Virginia and United States History</li>
-            <li>Grade 12 – Virginia and United States Government</li>
+            <li>Grade 11 – Virginia and U.S. History</li>
+            <li>Grade 12 – Virginia and U.S. Government</li>
           </ul>
         </details>
 
-        <details class="course-category">
+        <details>
           <summary>Science</summary>
           <ul>
-            <li>Kindergarten Science, Grade 1 Science, Grade 2 Science, Grade 3 Science, Grade 4 Science, Grade 5 Science, Grade 6 Science</li>
+            <li>Kindergarten – Grade 6 Science</li>
             <li>Biology I, Chemistry I, Physics I, Earth Science I</li>
-            <li>Environmental Science, Environmental Science Level II Expanded</li>
+            <li>Environmental Science I & II</li>
             <li>Life Science, Physical Science</li>
-            <li>Biology II Genetics, Biology II Anatomy and Physiology, Biology II Ecology, Biology II Advanced Survey</li>
-            <li>Chemistry II Advanced Survey, Physics II Advanced Survey</li>
-            <li>Earth Science II Advanced Survey, Earth Science II Oceanography, Earth Science II Astronomy, Earth Science II Geology</li>
+            <li>Biology II: Genetics, Anatomy & Physiology, Ecology, Advanced Survey</li>
+            <li>Chemistry II & Physics II Advanced Survey</li>
+            <li>Earth Science II: Oceanography, Astronomy, Geology, Advanced Survey</li>
           </ul>
         </details>
-
       </div>
 
       <h2>About the Study Bot</h2>
       <p>
-        This study bot provides structured guidance for Virginia Standards of Learning (SOL) courses and tests. 
-        It helps students review concepts, practice questions, and prepare for SOL assessments across all subjects and grades.
+        This AI study bot provides structured guidance for Virginia Standards of Learning (SOL) courses and tests. 
+        It supports concept review, practice questions, and SOL-style test preparation across all subjects and grade levels.
       </p>
 
       <h2>Core Functions</h2>
@@ -156,10 +193,11 @@
         <li>Full alignment with Virginia SOL standards</li>
         <li>Realistic SOL-style questions and tests</li>
         <li>Personalized learning paths based on diagnostics</li>
-        <li>Accessible and clear guidance without collecting personal data</li>
+        <li>Accessible, clear guidance without collecting personal data</li>
       </ul>
+
     </div>
- </div>
+  </div>
+
 </body>
 </html>
-   
