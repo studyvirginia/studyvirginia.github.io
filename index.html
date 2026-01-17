@@ -1,272 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Virginia SOL Tutor</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI SOL Study Assistant</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
-<!-- Fonts & Icons -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Styles -->
+  <style>
+    :root {
+      --accent: #4a90e2;
+      --accent-light: rgba(74,144,226,0.1);
+      --bg: #fefefe;
+      --card-bg: rgba(255,255,255,0.85);
+      --shadow: rgba(0,0,0,0.1);
+      --text: #111;
+      --text-muted: #555;
+    }
 
-<!-- Google Analytics placeholder -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'GA_MEASUREMENT_ID', { anonymize_ip: true });
-</script>
+    * { box-sizing: border-box; margin:0; padding:0; }
 
-<!-- Styles -->
-<style>
-:root {
-  --primary: #4a90e2;
-  --accent: #f5a623;
-  --bg-light: #f4f6f9;
-  --bg-dark: #111;
-  --text-light: #fff;
-  --text-dark: #111;
-  --card-shadow: rgba(0,0,0,0.1);
-}
+    html { scroll-behavior: smooth; }
 
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text-dark); line-height:1.6; scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-/* Header */
-header {
-  position: relative;
-  padding: 100px 20px 80px;
-  text-align: center;
-  background: linear-gradient(-45deg, #4a90e2, #357ab8, #50c7f2, #357ab8);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-  color: var(--text-light);
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-}
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+    /* Navigation */
+    nav {
+      position: sticky;
+      top:0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      padding: 16px 32px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 32px;
+      box-shadow: 0 2px 10px var(--shadow);
+      z-index: 1000;
+    }
+    nav a { font-weight: 600; transition: color 0.2s; }
+    nav a:hover { color: #2c6cd3; }
 
-header h1 { font-size: 3rem; font-weight: 700; margin-bottom: 20px; letter-spacing:1px; }
-header p { font-size: 1.2rem; opacity: 0.9; }
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 60px;
+      background: linear-gradient(135deg, #e0f7ff, #fdfbff);
+    }
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 24px;
+      max-width: 650px;
+    }
+    .hero button {
+      padding: 16px 32px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero button:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 6px 20px var(--shadow);
+    }
 
-/* Sticky CTA */
-.cta-button {
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
-  background: var(--accent);
-  color: #fff;
-  font-weight: 700;
-  padding: 18px 28px;
-  border-radius: 50px;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 1000;
-  text-decoration: none;
-}
-.cta-button:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 28px rgba(0,0,0,0.35); }
+    /* Sections */
+    section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+    section h2 { font-family: 'Poppins', sans-serif; font-size: 2rem; margin-bottom: 24px; color: var(--accent); text-align:center; }
+    .card { background: var(--card-bg); padding: 24px; border-radius: 12px; box-shadow: 0 6px 20px var(--shadow); margin-bottom: 40px; transition: transform 0.3s; }
+    .card:hover { transform: translateY(-4px); }
+    .card p { font-size: 1.05rem; color: var(--text-muted); }
+    .highlight { color: var(--accent); font-weight: 600; }
 
-/* Containers */
-.container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+    /* Problem Section */
+    .problem ul { list-style: disc; margin-left: 24px; }
+    .problem a { font-weight: 500; }
 
-/* Sections */
-section { margin-bottom: 80px; opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
-section.visible { opacity: 1; transform: translateY(0); }
+    /* Stats / Solution */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 24px; margin-top:40px; }
+    .stat-card { text-align:center; padding:32px 20px; border-radius:12px; background: var(--accent-light); font-weight:500; transition: transform 0.3s; }
+    .stat-card h3 { font-family: 'Poppins', sans-serif; font-size:2rem; color: var(--accent); margin-bottom:12px; }
+    .stat-card p { font-size:1.1rem; color: var(--text); }
 
-/* Problem Section */
-.problem-section {
-  background: #fff5e6;
-  padding: 50px 40px;
-  border-left: 8px solid var(--accent);
-  border-radius: 16px;
-}
-.problem-section h2 { color: var(--accent); font-size: 2rem; margin-bottom: 20px; }
-.problem-section ul { list-style: disc; padding-left: 24px; font-weight: 500; }
+    /* Embed */
+    .embed-section { margin-top:60px; text-align:center; }
+    .embed-section iframe {
+      width: 100%;
+      max-width:900px;
+      height:700px;
+      border-radius:12px;
+      border:none;
+      box-shadow:0 10px 25px var(--shadow);
+      transition: transform 0.3s;
+    }
+    .embed-section iframe:hover { transform: scale(1.02); }
 
-/* Embed Section */
-.embed-section { position: relative; margin-bottom: 60px; }
-.embed-section h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; text-align: center; }
-.embed-section iframe { width: 100%; height: 750px; border-radius: 16px; border: none; box-shadow: 0 12px 40px rgba(0,0,0,0.2); transition: transform 0.3s ease; }
-.embed-section iframe:hover { transform: scale(1.02); }
+    /* Footer */
+    footer {
+      text-align:center;
+      font-size:0.85rem;
+      padding:32px 20px;
+      color:var(--text-muted);
+    }
+    footer a { color: var(--accent); }
 
-/* Features / Courses grid */
-.features-section, .courses-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
-
-.feature-card {
-  background: #fff;
-  padding: 30px 20px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px var(--card-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-  cursor: pointer;
-}
-.feature-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
-  background: linear-gradient(135deg, #4a90e2, #50c7f2);
-  color: #fff;
-}
-.feature-card h4 { color: var(--primary); font-size: 1.3rem; margin-bottom: 12px; font-weight: 600; }
-.feature-card p { font-size: 1rem; opacity: 0.85; transition: opacity 0.3s ease; }
-.feature-card:hover p { opacity: 0.95; }
-
-/* Section Titles */
-h2.section-title { font-size: 2rem; text-align: center; margin-bottom: 40px; color: var(--primary); font-weight: 700; }
-
-/* Counters */
-.counter { font-weight: 700; font-size: 2rem; color: var(--accent); }
-
-/* Footer */
-footer { background: var(--bg-dark); color: var(--text-light); padding: 60px 20px; text-align: center; font-size: 0.9rem; }
-footer a { color: var(--accent); text-decoration: none; margin: 0 6px; }
-footer .citations { margin-top: 12px; font-size: 0.8rem; opacity: 0.75; text-align:left; max-width: 900px; margin-left:auto; margin-right:auto; }
-
-/* Animations */
-@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(40px);} 100% { opacity:1; transform: translateY(0);} }
-</style>
+    /* Dynamic counters */
+    .counter { font-family:'Poppins',sans-serif; font-size:2.5rem; color: var(--accent); margin-bottom:8px; }
+  </style>
 </head>
 <body>
 
-<header>
-  <h1>Virginia SOL Tutor</h1>
-  <p>Interactive K-12 SOL prep—notes, real tests, and adaptive practice for every student.</p>
-</header>
+  <!-- Navigation -->
+  <nav>
+    <a href="#problem">Problem</a>
+    <a href="#solution">Solution</a>
+    <a href="#app">Our App</a>
+  </nav>
 
-<!-- Sticky CTA -->
-<a href="#embed" class="cta-button"><i class="fa fa-rocket"></i> Start Studying</a>
-
-<div class="container">
-
-  <!-- Problem Section -->
-  <section class="problem-section">
-    <h2>Why Students Need This App</h2>
-    <ul>
-      <li>Higher SOL cut scores approaching (Virginia Board of Education)</li>
-      <li>SOL tests now contribute 10% of students’ final grades (WAVY.com)</li>
-      <li>Learning gaps persist due to pandemic disruptions (Virginia DOE data)</li>
-    </ul>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>AI SOL Study Assistant</h1>
+    <p>Master every Virginia SOL with structured guidance, real practice questions, and adaptive learning designed for every student.</p>
+    <button onclick="document.getElementById('app').scrollIntoView({behavior:'smooth'})">Start Now</button>
   </section>
 
-  <!-- Embed Section -->
-  <section id="embed" class="embed-section">
-    <h3>Start Using the SOL Study Bot</h3>
+  <!-- Problem Section -->
+  <section id="problem" class="problem">
+    <h2>The Challenge Students Face</h2>
+    <div class="card">
+      <p>Students face rising SOL cut scores (Virginia Board of Education) and the SOL tests now count for 10% of final grades (WAVY.com). Pandemic learning loss has left gaps in foundational knowledge, making structured practice essential.</p>
+      <ul>
+        <li><a href="https://www.doe.virginia.gov/testing/sol/" target="_blank">Virginia DOE: SOL Overview</a></li>
+        <li><a href="https://www.wavy.com/news/education/sol-test-grades-impact/" target="_blank">SOL scores and grade impact - WAVY.com</a></li>
+        <li><a href="https://www.doe.virginia.gov/testing/assessment-pandemic-learning-loss.shtml" target="_blank">Pandemic Learning Loss Report - Virginia DOE</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Solution / Stats Section -->
+  <section id="solution">
+    <h2>Why Our App Works</h2>
+    <div class="stats">
+      <div class="stat-card">
+        <div class="counter">70+</div>
+        <p>Courses Covered (K-12, all subjects)</p>
+      </div>
+      <div class="stat-card">
+        <div class="counter">8,500+</div>
+        <p>Authentic SOL Questions</p>
+      </div>
+      <div class="stat-card">
+        <div class="counter">214+</div>
+        <p>Released Practice Tests</p>
+      </div>
+      <div class="stat-card">
+        <div class="counter">23</div>
+        <p>Graduation-Critical Courses</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- App Embed Section -->
+  <section id="app" class="embed-section">
+    <h2>Try AI SOL Study Assistant</h2>
     <iframe src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc" allow="clipboard-write"></iframe>
   </section>
 
-  <!-- Features Section with counters -->
-  <section class="features-section">
-    <div class="feature-card">
-      <h4>Comprehensive Curriculum</h4>
-      <p><span class="counter" data-target="70">0</span> Courses K-12 across Math, Science, English, History</p>
-    </div>
-    <div class="feature-card">
-      <h4>Adaptive Practice</h4>
-      <p>Target weak areas with step-by-step exercises and real SOL practice tests.</p>
-    </div>
-    <div class="feature-card">
-      <h4>Realistic Testing</h4>
-      <p><span class="counter" data-target="214">0</span> Released SOL Tests & <span class="counter" data-target="8500">0</span> Questions</p>
-    </div>
-    <div class="feature-card">
-      <h4>Mastery Tools</h4>
-      <p>Mnemonics, analogies, and real-world examples for deep understanding.</p>
-    </div>
-    <div class="feature-card">
-      <h4>Track Progress</h4>
-      <p>Visual analytics for weak areas, scores, and practice completion.</p>
-    </div>
-    <div class="feature-card">
-      <h4>Safe & Private</h4>
-      <p>No personal data collected. Focus fully on learning.</p>
-    </div>
-  </section>
+  <!-- Footer -->
+  <footer>
+    <p>©2026 AI SOL Study Assistant | <span>Transparent, professional, and Virginia-specific.</span></p>
+    <p>Citations: 
+      <a href="https://www.solpass.org/" target="_blank">SOLpass.org</a>, 
+      <a href="https://www.doe.virginia.gov/testing/sol/" target="_blank">Virginia DOE SOL Items</a>, 
+      <a href="https://www.doe.virginia.gov/instruction/k12/" target="_blank">K-12 Standards & Instruction</a>
+    </p>
+  </footer>
 
-  <!-- Courses Section -->
-  <section class="courses-section">
-    <h2 class="section-title">Supported Courses</h2>
-    <div class="feature-card">
-      <h4>Math</h4>
-      <p>Kindergarten – Grade 12, including Algebra I, Geometry, Algebra II, and advanced electives.</p>
-    </div>
-    <div class="feature-card">
-      <h4>Science</h4>
-      <p>Kindergarten – High School, including Biology, Chemistry, Physics, Earth Science, and Environmental Science.</p>
-    </div>
-    <div class="feature-card">
-      <h4>English</h4>
-      <p>Kindergarten – Grade 12, covering reading, writing, communication, and research skills.</p>
-    </div>
-    <div class="feature-card">
-      <h4>History & Social Science</h4>
-      <p>Virginia Studies, Civics & Economics, World History, US History, and Government for K-12 students.</p>
-    </div>
-  </section>
-
-</div>
-
-<footer>
-  &copy; 2026 Virginia SOL Tutor  
-  <div class="citations">
-    <p>Citations:</p>
-    <ul>
-      <li><a href="https://www.solpass.org/" target="_blank">SOLpass.org (Practice Tests)</a></li>
-      <li><a href="https://www.doe.virginia.gov/testing/sol/practice-items/index.shtml" target="_blank">SOL Practice Items | Virginia DOE</a></li>
-      <li><a href="https://www.doe.virginia.gov/testing/sol/released-tests/index.shtml" target="_blank">Released Tests & Item Sets | Virginia DOE</a></li>
-      <li><a href="https://www.doe.virginia.gov/instruction/k-12-standards/index.shtml" target="_blank">K-12 Standards & Instruction | Virginia DOE</a></li>
-    </ul>
-  </div>
-</footer>
-
-<!-- Scripts for scroll reveal and counters -->
-<script>
-const sections = document.querySelectorAll('section');
-const counters = document.querySelectorAll('.counter');
-
-function revealOnScroll() {
-  const triggerBottom = window.innerHeight * 0.85;
-  sections.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
-    if(sectionTop < triggerBottom) { section.classList.add('visible'); }
-  });
-}
-
-function runCounters() {
-  counters.forEach(counter => {
-    const updateCount = () => {
-      const target = +counter.getAttribute('data-target');
-      const count = +counter.innerText;
-      const speed = 200; 
-      const inc = target / speed;
-      if(count < target) {
-        counter.innerText = Math.ceil(count + inc);
-        setTimeout(updateCount, 10);
-      } else {
-        counter.innerText = target;
-      }
-    };
-    updateCount();
-  });
-}
-
-window.addEventListener('scroll', () => {
-  revealOnScroll();
-  if (document.querySelectorAll('.counter:not(.started)').length > 0) {
-    counters.forEach(c => c.classList.add('started'));
-    runCounters();
-  }
-});
-window.addEventListener('load', () => { revealOnScroll(); runCounters(); });
-</script>
+  <!-- Google Analytics Example (insert your GA4 ID below) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHD1KSS512"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DHD1KSS512');
+  </script>
 
 </body>
 </html>
