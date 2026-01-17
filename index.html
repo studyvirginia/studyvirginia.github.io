@@ -1,124 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="AI SOL Study Assistant: Dynamic K-12 SOL study platform for Virginia students with adaptive practice, diagnostics, and mastery tools.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI SOL Study Assistant</title>
-<link rel="shortcut icon" href="/favicon.ico">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <style>
-  * {margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-  body {background:#f9f9f9;color:#111;scroll-behavior:smooth;}
-  a {text-decoration:none;color:inherit;}
-  nav {position:fixed;width:100%;top:0;left:0;z-index:1000;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;padding:0.5rem 2rem;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
-  .nav-logo {display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.2rem;}
-  .nav-links {display:flex;align-items:center;gap:1.5rem;}
-  .nav-links a {padding:0.5rem 0.75rem;transition:0.3s;}
-  .nav-links a:hover {color:#007bff;}
-  .nav-links .cta-btn {background:#007bff;color:#fff;padding:0.5rem 1rem;border-radius:6px;}
-  .hero {height:90vh;background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('/hero-bg.jpg') center/cover no-repeat;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:#fff;padding:0 1rem;}
-  .hero h1 {font-size:3rem;font-weight:800;margin-bottom:1rem;}
-  .hero p {font-size:1.2rem;margin-bottom:2rem;opacity:0.9;}
-  .hero .hero-btns {display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
-  .hero button {padding:0.75rem 1.5rem;font-size:1rem;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:0.3s;}
-  .hero .primary-btn {background:#007bff;color:#fff;}
-  .hero .secondary-btn {background:transparent;color:#fff;border:2px solid #fff;}
-  section {padding:80px 2rem;}
-  .section-title {text-align:center;font-size:2rem;font-weight:700;margin-bottom:3rem;position:relative;}
-  .section-title::after {content:'';display:block;width:60px;height:4px;background:#007bff;margin:1rem auto 0;border-radius:2px;}
-  .cards {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
-  .card {background:#fff;padding:2rem;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.05);transition:0.3s;display:flex;flex-direction:column;align-items:center;text-align:center;}
-  .card:hover {transform:translateY(-8px);box-shadow:0 12px 24px rgba(0,0,0,0.1);}
-  .card h3 {font-size:1.5rem;font-weight:600;margin-bottom:0.75rem;color:#007bff;}
-  .card p {opacity:0.85;}
-  .card a {margin-top:1rem;color:#007bff;font-weight:600;}
-  .embed-section {text-align:center;padding:4rem 2rem;background:#f1f7ff;border-radius:12px;margin:4rem auto;max-width:1200px;}
-  .embed-section iframe {width:100%;height:700px;border:none;border-radius:12px;box-shadow:0 12px 24px rgba(0,0,0,0.1);}
-  footer {background:#111;color:#fff;padding:3rem 2rem;}
-  footer .footer-content {display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;}
-  footer .footer-nav a {margin-right:1rem;color:#fff;opacity:0.8;transition:0.3s;}
-  footer .footer-nav a:hover {opacity:1;color:#007bff;}
-  footer p {margin-top:1rem;font-size:0.9rem;opacity:0.7;}
+  /* Global Reset */
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+  body { background: #f9f9f9; color: #111; line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+
+  /* Sticky Nav */
+  nav { position: sticky; top: 0; background: rgba(255,255,255,0.95); display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); z-index: 1000; }
+  nav .logo { font-weight: 800; font-size: 1.5rem; }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul li { font-weight: 500; cursor: pointer; }
+
+  /* Hero Section */
+  .hero { text-align: center; padding: 6rem 2rem; background: linear-gradient(120deg, #fff, #e0f7fa); }
+  .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+  .hero p { font-size: 1.25rem; opacity: 0.8; margin-bottom: 2rem; }
+  .hero .cta { padding: 1rem 2rem; background: #ff9800; color: #fff; font-weight: 700; border-radius: 8px; font-size: 1rem; }
+
+  /* Section Titles */
+  .section { padding: 4rem 2rem; }
+  .section h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center; }
+  .section p { max-width: 700px; margin: 0 auto 2rem auto; text-align: center; opacity: 0.85; }
+
+  /* Problem Section */
+  .problem-cards { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-top: 2rem; }
+  .problem-card { flex: 1 1 250px; background: #ffe0e0; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: transform 0.2s; }
+  .problem-card:hover { transform: translateY(-5px); }
+  .problem-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+  .problem-card a { font-size: 0.9rem; color: #d32f2f; }
+
+  /* Stats Section */
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; margin-top: 2rem; }
+  .stat-card { background: #e0f7fa; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .stat-card h3 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .stat-card p { font-weight: 500; opacity: 0.85; }
+
+  /* App Embed Section */
+  .app-section { text-align: center; padding: 4rem 2rem; background: #fff; }
+  .app-section iframe { width: 100%; max-width: 800px; height: 600px; border: none; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+
+  /* Footer */
+  footer { background: #111; color: #fff; padding: 3rem 2rem; text-align: center; }
+  footer a { color: #ff9800; }
+  footer p { margin-top: 1rem; opacity: 0.8; font-size: 0.9rem; }
 </style>
 </head>
 <body>
 
+<!-- Navigation -->
 <nav>
-  <div class="nav-logo"><img src="/logo.png" alt="AI SOL" style="height:40px;">AI SOL Study Assistant</div>
-  <div class="nav-links">
-    <a href="#problem">Problem</a>
-    <a href="#solution">Solution</a>
-    <a href="#app">Our App</a>
-    <a href="#app" class="cta-btn">Start Now</a>
-  </div>
+  <div class="logo">AI SOL Study Assistant</div>
+  <ul>
+    <li>Problem</li>
+    <li>Solution</li>
+    <li>App</li>
+  </ul>
+  <a href="#app" class="cta">Start Now</a>
 </nav>
 
-<section class="hero" id="top">
-  <h1>AI SOL Study Assistant</h1>
-  <p>Adaptive K-12 SOL prep. Personalized diagnostics, review, mastery, and practice all in one dynamic platform.</p>
-  <div class="hero-btns">
-    <button class="primary-btn" onclick="document.getElementById('app').scrollIntoView({behavior:'smooth'})">Start Now</button>
-    <button class="secondary-btn" onclick="document.getElementById('solution').scrollIntoView({behavior:'smooth'})">Learn More</button>
-  </div>
+<!-- Hero -->
+<section class="hero">
+  <h1>Master Every Virginia SOL Test</h1>
+  <p>Fast, smart, and fully aligned with SOL standards</p>
+  <a href="#app" class="cta">Start Now</a>
 </section>
 
-<section id="problem">
-  <h2 class="section-title">The Challenge Students Face</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Rising SOL Cut Scores</h3>
-      <p>Higher cut scores are coming soon, requiring more effective preparation. <a href="https://www.boardofeducation.virginia.gov/">Read more</a></p>
+<!-- Problem Section -->
+<section class="section">
+  <h2>Why SOLs Are Hard</h2>
+  <p>Current challenges Virginia students face in mastering SOL standards</p>
+  <div class="problem-cards">
+    <div class="problem-card">
+      <h3>Higher Cut Scores Coming</h3>
+      <a href="https://www.doe.virginia.gov/" target="_blank">(Virginia Board of Education)</a>
     </div>
-    <div class="card">
-      <h3>Impact on Grades</h3>
-      <p>SOL scores now account for 10% of final grades, increasing pressure on students. <a href="https://www.wavy.com/">Source</a></p>
+    <div class="problem-card">
+      <h3>SOL Counts 10% of Final Grade</h3>
+      <a href="https://www.wavy.com/" target="_blank">(WAVY.com)</a>
     </div>
-    <div class="card">
+    <div class="problem-card">
       <h3>Pandemic Learning Loss</h3>
-      <p>Students face gaps from pandemic disruptions, making structured review critical. <a href="https://www.virginiadoe.org/">Learn more</a></p>
+      <a href="https://www.doe.virginia.gov/" target="_blank">(Virginia DOE)</a>
     </div>
   </div>
 </section>
 
-<section id="solution" style="background:#e8f0ff;">
-  <h2 class="section-title">How AI SOL Study Assistant Helps</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>70+ Courses</h3>
-      <p>Comprehensive coverage of Math, Science, History, and English SOL curricula.</p>
+<!-- Solution / Stats Section -->
+<section class="section" style="background:#fafafa;">
+  <h2>Our Solution</h2>
+  <p>Everything students need to succeed, summarized at a glance</p>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h3>1.3M</h3>
+      <p>VA Students</p>
     </div>
-    <div class="card">
-      <h3>Adaptive Practice</h3>
-      <p>Focused on weak areas and tracks improvement dynamically for each student.</p>
+    <div class="stat-card">
+      <h3>215+</h3>
+      <p>Released SOL Tests</p>
     </div>
-    <div class="card">
-      <h3>Diagnostic & Mastery</h3>
-      <p>Initial diagnostic identifies knowledge gaps, followed by mastery modules and mnemonics.</p>
+    <div class="stat-card">
+      <h3>8,500+</h3>
+      <p>Questions</p>
     </div>
-    <div class="card">
-      <h3>Progress Tracking</h3>
-      <p>Simple stats for each mode to monitor growth and achievements over time.</p>
+    <div class="stat-card">
+      <h3>70</h3>
+      <p>Total Courses (23 SOL-tested HS courses)</p>
     </div>
   </div>
 </section>
 
-<section id="app" class="embed-section">
-  <h2 class="section-title">Experience the App</h2>
-  <iframe src="/embed-app.html" title="AI SOL Study Assistant App"></iframe>
+<!-- App Embed -->
+<section class="app-section" id="app">
+  <h2>AI SOL Study Assistant App</h2>
+  <iframe src="YOUR_APP_EMBED_URL_HERE"></iframe>
 </section>
 
+<!-- Footer -->
 <footer>
-  <div class="footer-content">
-    <div class="footer-nav">
-      <a href="#problem">Problem</a>
-      <a href="#solution">Solution</a>
-      <a href="#app">Our App</a>
-      <a href="mailto:info@aisol.org">info@aisol.org</a>
-    </div>
-    <p>© 2026 AI SOL Study Assistant</p>
-  </div>
+  <p>Citations: Virginia DOE, WAVY.com, Virginia Board of Education</p>
+  <p>Contact: <a href="mailto:info@aisol.org">info@aisol.org</a></p>
+  <p>© 2026 AI SOL Study Assistant</p>
 </footer>
 
 </body>
