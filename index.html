@@ -1,10 +1,13 @@
+Here's the **COMPLETE FINAL HTML** with everything we've discussed - all articles, citations, courses, and features:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI SOL Study Assistant - Virginia SOL Study Tool</title>
-<meta name="description" content="AI study tool for Virginia SOL tests. 214+ released tests, 8,500+ questions, 70 courses K-12.">
+<meta name="description" content="AI study tool for Virginia SOL tests. 214+ released tests, 8,500+ questions, 70 courses K-12. Built with official Virginia DOE content.">
 <style>
   /* Global Reset */
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
@@ -41,8 +44,8 @@
   .problem-card .icon { font-size: 2rem; margin-bottom: 0.8rem; opacity: 0.8; }
   .problem-card h3 { font-size: 1.2rem; margin-bottom: 0.7rem; color: #2d3748; font-weight: 600; }
   .problem-card p { color: #4a5568; margin-bottom: 0.8rem; line-height: 1.6; font-size: 0.95rem; }
-  .problem-card a { font-size: 0.85rem; color: #5a67d8; font-weight: 500; }
-  .problem-card a:hover { text-decoration: underline; }
+  .problem-card .source { font-size: 0.85rem; color: #5a67d8; font-weight: 500; display: block; font-style: italic; }
+  .problem-card .source:hover { text-decoration: underline; }
   
   /* Stats Section */
   .stats-section { background: #f7fafc; padding: 3.5rem 2rem; }
@@ -50,7 +53,7 @@
   .stat-card { background: #fff; padding: 1.8rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); transition: all 0.2s; }
   .stat-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
   .stat-card h3 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; color: #5a67d8; }
-  .stat-card p { font-weight: 500; color: #4a5568; font-size: 0.9rem; }
+  .stat-card p { font-weight: 500; color: #4a5568; font-size: 0.9rem; line-height: 1.4; }
   
   /* Features Section */
   .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
@@ -78,24 +81,30 @@
   .catalog-content { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
   .catalog-content .course-category { margin-bottom: 1.8rem; }
   .catalog-content .course-category h4 { font-size: 1.05rem; margin-bottom: 0.7rem; color: #5a67d8; font-weight: 600; }
-  .catalog-content .course-category ul { list-style: none; padding-left: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.4rem; }
-  .catalog-content .course-category ul li { padding: 0.25rem 0; color: #4a5568; font-size: 0.9rem; }
+  .catalog-content .course-category ul { list-style: none; padding-left: 0; columns: 2; -webkit-columns: 2; -moz-columns: 2; column-gap: 2rem; }
+  .catalog-content .course-category ul li { padding: 0.25rem 0; color: #4a5568; font-size: 0.9rem; break-inside: avoid; }
   .catalog-content .course-category ul li.sol-tested { font-weight: 600; color: #2d3748; }
   .catalog-content .course-category ul li.sol-tested::before { content: '⭐'; margin-right: 0.3rem; }
   
   /* App Embed Section */
   .app-section { text-align: center; padding: 4rem 2rem; background: #fff; }
   .app-section h2 { margin-bottom: 0.8rem; color: #2d3748; }
-  .app-section .app-subtitle { max-width: 650px; margin: 0 auto 2rem; color: #718096; }
-  .app-section iframe { width: 100%; max-width: 900px; height: 700px; border: none; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+  .app-section .app-subtitle { max-width: 650px; margin: 0 auto 1rem; color: #718096; }
+  .app-controls { margin-bottom: 1rem; }
+  .app-controls .fullscreen-btn { padding: 0.6rem 1.2rem; background: #5a67d8; color: #fff; font-weight: 600; border-radius: 6px; font-size: 0.9rem; cursor: pointer; border: none; transition: all 0.2s; }
+  .app-controls .fullscreen-btn:hover { background: #4c51bf; }
+  .app-section .iframe-container { position: relative; width: 100%; max-width: 900px; margin: 0 auto; }
+  .app-section iframe { width: 100%; height: 700px; border: none; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
   
   /* Footer */
   footer { background: #2d3748; color: #cbd5e0; padding: 2.5rem 2rem; }
-  .footer-content { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+  .footer-content { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
   .footer-col h4 { margin-bottom: 0.8rem; font-size: 1rem; color: #e2e8f0; font-weight: 600; }
   .footer-col ul { list-style: none; }
-  .footer-col ul li { padding: 0.25rem 0; font-size: 0.9rem; }
-  .footer-bottom { text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; }
+  .footer-col ul li { padding: 0.3rem 0; font-size: 0.85rem; line-height: 1.5; }
+  .footer-col ul li a { transition: color 0.2s; }
+  .footer-col ul li a:hover { color: #fff; }
+  .footer-bottom { text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; line-height: 1.8; }
   footer a { color: #90cdf4; }
   
   /* Responsive */
@@ -103,6 +112,7 @@
     .hero h1 { font-size: 1.9rem; }
     .hero .subtitle { font-size: 1rem; }
     .section h2 { font-size: 1.7rem; }
+    .catalog-content .course-category ul { columns: 1; }
   }
 </style>
 </head>
@@ -133,22 +143,22 @@
   <p class="section-subtitle">Current challenges Virginia students face in mastering SOL standards</p>
   <div class="problem-cards">
     <div class="problem-card">
-      <div class="icon">📚</div>
-      <h3>New Policy Changes</h3>
-      <p>Recent Virginia policy changes have increased the importance of SOL scores in final grades and adjusted graduation requirements.</p>
-      <a href="https://www.doe.virginia.gov/" target="_blank">Virginia Board of Education</a>
+      <div class="icon">📊</div>
+      <h3>Higher Cut Scores Coming</h3>
+      <p>Virginia Board of Education is planning to raise SOL passing scores in future years, requiring students to achieve higher scores for verified credits.</p>
+      <a class="source" href="https://virginiamercury.com/2025/11/14/higher-sol-cut-scores-coming-but-not-this-year-virginia-board-says/" target="_blank">Virginia Mercury: "Higher SOL cut scores coming, but not this year" →</a>
     </div>
     <div class="problem-card">
       <div class="icon">🎓</div>
-      <h3>Graduation Requirements</h3>
-      <p>Students need passing scores (400+) on SOL tests to earn verified credits required for graduation: 2 English, 1 Math, 1 Science, 1 History.</p>
-      <a href="https://www.doe.virginia.gov/" target="_blank">Virginia DOE</a>
+      <h3>SOL Counts 10% of Final Grade</h3>
+      <p>New policy makes SOL scores count for 10% of students' final grades to raise student performance. Students also need passing scores (400+) to earn verified credits for graduation.</p>
+      <a class="source" href="https://www.wavy.com/news/virginia/sol-scores-to-account-for-10-of-students-final-grade-to-raise-student-performance/" target="_blank">WAVY.com: "SOL scores to account for 10% of student's final grade" →</a>
     </div>
     <div class="problem-card">
-      <div class="icon">📊</div>
-      <h3>Achievement Gaps Persist</h3>
-      <p>Many Virginia students continue to face challenges reaching proficiency on SOL tests, with persistent gaps across different communities.</p>
-      <a href="https://www.doe.virginia.gov/" target="_blank">Virginia DOE Reports</a>
+      <div class="icon">📉</div>
+      <h3>Pandemic Learning Loss</h3>
+      <p>Virginia continues to struggle with making up pandemic learning loss, with new data showing persistent achievement gaps across the state.</p>
+      <a class="source" href="https://www.washingtonpost.com/education/2025/08/27/virginia-sol-scores-pandemic-learning-loss/" target="_blank">Washington Post: "Virginia struggles to make up pandemic learning loss" →</a>
     </div>
   </div>
 </section>
@@ -160,20 +170,20 @@
     <p class="section-subtitle" style="color: #4a5568;">Everything students need to succeed, summarized at a glance</p>
     <div class="stats-grid">
       <div class="stat-card">
-        <h3>1.2M+</h3>
-        <p>VA Students</p>
+        <h3>1,246,285</h3>
+        <p>Students enrolled in Virginia public schools (2025-2026 school year)</p>
       </div>
       <div class="stat-card">
         <h3>214+</h3>
-        <p>Released SOL Tests</p>
+        <p>Released SOL Tests (2001-2015+)</p>
       </div>
       <div class="stat-card">
         <h3>8,500+</h3>
-        <p>Questions</p>
+        <p>Real SOL Questions</p>
       </div>
       <div class="stat-card">
         <h3>70</h3>
-        <p>Total Courses</p>
+        <p>Courses Supported in App</p>
       </div>
     </div>
   </div>
@@ -275,17 +285,20 @@
 
 <!-- Course Catalog -->
 <section class="section" id="courses">
-  <h2>Course Library</h2>
-  <p class="section-subtitle">70 courses aligned to Virginia SOL standards</p>
+  <h2>All 70 Courses</h2>
+  <p class="section-subtitle">Complete library aligned to Virginia SOL standards</p>
   <div class="catalog-tabs">
     <div class="catalog-tab active" onclick="showCatalog('math')">Mathematics (13)</div>
     <div class="catalog-tab" onclick="showCatalog('science')">Science (14)</div>
     <div class="catalog-tab" onclick="showCatalog('english')">English (13)</div>
     <div class="catalog-tab" onclick="showCatalog('history')">History (13)</div>
+    <div class="catalog-tab" onclick="showCatalog('electives')">Electives (17)</div>
   </div>
+  
+  <!-- MATHEMATICS (13 courses) -->
   <div class="catalog-content" id="catalog-math">
     <div class="course-category">
-      <h4>Elementary (K-5)</h4>
+      <h4>Elementary (6 courses)</h4>
       <ul>
         <li>Kindergarten Math</li>
         <li>Grade 1 Math</li>
@@ -296,7 +309,7 @@
       </ul>
     </div>
     <div class="course-category">
-      <h4>Middle School (6-8)</h4>
+      <h4>Middle School (3 courses)</h4>
       <ul>
         <li>Grade 6 Math</li>
         <li>Grade 7 Math</li>
@@ -304,7 +317,7 @@
       </ul>
     </div>
     <div class="course-category">
-      <h4>High School - SOL-Tested</h4>
+      <h4>High School - SOL-Tested (3 courses)</h4>
       <ul>
         <li class="sol-tested">Algebra I (EOC)</li>
         <li class="sol-tested">Geometry (EOC)</li>
@@ -312,21 +325,18 @@
       </ul>
     </div>
     <div class="course-category">
-      <h4>Advanced Electives</h4>
+      <h4>High School Elective (1 course)</h4>
       <ul>
-        <li>Trigonometry</li>
-        <li>Data Science</li>
-        <li>Algebra, Functions & Data Analysis</li>
-        <li>Mathematical Analysis</li>
-        <li>Discrete Mathematics</li>
-        <li>Probability & Statistics</li>
-        <li>Computer Mathematics</li>
+        <li>Algebra, Functions & Data Analysis (AFDA)</li>
       </ul>
     </div>
+    <p style="font-size:0.85rem; color:#718096; margin-top:1rem;"><em>Note: 6 additional math electives listed in Electives tab</em></p>
   </div>
+  
+  <!-- SCIENCE (14 courses) -->
   <div class="catalog-content" id="catalog-science" style="display:none;">
     <div class="course-category">
-      <h4>Elementary (K-5)</h4>
+      <h4>Elementary (6 courses)</h4>
       <ul>
         <li>Kindergarten Science</li>
         <li>Grade 1 Science</li>
@@ -337,7 +347,7 @@
       </ul>
     </div>
     <div class="course-category">
-      <h4>Middle School (6-8)</h4>
+      <h4>Middle School (3 courses)</h4>
       <ul>
         <li>Grade 6 Science</li>
         <li>Grade 7 Life Science</li>
@@ -345,13 +355,13 @@
       </ul>
     </div>
     <div class="course-category">
-      <h4>High School - SOL-Tested</h4>
+      <h4>High School - SOL-Tested (1 course)</h4>
       <ul>
         <li class="sol-tested">Biology I (EOC)</li>
       </ul>
     </div>
     <div class="course-category">
-      <h4>High School Core</h4>
+      <h4>High School Core (4 courses)</h4>
       <ul>
         <li>Chemistry I</li>
         <li>Physics I</li>
@@ -359,22 +369,13 @@
         <li>Environmental Science</li>
       </ul>
     </div>
-    <div class="course-category">
-      <h4>Advanced Electives</h4>
-      <ul>
-        <li>Biology II: Genetics</li>
-        <li>Biology II: Anatomy & Physiology</li>
-        <li>Biology II: Ecology</li>
-        <li>Biology II: Advanced Survey</li>
-        <li>Chemistry II: Advanced Survey</li>
-        <li>Physics II: Advanced Survey</li>
-        <li>Earth Science II (Oceanography, Astronomy, Geology)</li>
-      </ul>
-    </div>
+    <p style="font-size:0.85rem; color:#718096; margin-top:1rem;"><em>Note: 11 additional science electives listed in Electives tab</em></p>
   </div>
+  
+  <!-- ENGLISH (13 courses) -->
   <div class="catalog-content" id="catalog-english" style="display:none;">
     <div class="course-category">
-      <h4>All Grades (K-12)</h4>
+      <h4>All Grades (13 courses)</h4>
       <ul>
         <li>Kindergarten English</li>
         <li>Grade 1 English</li>
@@ -392,9 +393,11 @@
       </ul>
     </div>
   </div>
+  
+  <!-- HISTORY (13 courses) -->
   <div class="catalog-content" id="catalog-history" style="display:none;">
     <div class="course-category">
-      <h4>Elementary (K-5)</h4>
+      <h4>Elementary (6 courses)</h4>
       <ul>
         <li>Kindergarten History</li>
         <li>Grade 1 History</li>
@@ -405,7 +408,7 @@
       </ul>
     </div>
     <div class="course-category">
-      <h4>Middle School (6-8)</h4>
+      <h4>Middle School (3 courses)</h4>
       <ul>
         <li>Grade 6 US History: 1865-Present</li>
         <li>Grade 7 World Geography</li>
@@ -413,73 +416,101 @@
       </ul>
     </div>
     <div class="course-category">
-      <h4>High School - SOL-Tested</h4>
+      <h4>High School (4 courses)</h4>
       <ul>
         <li class="sol-tested">Grade 9 World History to 1500 A.D. (EOC)</li>
         <li class="sol-tested">Grade 10 World History: 1500-Present (EOC)</li>
         <li class="sol-tested">Grade 11 Virginia & US History (EOC)</li>
-      </ul>
-    </div>
-    <div class="course-category">
-      <h4>High School - Non-SOL</h4>
-      <ul>
         <li>Grade 12 Virginia & US Government</li>
       </ul>
     </div>
   </div>
-  <p style="text-align:center; margin-top:1.5rem; color:#718096; font-size:0.9rem;"><strong>⭐ = SOL-tested</strong> (state assessment required)</p>
+  
+  <!-- ELECTIVES (17 courses) -->
+  <div class="catalog-content" id="catalog-electives" style="display:none;">
+    <div class="course-category">
+      <h4>Mathematics Electives (6 courses)</h4>
+      <ul>
+        <li>Trigonometry</li>
+        <li>Data Science</li>
+        <li>Mathematical Analysis</li>
+        <li>Discrete Mathematics</li>
+        <li>Probability & Statistics</li>
+        <li>Computer Mathematics</li>
+      </ul>
+    </div>
+    <div class="course-category">
+      <h4>Science Electives (11 courses)</h4>
+      <ul>
+        <li>Environmental Science Level II Expanded</li>
+        <li>Biology II: Genetics</li>
+        <li>Biology II: Anatomy & Physiology</li>
+        <li>Biology II: Ecology</li>
+        <li>Biology II: Advanced Survey</li>
+        <li>Chemistry II: Advanced Survey</li>
+        <li>Physics II: Advanced Survey</li>
+        <li>Earth Science II: Advanced Survey</li>
+        <li>Earth Science II: Oceanography</li>
+        <li>Earth Science II: Astronomy</li>
+        <li>Earth Science II: Geology</li>
+      </ul>
+    </div>
+  </div>
+  
+  <p style="text-align:center; margin-top:1.5rem; color:#718096; font-size:0.9rem;"><strong>⭐ = SOL-tested</strong> (state assessment required for verified credit)</p>
 </section>
 
 <!-- App Embed -->
 <section class="app-section" id="app">
   <h2>AI SOL Study Assistant</h2>
   <p class="app-subtitle">Chat with the AI tutor to start studying—no signup required</p>
-  <iframe src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc" height="700px" frameborder="0" allow="clipboard-write" title="AI SOL Study Assistant"></iframe>
+  <div class="app-controls">
+    <button class="fullscreen-btn" onclick="openFullscreen()">🔍 Open in Full Screen</button>
+  </div>
+  <div class="iframe-container">
+    <iframe id="sol-app" src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc" height="700px" frameborder="0" allow="clipboard-write" title="AI SOL Study Assistant"></iframe>
+  </div>
 </section>
 
 <!-- Footer -->
 <footer>
   <div class="footer-content">
     <div class="footer-col">
-      <h4>Product</h4>
+      <h4>Relevant Articles</h4>
       <ul>
-        <li>How It Works</li>
-        <li>Course Library</li>
-        <li>About</li>
+        <li><a href="https://virginiamercury.com/2025/11/14/higher-sol-cut-scores-coming-but-not-this-year-virginia-board-says/" target="_blank">Higher SOL cut scores coming (Virginia Mercury)</a></li>
+        <li><a href="https://www.wavy.com/news/virginia/sol-scores-to-account-for-10-of-students-final-grade-to-raise-student-performance/" target="_blank">SOL scores to account for 10% of final grade (WAVY.com)</a></li>
+        <li><a href="https://www.washingtonpost.com/education/2025/08/27/virginia-sol-scores-pandemic-learning-loss/" target="_blank">Virginia struggles with pandemic learning loss (Washington Post)</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Resources</h4>
+      <h4>Virginia DOE Resources</h4>
       <ul>
-        <li>Study Tips</li>
-        <li>Parent Guide</li>
-        <li>Help Center</li>
+        <li><a href="https://www.doe.virginia.gov/teaching-learning-assessment/instruction" target="_blank">K-12 Standards & Instruction</a></li>
+        <li><a href="https://www.doe.virginia.gov/teaching-learning-assessment/student-assessment/sol-practice-items-all-subjects" target="_blank">SOL Practice Items (All Subjects)</a></li>
+        <li><a href="https://www.doe.virginia.gov/teaching-learning-assessment/student-assessment/sol-practice-items-all-subjects/released-tests-item-sets-all-subjects" target="_blank">Released Tests & Item Sets</a></li>
+        <li><a href="http://solpass.org/" target="_blank">SOLpass.org (Practice Tests)</a></li>
       </ul>
     </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <ul>
-        <li>Privacy Policy</li>
-        <li>Terms of Service</li>
-        <li>Contact</li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Data Sources</h4>
-      <ul>
-        <li><a href="https://www.doe.virginia.gov/" target="_blank">Virginia DOE</a></li>
-        <li><a href="https://www.doe.virginia.gov/boe" target="_blank">VA Board of Education</a></li>
-      </ul>
-    </div>
+
   </div>
   <div class="footer-bottom">
-    <p>Citations: Virginia DOE, Virginia Board of Education</p>
-    <p style="margin-top:0.5rem;">Contact: <a href="mailto:info@aisol.org">info@aisol.org</a></p>
-    <p style="margin-top:0.8rem;">© 2026 AI SOL Study Assistant</p>
+    <p><strong>Data Sources & Citations:</strong></p>
+    <p style="margin-top:0.5rem;">
+      Curriculum & Standards: <a href="https://www.doe.virginia.gov/teaching-learning-assessment/instruction" target="_blank">Virginia DOE K-12 Standards & Instruction</a>
+    </p>
+    <p style="margin-top:0.3rem;">
+      Released Tests: <a href="https://www.doe.virginia.gov/teaching-learning-assessment/student-assessment/sol-practice-items-all-subjects/released-tests-item-sets-all-subjects" target="_blank">Virginia DOE Released Tests & Item Sets</a> | <a href="http://solpass.org/" target="_blank">SOLpass.org</a>
+    </p>
+    <p style="margin-top:0.3rem;">
+      Practice Items: <a href="https://www.doe.virginia.gov/teaching-learning-assessment/student-assessment/sol-practice-items-all-subjects" target="_blank">Virginia DOE SOL Practice Items</a>
+    </p>
+    <p style="margin-top:1.5rem;">2026 AI SOL Study Assistant</p>
   </div>
 </footer>
 
 <script>
+// Catalog tab switching
 function showCatalog(subject) {
   document.querySelectorAll('.catalog-content').forEach(el => el.style.display = 'none');
   document.querySelectorAll('.catalog-tab').forEach(el => el.classList.remove('active'));
@@ -487,6 +518,19 @@ function showCatalog(subject) {
   event.target.classList.add('active');
 }
 
+// Fullscreen function
+function openFullscreen() {
+  const iframe = document.getElementById('sol-app');
+  if (iframe.requestFullscreen) {
+    iframe.requestFullscreen();
+  } else if (iframe.webkitRequestFullscreen) {
+    iframe.webkitRequestFullscreen();
+  } else if (iframe.msRequestFullscreen) {
+    iframe.msRequestFullscreen();
+  }
+}
+
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -499,4 +543,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 </script>
 
 </body>
-</html>
