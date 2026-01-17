@@ -1,220 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Virginia SOL Tutor</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
-  </script>
+<meta charset="UTF-8">
+<title>Virginia SOL Tutor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Virginia SOL Tutor - Adaptive K-12 learning assistant for SOL test prep across Math, Science, English, and History.">
 
-  <!-- Styles -->
-  <style>
-    :root {
-      --primary: #4a90e2;
-      --secondary: #0f1821;
-      --accent: #f5a623;
-      --bg: #f4f7f9;
-      --card: #fff;
-      --radius: 12px;
-      --shadow: 0 4px 12px rgba(0,0,0,0.08);
-      --font: 'Inter', sans-serif;
-    }
-    body {
-      margin: 0;
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--secondary);
-      line-height: 1.6;
-    }
-    header {
-      padding: 24px;
-      text-align: center;
-      font-size: 32px;
-      font-weight: 700;
-      background: var(--primary);
-      color: #fff;
-      box-shadow: var(--shadow);
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-    .embed-section {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 32px;
-      text-align: center;
-      box-shadow: var(--shadow);
-      margin-bottom: 48px;
-      transition: transform 0.3s ease;
-    }
-    .embed-section:hover {
-      transform: translateY(-4px);
-    }
-    .embed-section h3 {
-      color: var(--primary);
-      font-size: 24px;
-      margin-bottom: 24px;
-    }
-    iframe {
-      width: 100%;
-      height: 750px;
-      border-radius: var(--radius);
-      border: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .stats-section {
-      margin-top: 40px;
-    }
-    .stats-card {
-      background: var(--card);
-      padding: 24px;
-      border-radius: var(--radius);
-      margin-bottom: 24px;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s ease;
-    }
-    .stats-card:hover {
-      transform: translateY(-3px);
-    }
-    h2 {
-      color: var(--primary);
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-    h3 {
-      color: var(--primary);
-      font-size: 20px;
-      margin-bottom: 12px;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    li {
-      margin-bottom: 8px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 16px;
-    }
-    table, th, td {
-      border: 1px solid #ddd;
-    }
-    th, td {
-      padding: 12px;
-      text-align: left;
-    }
-    th {
-      background: var(--primary);
-      color: #fff;
-    }
-    .privacy-note {
-      text-align: center;
-      font-size: 12px;
-      color: #777;
-      margin: 40px 0;
-    }
-    a.button {
-      display: inline-block;
-      margin: 16px 0;
-      padding: 12px 24px;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 600;
-      border-radius: var(--radius);
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    a.button:hover {
-      background: #e59400;
-    }
-  </style>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DHD1KSS512"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DHD1KSS512', { anonymize_ip: true });
+  
+  function trackButtonClick(label) {
+    gtag('event', 'button_click', {
+      'event_category': 'engagement',
+      'event_label': label
+    });
+  }
+
+  function trackIframeFocus() {
+    gtag('event', 'iframe_focus', {
+      'event_category': 'engagement',
+      'event_label': 'SOL Embed'
+    });
+  }
+</script>
+
+<style>
+  /* Reset & Fonts */
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: 'Inter', sans-serif; background:#f4f6f9; color:#111; line-height:1.6; }
+
+  header {
+    background: linear-gradient(90deg,#4a90e2,#50e3c2);
+    padding: 3rem 1rem;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+
+  .container { max-width: 1300px; margin: 0 auto; padding: 1rem; }
+
+  /* Hero Section */
+  .hero { display:flex; flex-direction:column; gap:1.5rem; text-align:center; margin-bottom:3rem; }
+  .hero h1 { font-size:3rem; line-height:1.2; }
+  .hero p { font-size:1.2rem; color:#333; max-width:800px; margin:0 auto; }
+  .start-btn {
+    background: #4a90e2;
+    color: #fff;
+    border:none;
+    padding:1.2rem 2.5rem;
+    border-radius:10px;
+    font-size:1.2rem;
+    cursor:pointer;
+    font-weight:600;
+    transition: all 0.3s ease;
+  }
+  .start-btn:hover { background:#357abd; transform: scale(1.05); }
+
+  /* Embed */
+  .embed-section { margin:3rem 0; border-radius:12px; overflow:hidden; box-shadow:0 12px 30px rgba(0,0,0,0.15); transition:all 0.3s ease; }
+  .embed-section:hover { transform: translateY(-5px); }
+  iframe { width:100%; height:750px; border:none; }
+
+  /* Sections */
+  section { margin:4rem 0; }
+  h2 { font-size:2rem; margin-bottom:1rem; color:#4a90e2; text-align:center; }
+  p, li { font-size:1.05rem; color:#333; line-height:1.6; }
+
+  .feature-card {
+    background:#fff;
+    border-radius:12px;
+    padding:2rem;
+    margin:1rem 0;
+    box-shadow:0 6px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+  .feature-card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
+  .feature-card h3 { font-size:1.5rem; color:#4a90e2; margin-bottom:1rem; }
+  .feature-card ul { margin-left:1rem; list-style-type: disc; }
+  .feature-card li { margin-bottom:0.5rem; }
+
+  /* CTA Section */
+  .cta { text-align:center; margin:4rem 0; }
+  .cta p { font-size:1.2rem; margin-bottom:1rem; }
+  
+  footer {
+    text-align:center;
+    padding:2rem 1rem;
+    font-size:0.85rem;
+    color:#777;
+    border-top:1px solid #ddd;
+  }
+</style>
 </head>
 <body>
-  <header>Virginia SOL Tutor</header>
 
-  <div class="container">
+<header>Virginia SOL Tutor</header>
 
-    <!-- Embed Section -->
-    <div class="embed-section" id="start">
-      <h3>Start Using the Study Bot</h3>
-      <iframe src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc" allow="clipboard-write"></iframe>
-      <a href="#stats" class="button">See App Stats</a>
-    </div>
+<div class="container">
 
-    <!-- Key Stats Section -->
-    <div class="stats-section" id="stats">
-      <h2>Virginia SOL Tutor App: By the Numbers</h2>
-
-      <!-- Market Reach -->
-      <div class="stats-card">
-        <h3>🎓 Market Reach</h3>
-        <p><strong>1,246,285 students</strong> in Virginia public schools (2025-2026) could benefit from this app.</p>
-      </div>
-
-      <!-- Curriculum Coverage -->
-      <div class="stats-card">
-        <h3>📚 Comprehensive Curriculum Coverage</h3>
-        <p><strong>70 Complete Courses</strong> from Kindergarten through Grade 12.</p>
-        <ul>
-          <li><strong>Mathematics:</strong> 13 courses</li>
-          <li><strong>Science:</strong> 14 courses</li>
-          <li><strong>English:</strong> 13 courses</li>
-          <li><strong>History & Social Science:</strong> 13 courses</li>
-        </ul>
-      </div>
-
-      <!-- Practice Tests -->
-      <div class="stats-card">
-        <h3>📝 Released SOL Practice Tests</h3>
-        <p><strong>214+ Released SOL Tests</strong> spanning 2001-2015+, covering all core subjects.</p>
-      </div>
-
-      <!-- Questions -->
-      <div class="stats-card">
-        <h3>❓ Thousands of Practice Questions</h3>
-        <p><strong>8,500+ authentic questions</strong> from released SOL assessments.</p>
-      </div>
-
-      <!-- Graduation Support -->
-      <div class="stats-card">
-        <h3>✅ Graduation-Critical Support</h3>
-        <p>23 SOL-tested courses covering all verified credit requirements.</p>
-      </div>
-
-      <!-- Standards Alignment -->
-      <div class="stats-card">
-        <h3>🎯 Complete Standards Alignment</h3>
-        <p>Every course includes <strong>Standards, Skills, and Structure</strong> to ensure complete coverage of Virginia SOL requirements.</p>
-      </div>
-
-      <!-- Differentiators -->
-      <div class="stats-card">
-        <h3>📈 Key Differentiators</h3>
-        <ul>
-          <li>100% Virginia-Specific</li>
-          <li>Official Released Tests</li>
-          <li>Full K-12 Coverage</li>
-          <li>All 4 Core Subjects</li>
-          <li>15+ Years of Historical Tests</li>
-          <li>Graduation-Focused</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="privacy-note">
-      Analytics provided by Google Analytics 4 (anonymized IP). No personal data collected. All tracking is for site performance and usage statistics only.
-    </div>
-
+  <div class="hero">
+    <h1>Master Every Virginia SOL Test</h1>
+    <p>Adaptive, full K-12 curriculum coverage with 214+ real SOL tests, 8,500+ questions, and personalized study paths. Track your progress, strengthen weak areas, and prepare confidently for graduation-required courses.</p>
+    <button class="start-btn" onclick="trackButtonClick('Start Using Study Bot'); document.getElementById('sol-embed').scrollIntoView({behavior:'smooth'});">
+      Start Using the Study Bot
+    </button>
   </div>
+
+  <div class="embed-section" id="sol-embed" onclick="trackIframeFocus()">
+    <iframe src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc" allow="clipboard-write"></iframe>
+  </div>
+
+  <!-- Features Section -->
+  <section>
+    <h2>Why Virginia SOL Tutor?</h2>
+    <div class="feature-card">
+      <h3>Comprehensive K-12 Curriculum</h3>
+      <ul>
+        <li>70 courses covering every grade, K-12, in Math, Science, English, and History</li>
+        <li>Standards-aligned with WHAT to learn, HOW to demonstrate, and WHY & context</li>
+        <li>Supports all 23 graduation-required SOL courses</li>
+      </ul>
+    </div>
+
+    <div class="feature-card">
+      <h3>214+ Released SOL Tests</h3>
+      <ul>
+        <li>Authentic state tests spanning 2001–2015+</li>
+        <li>Multiple formats: multiple choice, drag-and-drop, constructed response</li>
+        <li>Realistic SOL-style practice for every subject and grade</li>
+      </ul>
+    </div>
+
+    <div class="feature-card">
+      <h3>8,500+ Practice Questions</h3>
+      <ul>
+        <li>Every question aligned with official SOL standards</li>
+        <li>Adaptive difficulty to focus on weak areas</li>
+        <li>Instant feedback with step-by-step explanations</li>
+      </ul>
+    </div>
+
+    <div class="feature-card">
+      <h3>Deep Learning Modes</h3>
+      <ul>
+        <li><strong>Setup:</strong> Diagnostic tests to pinpoint knowledge gaps</li>
+        <li><strong>Review:</strong> Notes, outlines, and flashcards for self-paced reinforcement</li>
+        <li><strong>Mastery:</strong> Mnemonics, analogies, and shortcuts for expert-level understanding</li>
+        <li><strong>Practice:</strong> Adaptive exercises and full-length SOL-style tests</li>
+      </ul>
+    </div>
+
+    <div class="feature-card">
+      <h3>Personalized Study Paths</h3>
+      <ul>
+        <li>Progress tracking across all modes</li>
+        <li>Customizable focus areas based on diagnostic results</li>
+        <li>Clear, interactive navigation guiding students through the curriculum</li>
+      </ul>
+    </div>
+
+    <div class="feature-card">
+      <h3>Safe & Transparent</h3>
+      <ul>
+        <li>All usage anonymized; GA4 tracking implemented for insights</li>
+        <li>No personal data collected beyond analytics</li>
+        <li>Aligned to Virginia SOL standards only, no external content</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="cta">
+    <p>Ready to take your Virginia SOL preparation to the next level?</p>
+    <button class="start-btn" onclick="trackButtonClick('Start Using Study Bot CTA'); document.getElementById('sol-embed').scrollIntoView({behavior:'smooth'});">
+      Launch the Tutor Now
+    </button>
+  </div>
+
+</div>
+
+<footer>
+  Tag: G-DHD1KSS512 | Privacy: No personal data collected beyond anonymized analytics.<br>
+  &copy; 2026 Virginia SOL Tutor. All rights reserved.
+</footer>
+
 </body>
 </html>
