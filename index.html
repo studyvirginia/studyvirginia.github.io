@@ -9,166 +9,131 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<!-- Google Analytics placeholder -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID', { anonymize_ip: true });
+</script>
+
 <!-- Styles -->
 <style>
-  :root {
-    --primary: #4a90e2;
-    --accent: #f5a623;
-    --bg-light: #f4f6f9;
-    --bg-dark: #111;
-    --text-light: #fff;
-    --text-dark: #111;
-  }
+:root {
+  --primary: #4a90e2;
+  --accent: #f5a623;
+  --bg-light: #f4f6f9;
+  --bg-dark: #111;
+  --text-light: #fff;
+  --text-dark: #111;
+  --card-shadow: rgba(0,0,0,0.1);
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin:0; padding:0; }
+body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text-dark); line-height:1.6; scroll-behavior: smooth; overflow-x: hidden; }
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg-light);
-    color: var(--text-dark);
-    line-height: 1.6;
-    scroll-behavior: smooth;
-  }
+/* Header with animated gradient */
+header {
+  position: relative;
+  padding: 100px 20px 80px;
+  text-align: center;
+  background: linear-gradient(-45deg, #4a90e2, #357ab8, #50c7f2, #357ab8);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: var(--text-light);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
 
-  header {
-    background: linear-gradient(135deg, var(--primary), #357ab8);
-    color: var(--text-light);
-    padding: 60px 20px 40px;
-    text-align: center;
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    position: relative;
-  }
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-  header h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-  }
+header h1 { font-size: 3rem; font-weight: 700; margin-bottom: 20px; letter-spacing:1px; }
+header p { font-size: 1.2rem; opacity: 0.9; }
 
-  header p {
-    font-size: 1.2rem;
-    opacity: 0.85;
-  }
+/* CTA button */
+.cta-button {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  padding: 18px 28px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+  text-decoration: none;
+}
+.cta-button:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 28px rgba(0,0,0,0.35); }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-  }
+/* Container */
+.container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
 
-  .problem-section {
-    background: #fff5e6;
-    padding: 40px 30px;
-    border-left: 6px solid var(--accent);
-    margin-bottom: 40px;
-    border-radius: 12px;
-    animation: fadeInUp 1s ease forwards;
-  }
+/* Sections */
+section { margin-bottom: 80px; }
 
-  .problem-section h2 {
-    color: var(--accent);
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
+/* Problem section */
+.problem-section {
+  background: #fff5e6;
+  padding: 50px 40px;
+  border-left: 8px solid var(--accent);
+  border-radius: 16px;
+  animation: fadeInUp 1s ease forwards;
+}
+.problem-section:hover { animation: pulse 2s infinite; }
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(245,166,35,0.4); }
+  70% { box-shadow: 0 0 0 20px rgba(245,166,35,0); }
+  100% { box-shadow: 0 0 0 0 rgba(245,166,35,0); }
+}
+.problem-section h2 { color: var(--accent); font-size: 2rem; margin-bottom: 20px; }
+.problem-section ul { list-style: disc; padding-left: 24px; font-weight: 500; }
 
-  .problem-section ul {
-    list-style: disc;
-    padding-left: 24px;
-  }
+/* Embed section */
+.embed-section { position: relative; margin-bottom: 60px; animation: fadeIn 1.2s ease forwards; }
+.embed-section h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; text-align: center; }
+.embed-section iframe { width: 100%; height: 750px; border-radius: 16px; border: none; box-shadow: 0 12px 40px rgba(0,0,0,0.2); transition: transform 0.3s ease; }
+.embed-section iframe:hover { transform: scale(1.02); }
 
-  .embed-section {
-    margin-bottom: 60px;
-    position: relative;
-    animation: fadeIn 1.2s ease forwards;
-  }
+/* Features / Courses grid */
+.features-section, .courses-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
 
-  .embed-section h3 {
-    font-size: 1.8rem;
-    color: var(--primary);
-    margin-bottom: 20px;
-    text-align: center;
-  }
+.feature-card {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+}
+.feature-card h4 { color: var(--primary); font-size: 1.3rem; margin-bottom: 12px; font-weight: 600; }
+.feature-card p { font-size: 1rem; opacity: 0.85; }
 
-  .embed-section iframe {
-    width: 100%;
-    height: 750px;
-    border-radius: 16px;
-    border: none;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease;
-  }
+/* Section title */
+h2.section-title { font-size: 2rem; text-align: center; margin-bottom: 40px; color: var(--primary); font-weight: 700; }
 
-  .embed-section iframe:hover {
-    transform: scale(1.02);
-  }
+/* Footer */
+footer { background: var(--bg-dark); color: var(--text-light); padding: 40px 20px; text-align: center; font-size: 0.9rem; }
+footer a { color: var(--accent); text-decoration: none; margin: 0 6px; }
+footer .citations { margin-top: 12px; font-size: 0.8rem; opacity: 0.75; text-align:left; max-width: 900px; margin-left:auto; margin-right:auto; }
 
-  .features-section, .courses-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-bottom: 60px;
-  }
+/* Animations */
+@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(40px);} 100% { opacity:1; transform: translateY(0);} }
+@keyframes fadeIn { 0%{opacity:0;} 100%{opacity:1;} }
 
-  .feature-card {
-    background: #fff;
-    padding: 30px 20px;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 18px 35px rgba(0,0,0,0.15);
-  }
-
-  .feature-card h4 {
-    color: var(--primary);
-    font-size: 1.3rem;
-    margin-bottom: 12px;
-  }
-
-  .feature-card p {
-    font-size: 1rem;
-    opacity: 0.85;
-  }
-
-  h2.section-title {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 40px;
-    color: var(--primary);
-  }
-
-  footer {
-    background: var(--bg-dark);
-    color: var(--text-light);
-    padding: 40px 20px;
-    text-align: center;
-    font-size: 0.9rem;
-  }
-
-  footer a {
-    color: var(--accent);
-    text-decoration: none;
-    margin: 0 6px;
-  }
-
-  footer .tags {
-    margin-top: 10px;
-    opacity: 0.7;
-  }
-
-  @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(40px);}
-    100% { opacity: 1; transform: translateY(0);}
-  }
-
-  @keyframes fadeIn {
-    0% { opacity: 0;}
-    100% { opacity: 1;}
-  }
 </style>
 </head>
 
@@ -176,23 +141,26 @@
 
 <header>
   <h1>Virginia SOL Tutor</h1>
-  <p>Structured, K-12 Virginia SOL preparation—notes, tests, and adaptive practice in one platform.</p>
+  <p>Interactive K-12 SOL prep—notes, real tests, and adaptive practice for every student.</p>
 </header>
+
+<!-- Sticky CTA -->
+<a href="#embed" class="cta-button">Start Studying</a>
 
 <div class="container">
 
-  <!-- Problem Framing -->
+  <!-- Problem Section -->
   <section class="problem-section">
     <h2>Why Students Need This App</h2>
     <ul>
-      <li>Higher SOL cut scores are coming in the near future, increasing pressure (Virginia Board of Education)</li>
-      <li>SOL tests now account for 10% of students’ final grades, raising the stakes (WAVY.com)</li>
-      <li>Virginia struggles to make up pandemic learning loss, leaving gaps in foundational knowledge (recent Virginia DOE data)</li>
+      <li>Higher SOL cut scores approaching (Virginia Board of Education)</li>
+      <li>SOL tests now contribute 10% of students’ final grades (WAVY.com)</li>
+      <li>Learning gaps persist due to pandemic disruptions (Virginia DOE data)</li>
     </ul>
   </section>
 
   <!-- Embed Section -->
-  <section class="embed-section">
+  <section id="embed" class="embed-section">
     <h3>Start Using the SOL Study Bot</h3>
     <iframe src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc" allow="clipboard-write"></iframe>
   </section>
@@ -201,27 +169,27 @@
   <section class="features-section">
     <div class="feature-card">
       <h4>Comprehensive Curriculum</h4>
-      <p>All 70 SOL courses covered (K-12), including Math, Science, English, and History with standards-aligned notes and practice questions.</p>
+      <p>All 70 K-12 SOL courses covered in Math, Science, English, and History. Standards-aligned notes and practice questions included.</p>
     </div>
     <div class="feature-card">
       <h4>Adaptive Practice</h4>
-      <p>Target weak areas with smart, step-by-step questions and real SOL practice tests to reinforce learning effectively.</p>
+      <p>Target weak areas with step-by-step exercises and real SOL practice tests for effective mastery.</p>
     </div>
     <div class="feature-card">
       <h4>Realistic Testing</h4>
-      <p>Over 214 authentic released SOL tests with 8,500+ practice questions, simulating real test conditions for confidence building.</p>
+      <p>214+ authentic released SOL tests with 8,500+ questions simulating real test conditions.</p>
     </div>
     <div class="feature-card">
       <h4>Mastery Tools</h4>
-      <p>Deepen understanding with mnemonics, analogies, real-world examples, and clear explanations for every topic.</p>
+      <p>Mnemonics, analogies, and real-world examples for deep understanding of every topic.</p>
     </div>
     <div class="feature-card">
       <h4>Track Progress</h4>
-      <p>See your improvement over time with detailed analytics on weak areas, scores, and practice coverage.</p>
+      <p>Visual analytics for weak areas, scores, and practice completion to monitor improvement.</p>
     </div>
     <div class="feature-card">
       <h4>Safe & Private</h4>
-      <p>No personal data collected. Focused solely on learning, maintaining academic integrity and student privacy.</p>
+      <p>No personal data collected. Full focus on learning while preserving academic integrity.</p>
     </div>
   </section>
 
@@ -234,23 +202,31 @@
     </div>
     <div class="feature-card">
       <h4>Science</h4>
-      <p>Kindergarten – High School, including Biology I & II, Chemistry I & II, Physics I & II, Earth Science, Environmental Science.</p>
+      <p>Kindergarten – High School, including Biology, Chemistry, Physics, Earth Science, and Environmental Science.</p>
     </div>
     <div class="feature-card">
       <h4>English</h4>
-      <p>Kindergarten – Grade 12, reading, writing, communication, and research skills fully covered.</p>
+      <p>Kindergarten – Grade 12, covering reading, writing, communication, and research skills.</p>
     </div>
     <div class="feature-card">
       <h4>History & Social Science</h4>
-      <p>Virginia Studies, Civics & Economics, World History, U.S. History, and Government for K-12 students.</p>
+      <p>Virginia Studies, Civics & Economics, World History, US History, and Government for K-12 students.</p>
     </div>
   </section>
 
 </div>
 
 <footer>
-  &copy; 2026 Virginia SOL Tutor | <a href="#">Citations</a>
-  <div class="tags">Tag: G-DHD1KSS512</div>
+  &copy; 2026 Virginia SOL Tutor  
+  <div class="citations">
+    <p>Citations:</p>
+    <ul>
+      <li><a href="https://www.solpass.org/" target="_blank">SOLpass.org (Practice Tests)</a></li>
+      <li><a href="https://www.doe.virginia.gov/testing/sol/practice-items/index.shtml" target="_blank">SOL Practice Items | Virginia DOE</a></li>
+      <li><a href="https://www.doe.virginia.gov/testing/sol/released-tests/index.shtml" target="_blank">Released Tests & Item Sets | Virginia DOE</a></li>
+      <li><a href="https://www.doe.virginia.gov/instruction/k-12-standards/index.shtml" target="_blank">K-12 Standards & Instruction | Virginia DOE</a></li>
+    </ul>
+  </div>
 </footer>
 
 </body>
