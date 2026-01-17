@@ -33,7 +33,7 @@
 * { box-sizing: border-box; margin:0; padding:0; }
 body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text-dark); line-height:1.6; scroll-behavior: smooth; overflow-x: hidden; }
 
-/* Header with animated gradient */
+/* Header */
 header {
   position: relative;
   padding: 100px 20px 80px;
@@ -54,7 +54,7 @@ header {
 header h1 { font-size: 3rem; font-weight: 700; margin-bottom: 20px; letter-spacing:1px; }
 header p { font-size: 1.2rem; opacity: 0.9; }
 
-/* CTA button */
+/* Sticky CTA */
 .cta-button {
   position: fixed;
   right: 30px;
@@ -72,31 +72,25 @@ header p { font-size: 1.2rem; opacity: 0.9; }
 }
 .cta-button:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 28px rgba(0,0,0,0.35); }
 
-/* Container */
+/* Containers */
 .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
 
 /* Sections */
-section { margin-bottom: 80px; }
+section { margin-bottom: 80px; opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+section.visible { opacity: 1; transform: translateY(0); }
 
-/* Problem section */
+/* Problem Section */
 .problem-section {
   background: #fff5e6;
   padding: 50px 40px;
   border-left: 8px solid var(--accent);
   border-radius: 16px;
-  animation: fadeInUp 1s ease forwards;
-}
-.problem-section:hover { animation: pulse 2s infinite; }
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(245,166,35,0.4); }
-  70% { box-shadow: 0 0 0 20px rgba(245,166,35,0); }
-  100% { box-shadow: 0 0 0 0 rgba(245,166,35,0); }
 }
 .problem-section h2 { color: var(--accent); font-size: 2rem; margin-bottom: 20px; }
 .problem-section ul { list-style: disc; padding-left: 24px; font-weight: 500; }
 
-/* Embed section */
-.embed-section { position: relative; margin-bottom: 60px; animation: fadeIn 1.2s ease forwards; }
+/* Embed Section */
+.embed-section { position: relative; margin-bottom: 60px; }
 .embed-section h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; text-align: center; }
 .embed-section iframe { width: 100%; height: 750px; border-radius: 16px; border: none; box-shadow: 0 12px 40px rgba(0,0,0,0.2); transition: transform 0.3s ease; }
 .embed-section iframe:hover { transform: scale(1.02); }
@@ -113,30 +107,34 @@ section { margin-bottom: 80px; }
   padding: 30px 20px;
   border-radius: 16px;
   box-shadow: 0 10px 25px var(--card-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
 }
 .feature-card:hover {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+  background: linear-gradient(135deg, #4a90e2, #50c7f2);
+  color: #fff;
 }
 .feature-card h4 { color: var(--primary); font-size: 1.3rem; margin-bottom: 12px; font-weight: 600; }
-.feature-card p { font-size: 1rem; opacity: 0.85; }
+.feature-card p { font-size: 1rem; opacity: 0.85; transition: opacity 0.3s ease; }
+.feature-card:hover p { opacity: 0.95; }
 
-/* Section title */
+/* Section Titles */
 h2.section-title { font-size: 2rem; text-align: center; margin-bottom: 40px; color: var(--primary); font-weight: 700; }
 
+/* Counters */
+.counter { font-weight: 700; font-size: 2rem; color: var(--accent); }
+
 /* Footer */
-footer { background: var(--bg-dark); color: var(--text-light); padding: 40px 20px; text-align: center; font-size: 0.9rem; }
+footer { background: var(--bg-dark); color: var(--text-light); padding: 60px 20px; text-align: center; font-size: 0.9rem; }
 footer a { color: var(--accent); text-decoration: none; margin: 0 6px; }
 footer .citations { margin-top: 12px; font-size: 0.8rem; opacity: 0.75; text-align:left; max-width: 900px; margin-left:auto; margin-right:auto; }
 
 /* Animations */
 @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(40px);} 100% { opacity:1; transform: translateY(0);} }
-@keyframes fadeIn { 0%{opacity:0;} 100%{opacity:1;} }
-
 </style>
 </head>
-
 <body>
 
 <header>
@@ -145,7 +143,7 @@ footer .citations { margin-top: 12px; font-size: 0.8rem; opacity: 0.75; text-ali
 </header>
 
 <!-- Sticky CTA -->
-<a href="#embed" class="cta-button">Start Studying</a>
+<a href="#embed" class="cta-button"><i class="fa fa-rocket"></i> Start Studying</a>
 
 <div class="container">
 
@@ -165,31 +163,31 @@ footer .citations { margin-top: 12px; font-size: 0.8rem; opacity: 0.75; text-ali
     <iframe src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc" allow="clipboard-write"></iframe>
   </section>
 
-  <!-- Features Section -->
+  <!-- Features Section with counters -->
   <section class="features-section">
     <div class="feature-card">
       <h4>Comprehensive Curriculum</h4>
-      <p>All 70 K-12 SOL courses covered in Math, Science, English, and History. Standards-aligned notes and practice questions included.</p>
+      <p><span class="counter" data-target="70">0</span> Courses K-12 across Math, Science, English, History</p>
     </div>
     <div class="feature-card">
       <h4>Adaptive Practice</h4>
-      <p>Target weak areas with step-by-step exercises and real SOL practice tests for effective mastery.</p>
+      <p>Target weak areas with step-by-step exercises and real SOL practice tests.</p>
     </div>
     <div class="feature-card">
       <h4>Realistic Testing</h4>
-      <p>214+ authentic released SOL tests with 8,500+ questions simulating real test conditions.</p>
+      <p><span class="counter" data-target="214">0</span> Released SOL Tests & <span class="counter" data-target="8500">0</span> Questions</p>
     </div>
     <div class="feature-card">
       <h4>Mastery Tools</h4>
-      <p>Mnemonics, analogies, and real-world examples for deep understanding of every topic.</p>
+      <p>Mnemonics, analogies, and real-world examples for deep understanding.</p>
     </div>
     <div class="feature-card">
       <h4>Track Progress</h4>
-      <p>Visual analytics for weak areas, scores, and practice completion to monitor improvement.</p>
+      <p>Visual analytics for weak areas, scores, and practice completion.</p>
     </div>
     <div class="feature-card">
       <h4>Safe & Private</h4>
-      <p>No personal data collected. Full focus on learning while preserving academic integrity.</p>
+      <p>No personal data collected. Focus fully on learning.</p>
     </div>
   </section>
 
@@ -228,6 +226,47 @@ footer .citations { margin-top: 12px; font-size: 0.8rem; opacity: 0.75; text-ali
     </ul>
   </div>
 </footer>
+
+<!-- Scripts for scroll reveal and counters -->
+<script>
+const sections = document.querySelectorAll('section');
+const counters = document.querySelectorAll('.counter');
+
+function revealOnScroll() {
+  const triggerBottom = window.innerHeight * 0.85;
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if(sectionTop < triggerBottom) { section.classList.add('visible'); }
+  });
+}
+
+function runCounters() {
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const speed = 200; 
+      const inc = target / speed;
+      if(count < target) {
+        counter.innerText = Math.ceil(count + inc);
+        setTimeout(updateCount, 10);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
+}
+
+window.addEventListener('scroll', () => {
+  revealOnScroll();
+  if (document.querySelectorAll('.counter:not(.started)').length > 0) {
+    counters.forEach(c => c.classList.add('started'));
+    runCounters();
+  }
+});
+window.addEventListener('load', () => { revealOnScroll(); runCounters(); });
+</script>
 
 </body>
 </html>
