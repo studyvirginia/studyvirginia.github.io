@@ -2,192 +2,255 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Virginia SOL Tutor</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Virginia SOL Tutor - Adaptive K-12 learning assistant for SOL test prep across Math, Science, English, and History.">
+<title>Virginia SOL Tutor</title>
 
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DHD1KSS512"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-DHD1KSS512', { anonymize_ip: true });
-  
-  function trackButtonClick(label) {
-    gtag('event', 'button_click', {
-      'event_category': 'engagement',
-      'event_label': label
-    });
-  }
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  function trackIframeFocus() {
-    gtag('event', 'iframe_focus', {
-      'event_category': 'engagement',
-      'event_label': 'SOL Embed'
-    });
-  }
-</script>
-
+<!-- Styles -->
 <style>
-  /* Reset & Fonts */
-  * { box-sizing: border-box; margin:0; padding:0; }
-  body { font-family: 'Inter', sans-serif; background:#f4f6f9; color:#111; line-height:1.6; }
+  :root {
+    --primary: #4a90e2;
+    --accent: #f5a623;
+    --bg-light: #f4f6f9;
+    --bg-dark: #111;
+    --text-light: #fff;
+    --text-dark: #111;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
 
   header {
-    background: linear-gradient(90deg,#4a90e2,#50e3c2);
-    padding: 3rem 1rem;
+    background: linear-gradient(135deg, var(--primary), #357ab8);
+    color: var(--text-light);
+    padding: 60px 20px 40px;
     text-align: center;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 0.5px;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    position: relative;
   }
 
-  .container { max-width: 1300px; margin: 0 auto; padding: 1rem; }
-
-  /* Hero Section */
-  .hero { display:flex; flex-direction:column; gap:1.5rem; text-align:center; margin-bottom:3rem; }
-  .hero h1 { font-size:3rem; line-height:1.2; }
-  .hero p { font-size:1.2rem; color:#333; max-width:800px; margin:0 auto; }
-  .start-btn {
-    background: #4a90e2;
-    color: #fff;
-    border:none;
-    padding:1.2rem 2.5rem;
-    border-radius:10px;
-    font-size:1.2rem;
-    cursor:pointer;
-    font-weight:600;
-    transition: all 0.3s ease;
+  header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
   }
-  .start-btn:hover { background:#357abd; transform: scale(1.05); }
 
-  /* Embed */
-  .embed-section { margin:3rem 0; border-radius:12px; overflow:hidden; box-shadow:0 12px 30px rgba(0,0,0,0.15); transition:all 0.3s ease; }
-  .embed-section:hover { transform: translateY(-5px); }
-  iframe { width:100%; height:750px; border:none; }
+  header p {
+    font-size: 1.2rem;
+    opacity: 0.85;
+  }
 
-  /* Sections */
-  section { margin:4rem 0; }
-  h2 { font-size:2rem; margin-bottom:1rem; color:#4a90e2; text-align:center; }
-  p, li { font-size:1.05rem; color:#333; line-height:1.6; }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .problem-section {
+    background: #fff5e6;
+    padding: 40px 30px;
+    border-left: 6px solid var(--accent);
+    margin-bottom: 40px;
+    border-radius: 12px;
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  .problem-section h2 {
+    color: var(--accent);
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .problem-section ul {
+    list-style: disc;
+    padding-left: 24px;
+  }
+
+  .embed-section {
+    margin-bottom: 60px;
+    position: relative;
+    animation: fadeIn 1.2s ease forwards;
+  }
+
+  .embed-section h3 {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .embed-section iframe {
+    width: 100%;
+    height: 750px;
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+  }
+
+  .embed-section iframe:hover {
+    transform: scale(1.02);
+  }
+
+  .features-section, .courses-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+  }
 
   .feature-card {
-    background:#fff;
-    border-radius:12px;
-    padding:2rem;
-    margin:1rem 0;
-    box-shadow:0 6px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .feature-card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
-  .feature-card h3 { font-size:1.5rem; color:#4a90e2; margin-bottom:1rem; }
-  .feature-card ul { margin-left:1rem; list-style-type: disc; }
-  .feature-card li { margin-bottom:0.5rem; }
 
-  /* CTA Section */
-  .cta { text-align:center; margin:4rem 0; }
-  .cta p { font-size:1.2rem; margin-bottom:1rem; }
-  
+  .feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.15);
+  }
+
+  .feature-card h4 {
+    color: var(--primary);
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .feature-card p {
+    font-size: 1rem;
+    opacity: 0.85;
+  }
+
+  h2.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--primary);
+  }
+
   footer {
-    text-align:center;
-    padding:2rem 1rem;
-    font-size:0.85rem;
-    color:#777;
-    border-top:1px solid #ddd;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+    margin: 0 6px;
+  }
+
+  footer .tags {
+    margin-top: 10px;
+    opacity: 0.7;
+  }
+
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px);}
+    100% { opacity: 1; transform: translateY(0);}
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0;}
+    100% { opacity: 1;}
   }
 </style>
 </head>
+
 <body>
 
-<header>Virginia SOL Tutor</header>
+<header>
+  <h1>Virginia SOL Tutor</h1>
+  <p>Structured, K-12 Virginia SOL preparation—notes, tests, and adaptive practice in one platform.</p>
+</header>
 
 <div class="container">
 
-  <div class="hero">
-    <h1>Master Every Virginia SOL Test</h1>
-    <p>Adaptive, full K-12 curriculum coverage with 214+ real SOL tests, 8,500+ questions, and personalized study paths. Track your progress, strengthen weak areas, and prepare confidently for graduation-required courses.</p>
-    <button class="start-btn" onclick="trackButtonClick('Start Using Study Bot'); document.getElementById('sol-embed').scrollIntoView({behavior:'smooth'});">
-      Start Using the Study Bot
-    </button>
-  </div>
+  <!-- Problem Framing -->
+  <section class="problem-section">
+    <h2>Why Students Need This App</h2>
+    <ul>
+      <li>Higher SOL cut scores are coming in the near future, increasing pressure (Virginia Board of Education)</li>
+      <li>SOL tests now account for 10% of students’ final grades, raising the stakes (WAVY.com)</li>
+      <li>Virginia struggles to make up pandemic learning loss, leaving gaps in foundational knowledge (recent Virginia DOE data)</li>
+    </ul>
+  </section>
 
-  <div class="embed-section" id="sol-embed" onclick="trackIframeFocus()">
+  <!-- Embed Section -->
+  <section class="embed-section">
+    <h3>Start Using the SOL Study Bot</h3>
     <iframe src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc" allow="clipboard-write"></iframe>
-  </div>
+  </section>
 
   <!-- Features Section -->
-  <section>
-    <h2>Why Virginia SOL Tutor?</h2>
+  <section class="features-section">
     <div class="feature-card">
-      <h3>Comprehensive K-12 Curriculum</h3>
-      <ul>
-        <li>70 courses covering every grade, K-12, in Math, Science, English, and History</li>
-        <li>Standards-aligned with WHAT to learn, HOW to demonstrate, and WHY & context</li>
-        <li>Supports all 23 graduation-required SOL courses</li>
-      </ul>
+      <h4>Comprehensive Curriculum</h4>
+      <p>All 70 SOL courses covered (K-12), including Math, Science, English, and History with standards-aligned notes and practice questions.</p>
     </div>
-
     <div class="feature-card">
-      <h3>214+ Released SOL Tests</h3>
-      <ul>
-        <li>Authentic state tests spanning 2001–2015+</li>
-        <li>Multiple formats: multiple choice, drag-and-drop, constructed response</li>
-        <li>Realistic SOL-style practice for every subject and grade</li>
-      </ul>
+      <h4>Adaptive Practice</h4>
+      <p>Target weak areas with smart, step-by-step questions and real SOL practice tests to reinforce learning effectively.</p>
     </div>
-
     <div class="feature-card">
-      <h3>8,500+ Practice Questions</h3>
-      <ul>
-        <li>Every question aligned with official SOL standards</li>
-        <li>Adaptive difficulty to focus on weak areas</li>
-        <li>Instant feedback with step-by-step explanations</li>
-      </ul>
+      <h4>Realistic Testing</h4>
+      <p>Over 214 authentic released SOL tests with 8,500+ practice questions, simulating real test conditions for confidence building.</p>
     </div>
-
     <div class="feature-card">
-      <h3>Deep Learning Modes</h3>
-      <ul>
-        <li><strong>Setup:</strong> Diagnostic tests to pinpoint knowledge gaps</li>
-        <li><strong>Review:</strong> Notes, outlines, and flashcards for self-paced reinforcement</li>
-        <li><strong>Mastery:</strong> Mnemonics, analogies, and shortcuts for expert-level understanding</li>
-        <li><strong>Practice:</strong> Adaptive exercises and full-length SOL-style tests</li>
-      </ul>
+      <h4>Mastery Tools</h4>
+      <p>Deepen understanding with mnemonics, analogies, real-world examples, and clear explanations for every topic.</p>
     </div>
-
     <div class="feature-card">
-      <h3>Personalized Study Paths</h3>
-      <ul>
-        <li>Progress tracking across all modes</li>
-        <li>Customizable focus areas based on diagnostic results</li>
-        <li>Clear, interactive navigation guiding students through the curriculum</li>
-      </ul>
+      <h4>Track Progress</h4>
+      <p>See your improvement over time with detailed analytics on weak areas, scores, and practice coverage.</p>
     </div>
-
     <div class="feature-card">
-      <h3>Safe & Transparent</h3>
-      <ul>
-        <li>All usage anonymized; GA4 tracking implemented for insights</li>
-        <li>No personal data collected beyond analytics</li>
-        <li>Aligned to Virginia SOL standards only, no external content</li>
-      </ul>
+      <h4>Safe & Private</h4>
+      <p>No personal data collected. Focused solely on learning, maintaining academic integrity and student privacy.</p>
     </div>
   </section>
 
-  <div class="cta">
-    <p>Ready to take your Virginia SOL preparation to the next level?</p>
-    <button class="start-btn" onclick="trackButtonClick('Start Using Study Bot CTA'); document.getElementById('sol-embed').scrollIntoView({behavior:'smooth'});">
-      Launch the Tutor Now
-    </button>
-  </div>
+  <!-- Courses Section -->
+  <section class="courses-section">
+    <h2 class="section-title">Supported Courses</h2>
+    <div class="feature-card">
+      <h4>Math</h4>
+      <p>Kindergarten – Grade 12, including Algebra I, Geometry, Algebra II, and advanced electives.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Science</h4>
+      <p>Kindergarten – High School, including Biology I & II, Chemistry I & II, Physics I & II, Earth Science, Environmental Science.</p>
+    </div>
+    <div class="feature-card">
+      <h4>English</h4>
+      <p>Kindergarten – Grade 12, reading, writing, communication, and research skills fully covered.</p>
+    </div>
+    <div class="feature-card">
+      <h4>History & Social Science</h4>
+      <p>Virginia Studies, Civics & Economics, World History, U.S. History, and Government for K-12 students.</p>
+    </div>
+  </section>
 
 </div>
 
 <footer>
-  Tag: G-DHD1KSS512 | Privacy: No personal data collected beyond anonymized analytics.<br>
-  &copy; 2026 Virginia SOL Tutor. All rights reserved.
+  &copy; 2026 Virginia SOL Tutor | <a href="#">Citations</a>
+  <div class="tags">Tag: G-DHD1KSS512</div>
 </footer>
 
 </body>
