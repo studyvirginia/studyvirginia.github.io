@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VA SOL Study Assistant - AI-Powered Virginia SOL Tool</title>
 <meta name="description" content="AI-powered study tool for Virginia Standards of Learning (SOL). 70 courses supported K-12.">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DHD1KSS512"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DHD1KSS512');
+</script>
+
 <style>
   /* Global Reset */
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
@@ -13,7 +23,7 @@
   
   /* Sticky Nav */
   nav { position: sticky; top: 0; background: rgba(255,255,255,0.98); display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); z-index: 1000; }
-  nav .logo { font-weight: 700; font-size: 1.3rem; color: #5a67d8; }
+  nav .logo { font-weight: 700; font-size: 1.3rem; color: #5a67d8; cursor: pointer; }
   nav ul { list-style: none; display: flex; gap: 2rem; }
   nav ul li a { font-weight: 500; cursor: pointer; transition: color 0.2s; color: #666; }
   nav ul li a:hover { color: #5a67d8; }
@@ -30,6 +40,7 @@
   
   /* Trust Badge */
   .trust-badge { margin-top: 1.5rem; font-size: 0.9rem; color: #4a5568; font-weight: 500; }
+  .domain-badge { display: block; margin-top: 0.5rem; font-size: 0.85rem; color: #5a67d8; font-weight: 600; }
   
   /* Section Titles */
   .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
@@ -83,12 +94,15 @@
   .catalog-tab:hover { background: #e2e8f0; }
   .catalog-tab.active:hover { background: #4c51bf; }
   .catalog-content { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-  .catalog-content .course-category { margin-bottom: 1.8rem; }
+  .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+  .catalog-content .course-category { margin-bottom: 0; }
   .catalog-content .course-category h4 { font-size: 1.05rem; margin-bottom: 0.7rem; color: #5a67d8; font-weight: 600; }
-  .catalog-content .course-category ul { list-style: none; padding-left: 0; columns: 2; -webkit-columns: 2; -moz-columns: 2; column-gap: 2rem; }
-  .catalog-content .course-category ul li { padding: 0.25rem 0; color: #4a5568; font-size: 0.9rem; break-inside: avoid; }
+  .catalog-content .course-category ul { list-style: none; padding-left: 0; }
+  .catalog-content .course-category ul li { padding: 0.25rem 0; color: #4a5568; font-size: 0.9rem; }
   .catalog-content .course-category ul li.sol-tested { font-weight: 600; color: #2d3748; }
   .catalog-content .course-category ul li.sol-tested::before { content: '⭐'; margin-right: 0.3rem; }
+  .catalog-content .course-category ul li.indent { padding-left: 1.2rem; font-size: 0.85rem; }
+  .catalog-content .course-category ul li.indent::before { content: '• '; margin-right: 0.3rem; }
   
   /* App Embed Section */
   .app-section { text-align: center; padding: 4rem 2rem; background: #fff; }
@@ -117,11 +131,12 @@
     .hero h1 { font-size: 1.9rem; }
     .hero .subtitle { font-size: 1rem; }
     .section h2 { font-size: 1.7rem; }
-    .catalog-content .course-category ul { columns: 1; }
+    .catalog-grid { grid-template-columns: 1fr; }
     .footer-section ul { columns: 1; }
     .app-features { grid-template-columns: 1fr; }
     nav ul { display: none; }
     .app-controls .fullscreen-btn { display: none; }
+    .stat-card h4 { font-size: 2.2rem !important; }
   }
 </style>
 </head>
@@ -129,31 +144,33 @@
 
 <!-- Navigation -->
 <nav>
-  <div class="logo">VA SOL Study Assistant</div>
+  <div class="logo" onclick="window.location.href='#top'">VA SOL Study Assistant</div>
   <ul>
     <li><a href="#problem">Problem</a></li>
     <li><a href="#solution">Solution</a></li>
-    <li><a href="#our-app">Our App</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
     <li><a href="#courses">Courses</a></li>
+    <li><a href="#app">Our App</a></li>
   </ul>
   <a href="#app" class="cta-btn">Study Now</a>
 </nav>
 
 <!-- Hero -->
-<section class="hero">
+<section class="hero" id="top">
   <h1>Master Your Virginia SOL Courses</h1>
   <p class="subtitle">AI-powered study tool for Standards of Learning (SOL) courses and exams</p>
   <p class="stats-line">Supports 70 courses • Covers all Virginia SOL standards • K-12</p>
   <a href="#app" class="cta">Study Now</a>
   <div class="trust-badge">
     <span>Built for Virginia Standards of Learning (SOL)</span>
+    <span class="domain-badge">solprep.com</span>
   </div>
 </section>
 
 <!-- Problem Section -->
 <section class="section" id="problem">
   <h2>The Problem: Why It Matters</h2>
-  <p class="section-subtitle">Virginia students face increasing struggles in education</p>
+  <p class="section-subtitle">Virginia students face increasing challenges in education</p>
   <div class="problem-cards">
     <div class="problem-card">
       <div class="icon">📊</div>
@@ -186,15 +203,15 @@
       <h3>Data Included</h3>
       <div class="stats-grid">
         <div class="stat-card">
-          <h4 class="counter" data-target="8500">0</h4>
+          <h4><span class="counter" data-target="8500">8,500</span>+</h4>
           <p>SOL Questions</p>
         </div>
         <div class="stat-card">
-          <h4 class="counter" data-target="214">0</h4>
+          <h4><span class="counter" data-target="200">200</span>+</h4>
           <p>Released SOL Tests</p>
         </div>
         <div class="stat-card">
-          <h4 class="counter" data-target="15">0</h4>
+          <h4><span class="counter" data-target="15">15</span>+</h4>
           <p>Years of Test Content</p>
         </div>
         <div class="stat-card">
@@ -208,19 +225,19 @@
       <h3>Built For</h3>
       <div class="stats-grid">
         <div class="stat-card">
-          <h4 class="counter" data-target="1246285">0</h4>
+          <h4><span class="counter" data-target="1246285">1,246,285</span>+</h4>
           <p>Virginia students enrolled in public schools (2025-2026)</p>
         </div>
         <div class="stat-card">
-          <h4 class="counter" data-target="70">0</h4>
+          <h4><span class="counter" data-target="70">70</span>+</h4>
           <p>Courses Supported</p>
         </div>
         <div class="stat-card">
-          <h4 class="counter" data-target="23">0</h4>
+          <h4><span class="counter" data-target="23">23</span>+</h4>
           <p>SOL-Tested Courses (with state exams)</p>
         </div>
         <div class="stat-card">
-          <h4 class="counter" data-target="4">0</h4>
+          <h4><span class="counter" data-target="4">4</span>+</h4>
           <p>Core Subjects</p>
         </div>
       </div>
@@ -229,36 +246,36 @@
 </section>
 
 <!-- Our App Section -->
-<section class="section" id="our-app">
-  <h2>Our App: Multi-Mode Study System</h2>
+<section class="section" id="how-it-works">
+  <h2>How It Works: Multi-Mode Study System</h2>
   <p class="section-subtitle">AI-powered tool with diagnostics, adaptive practice, study guides, and more</p>
   <div class="app-features">
     <div class="features-list">
       <h3>Study Modes</h3>
       <div class="feature-item">
         <div class="icon">🎯</div>
-        <h4>Diagnostic Mode</h4>
-        <p>Identifies your strengths and weak areas across all content strands with targeted assessments.</p>
+        <h4>Diagnostic Assessment</h4>
+        <p>Take a quick diagnostic to identify your strengths and weaknesses across all SOL content strands and standards.</p>
       </div>
       <div class="feature-item">
         <div class="icon">📝</div>
-        <h4>Practice Mode</h4>
-        <p>Adaptive practice with both released SOL questions and AI-generated questions that adjust to your level.</p>
+        <h4>Practice Questions</h4>
+        <p>Access 8,500+ released SOL questions organized by topic, with instant feedback and detailed explanations.</p>
       </div>
       <div class="feature-item">
         <div class="icon">📚</div>
-        <h4>Review Mode</h4>
-        <p>AI-generated study guides and notes with key concepts, examples, and formulas.</p>
+        <h4>AI Study Guides</h4>
+        <p>Get personalized study materials generated by AI covering key concepts, formulas, and examples for your course.</p>
       </div>
       <div class="feature-item">
         <div class="icon">🗓️</div>
-        <h4>Study Plan Mode</h4>
-        <p>Personalized day-by-day study schedules based on your test date and diagnostic results.</p>
+        <h4>Custom Study Plans</h4>
+        <p>Receive a personalized study schedule based on your test date and diagnostic results to maximize your preparation.</p>
       </div>
       <div class="feature-item">
         <div class="icon">✍️</div>
-        <h4>Test Simulation Mode</h4>
-        <p>Full-length practice tests that simulate the actual SOL testing experience with detailed score reports.</p>
+        <h4>Practice Tests</h4>
+        <p>Take full-length practice tests from released SOL exams to simulate the real testing experience.</p>
       </div>
     </div>
     
@@ -303,160 +320,181 @@
   <h2>Courses Supported</h2>
   <p class="section-subtitle">70 courses aligned to Virginia Standards of Learning (SOL)</p>
   <div class="catalog-tabs">
-    <div class="catalog-tab active" onclick="showCatalog('math')">Mathematics (13)</div>
-    <div class="catalog-tab" onclick="showCatalog('science')">Science (14)</div>
-    <div class="catalog-tab" onclick="showCatalog('english')">English (13)</div>
-    <div class="catalog-tab" onclick="showCatalog('history')">History (13)</div>
+    <div class="catalog-tab active" onclick="showCatalog('math')">Mathematics</div>
+    <div class="catalog-tab" onclick="showCatalog('science')">Science</div>
+    <div class="catalog-tab" onclick="showCatalog('english')">English</div>
+    <div class="catalog-tab" onclick="showCatalog('history')">History</div>
   </div>
   
-  <!-- MATHEMATICS (13 courses total) -->
+  <!-- MATHEMATICS -->
   <div class="catalog-content" id="catalog-math">
-    <div class="course-category">
-      <h4>Elementary</h4>
-      <ul>
-        <li>Kindergarten Math</li>
-        <li>Grade 1 Math</li>
-        <li>Grade 2 Math</li>
-        <li>Grade 3 Math</li>
-        <li>Grade 4 Math</li>
-        <li>Grade 5 Math</li>
-      </ul>
-    </div>
-    <div class="course-category">
-      <h4>Middle School</h4>
-      <ul>
-        <li>Grade 6 Math</li>
-        <li>Grade 7 Math</li>
-        <li>Grade 8 Math</li>
-      </ul>
-    </div>
-    <div class="course-category">
-      <h4>High School - SOL-Tested</h4>
-      <ul>
-        <li class="sol-tested">Algebra I (EOC)</li>
-        <li class="sol-tested">Geometry (EOC)</li>
-        <li class="sol-tested">Algebra II (EOC)</li>
-      </ul>
-    </div>
-    <div class="course-category">
-      <h4>High School Electives</h4>
-      <ul>
-        <li>Algebra, Functions & Data Analysis</li>
-        <li>Trigonometry</li>
-        <li>Data Science</li>
-        <li>Mathematical Analysis</li>
-        <li>Discrete Mathematics</li>
-        <li>Probability & Statistics</li>
-        <li>Computer Mathematics</li>
-      </ul>
+    <div class="catalog-grid">
+      <div class="course-category">
+        <h4>Elementary</h4>
+        <ul>
+          <li>Kindergarten Math</li>
+          <li>Grade 1 Math</li>
+          <li>Grade 2 Math</li>
+          <li>Grade 3 Math</li>
+          <li>Grade 4 Math</li>
+          <li>Grade 5 Math</li>
+        </ul>
+      </div>
+      <div class="course-category">
+        <h4>Middle School</h4>
+        <ul>
+          <li>Grade 6 Math</li>
+          <li>Grade 7 Math</li>
+          <li>Grade 8 Math</li>
+        </ul>
+      </div>
+      <div class="course-category">
+        <h4>High School - SOL Tested</h4>
+        <ul>
+          <li class="sol-tested">Algebra I</li>
+          <li class="sol-tested">Geometry</li>
+          <li class="sol-tested">Algebra II</li>
+        </ul>
+      </div>
+      <div class="course-category">
+        <h4>High School Electives</h4>
+        <ul>
+          <li>Algebra, Functions & Data Analysis</li>
+          <li>Trigonometry</li>
+          <li>Data Science</li>
+          <li>Mathematical Analysis</li>
+          <li>Discrete Mathematics</li>
+          <li>Probability & Statistics</li>
+          <li>Computer Mathematics</li>
+        </ul>
+      </div>
     </div>
   </div>
   
-  <!-- SCIENCE (14 courses total) -->
+  <!-- SCIENCE -->
   <div class="catalog-content" id="catalog-science" style="display:none;">
-    <div class="course-category">
-      <h4>Elementary</h4>
-      <ul>
-        <li>Kindergarten Science</li>
-        <li>Grade 1 Science</li>
-        <li>Grade 2 Science</li>
-        <li>Grade 3 Science</li>
-        <li>Grade 4 Science</li>
-        <li>Grade 5 Science</li>
-      </ul>
-    </div>
-    <div class="course-category">
-      <h4>Middle School</h4>
-      <ul>
-        <li>Grade 6 Science</li>
-        <li>Grade 7 Life Science</li>
-        <li>Grade 8 Physical Science</li>
-      </ul>
-    </div>
-    <div class="course-category">
-      <h4>High School - SOL-Tested</h4>
-      <ul>
-        <li class="sol-tested">Biology I (EOC)</li>
-      </ul>
-    </div>
-    <div class="course-category">
-      <h4>High School Core</h4>
-      <ul>
-        <li>Chemistry I</li>
-        <li>Physics I</li>
-        <li>Earth Science I</li>
-        <li>Environmental Science</li>
-      </ul>
-    </div>
-    <div class="course-category">
-      <h4>High School Advanced</h4>
-      <ul>
-        <li>Biology II: Genetics</li>
-        <li>Biology II: Anatomy & Physiology</li>
-        <li>Biology II: Ecology</li>
-        <li>Biology II: Advanced Survey</li>
-        <li>Chemistry II: Advanced Survey</li>
-        <li>Physics II: Advanced Survey</li>
-        <li>Earth Science II: Oceanography</li>
-        <li>Earth Science II: Astronomy</li>
-        <li>Earth Science II: Geology</li>
-        <li>Earth Science II: Advanced Survey</li>
-        <li>Environmental Science Level II Expanded</li>
-      </ul>
+    <div class="catalog-grid">
+      <div class="course-category">
+        <h4>Elementary</h4>
+        <ul>
+          <li>Kindergarten Science</li>
+          <li>Grade 1 Science</li>
+          <li>Grade 2 Science</li>
+          <li>Grade 3 Science</li>
+          <li>Grade 4 Science</li>
+          <li>Grade 5 Science</li>
+        </ul>
+      </div>
+      <div class="course-category">
+        <h4>Middle School</h4>
+        <ul>
+          <li>Grade 6 Science</li>
+          <li>Grade 7 Life Science</li>
+          <li>Grade 8 Physical Science</li>
+        </ul>
+      </div>
+      <div class="course-category">
+        <h4>High School - SOL Tested</h4>
+        <ul>
+          <li class="sol-tested">Biology I</li>
+          <li class="sol-tested">Chemistry I</li>
+          <li class="sol-tested">Earth Science I</li>
+        </ul>
+      </div>
+      <div class="course-category">
+        <h4>High School Core</h4>
+        <ul>
+          <li>Physics I</li>
+          <li>Environmental Science</li>
+        </ul>
+      </div>
+      <div class="course-category">
+        <h4>High School Advanced</h4>
+        <ul>
+          <li>Biology II</li>
+          <li class="indent">Genetics</li>
+          <li class="indent">Anatomy & Physiology</li>
+          <li class="indent">Ecology</li>
+          <li class="indent">Advanced Survey</li>
+          <li>Chemistry II: Advanced Survey</li>
+          <li>Physics II: Advanced Survey</li>
+          <li>Earth Science II</li>
+          <li class="indent">Oceanography</li>
+          <li class="indent">Astronomy</li>
+          <li class="indent">Geology</li>
+          <li class="indent">Advanced Survey</li>
+          <li>Environmental Science II</li>
+          <li class="indent">Level II Expanded</li>
+        </ul>
+      </div>
     </div>
   </div>
   
-  <!-- ENGLISH (13 courses) -->
+  <!-- ENGLISH -->
   <div class="catalog-content" id="catalog-english" style="display:none;">
-    <div class="course-category">
-      <h4>All Grades</h4>
-      <ul>
-        <li>Kindergarten English</li>
-        <li>Grade 1 English</li>
-        <li>Grade 2 English</li>
-        <li class="sol-tested">Grade 3 English (Reading SOL)</li>
-        <li class="sol-tested">Grade 4 English (Reading SOL)</li>
-        <li class="sol-tested">Grade 5 English (Reading SOL)</li>
-        <li class="sol-tested">Grade 6 English (Reading SOL)</li>
-        <li class="sol-tested">Grade 7 English (Reading SOL)</li>
-        <li class="sol-tested">Grade 8 English (Reading SOL)</li>
-        <li>Grade 9 English</li>
-        <li>Grade 10 English</li>
-        <li class="sol-tested">Grade 11 English (Reading & Writing EOC)</li>
-        <li>Grade 12 English</li>
-      </ul>
+    <div class="catalog-grid">
+      <div class="course-category">
+        <h4>Elementary</h4>
+        <ul>
+          <li>Kindergarten English</li>
+          <li>Grade 1 English</li>
+          <li>Grade 2 English</li>
+          <li class="sol-tested">Grade 3 English</li>
+          <li class="sol-tested">Grade 4 English</li>
+          <li class="sol-tested">Grade 5 English</li>
+        </ul>
+      </div>
+      <div class="course-category">
+        <h4>Middle School</h4>
+        <ul>
+          <li class="sol-tested">Grade 6 English</li>
+          <li class="sol-tested">Grade 7 English</li>
+          <li class="sol-tested">Grade 8 English</li>
+        </ul>
+      </div>
+      <div class="course-category">
+        <h4>High School</h4>
+        <ul>
+          <li>Grade 9 English</li>
+          <li>Grade 10 English</li>
+          <li class="sol-tested">Grade 11 English</li>
+          <li>Grade 12 English</li>
+        </ul>
+      </div>
     </div>
   </div>
   
-  <!-- HISTORY (13 courses) -->
+  <!-- HISTORY -->
   <div class="catalog-content" id="catalog-history" style="display:none;">
-    <div class="course-category">
-      <h4>Elementary</h4>
-      <ul>
-        <li>Kindergarten History</li>
-        <li>Grade 1 History</li>
-        <li>Grade 2 History</li>
-        <li>Grade 3 History</li>
-        <li class="sol-tested">Grade 4 Virginia Studies (SOL)</li>
-        <li class="sol-tested">Grade 5 US History to 1865 (SOL)</li>
-      </ul>
-    </div>
-    <div class="course-category">
-      <h4>Middle School</h4>
-      <ul>
-        <li>Grade 6 US History: 1865-Present</li>
-        <li>Grade 7 World Geography</li>
-        <li class="sol-tested">Grade 8 Civics & Economics (SOL)</li>
-      </ul>
-    </div>
-    <div class="course-category">
-      <h4>High School</h4>
-      <ul>
-        <li class="sol-tested">Grade 9 World History to 1500 A.D. (EOC)</li>
-        <li class="sol-tested">Grade 10 World History: 1500-Present (EOC)</li>
-        <li class="sol-tested">Grade 11 Virginia & US History (EOC)</li>
-        <li>Grade 12 Virginia & US Government</li>
-      </ul>
+    <div class="catalog-grid">
+      <div class="course-category">
+        <h4>Elementary</h4>
+        <ul>
+          <li>Kindergarten History</li>
+          <li>Grade 1 History</li>
+          <li>Grade 2 History</li>
+          <li>Grade 3 History</li>
+          <li class="sol-tested">Grade 4 Virginia Studies</li>
+          <li class="sol-tested">Grade 5 US History to 1865</li>
+        </ul>
+      </div>
+      <div class="course-category">
+        <h4>Middle School</h4>
+        <ul>
+          <li>Grade 6 US History: 1865-Present</li>
+          <li>Grade 7 World Geography</li>
+          <li class="sol-tested">Grade 8 Civics & Economics</li>
+        </ul>
+      </div>
+      <div class="course-category">
+        <h4>High School</h4>
+        <ul>
+          <li class="sol-tested">Grade 9 World History to 1500 A.D.</li>
+          <li class="sol-tested">Grade 10 World History: 1500-Present</li>
+          <li class="sol-tested">Grade 11 Virginia & US History</li>
+          <li>Grade 12 Virginia & US Government</li>
+        </ul>
+      </div>
     </div>
   </div>
   
@@ -517,25 +555,33 @@ function openFullscreen() {
   }
 }
 
-// Animated counters
+// Animated counters - disabled on mobile
 function animateCounters() {
+  const isMobile = window.innerWidth <= 768;
   const counters = document.querySelectorAll('.counter');
   const speed = 200;
   
   counters.forEach(counter => {
     const target = +counter.getAttribute('data-target');
-    const updateCount = () => {
-      const current = +counter.innerText.replace(/,/g, '');
-      const increment = target / speed;
-      
-      if (current < target) {
-        counter.innerText = Math.ceil(current + increment).toLocaleString();
-        setTimeout(updateCount, 10);
-      } else {
-        counter.innerText = target.toLocaleString();
-      }
-    };
-    updateCount();
+    
+    if (isMobile) {
+      // On mobile, just show the final value immediately
+      counter.innerText = target.toLocaleString();
+    } else {
+      // On desktop, animate
+      const updateCount = () => {
+        const current = +counter.innerText.replace(/,/g, '');
+        const increment = target / speed;
+        
+        if (current < target) {
+          counter.innerText = Math.ceil(current + increment).toLocaleString();
+          setTimeout(updateCount, 10);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      };
+      updateCount();
+    }
   });
 }
 
