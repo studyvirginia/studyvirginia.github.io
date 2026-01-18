@@ -19,13 +19,28 @@
 <meta name="twitter:description" content="AI-powered study tool for Virginia Standards of Learning (SOL). 70 courses supported K-12.">
 <meta name="twitter:image" content="https://solprep.com/og-preview.png">
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DHD1KSS512"></script>
+<!-- Google Analytics - Only loads after consent -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-DHD1KSS512');
+  
+  // Check if user has already consented
+  if (localStorage.getItem('cookieConsent') === 'accepted') {
+    loadGoogleAnalytics();
+  }
+  
+  function loadGoogleAnalytics() {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-DHD1KSS512';
+    document.head.appendChild(script);
+    
+    gtag('js', new Date());
+    gtag('config', 'G-DHD1KSS512', {
+      'anonymize_ip': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+  }
 </script>
 
 <style>
@@ -143,6 +158,21 @@
   .footer-section ul li a:hover { color: #fff; }
   .footer-bottom { text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; }
   footer a { color: #90cdf4; }
+
+  /* Cookie Banner */
+  .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(45, 55, 72, 0.98); backdrop-filter: blur(10px); color: #fff; padding: 1.5rem 2rem; box-shadow: 0 -2px 10px rgba(0,0,0,0.2); z-index: 10000; display: none; animation: slideUp 0.4s ease; }
+  .cookie-banner.show { display: block; }
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  .cookie-content { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .cookie-text { flex: 1; min-width: 300px; }
+  .cookie-text p { font-size: 0.9rem; line-height: 1.6; color: #e2e8f0; margin-bottom: 0.5rem; }
+  .cookie-text a { color: #90cdf4; text-decoration: underline; }
+  .cookie-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .cookie-btn { padding: 0.7rem 1.5rem; border-radius: 6px; font-weight: 600; cursor: pointer; border: none; font-size: 0.9rem; transition: all 0.2s; }
+  .cookie-accept { background: #48bb78; color: white; }
+  .cookie-accept:hover { background: #38a169; }
+  .cookie-decline { background: #e2e8f0; color: #2d3748; }
+  .cookie-decline:hover { background: #cbd5e0; }
   
   /* Responsive */
   @media (max-width: 768px) {
@@ -510,7 +540,45 @@
   </div>
 </footer>
 
+<!-- Cookie Consent Banner -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-content">
+    <div class="cookie-text">
+      <p><strong>🍪 We use cookies</strong></p>
+      <p>We use Google Analytics to understand how visitors interact with our website. This helps us improve your experience. By clicking "Accept", you consent to our use of cookies.</p>
+    </div>
+    <div class="cookie-buttons">
+      <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button>
+      <button class="cookie-btn cookie-decline" onclick="declineCookies()">Decline</button>
+    </div>
+  </div>
+</div>
+
 <script>
+
+<script>
+// Cookie Consent Functions
+function acceptCookies() {
+  localStorage.setItem('cookieConsent', 'accepted');
+  document.getElementById('cookieBanner').classList.remove('show');
+  loadGoogleAnalytics();
+}
+
+function declineCookies() {
+  localStorage.setItem('cookieConsent', 'declined');
+  document.getElementById('cookieBanner').classList.remove('show');
+}
+
+// Show banner if user hasn't made a choice
+window.addEventListener('DOMContentLoaded', function() {
+  const consent = localStorage.getItem('cookieConsent');
+  if (!consent) {
+    setTimeout(function() {
+      document.getElementById('cookieBanner').classList.add('show');
+    }, 1000); // Show after 1 second delay
+  }
+});
+
 // Catalog tab switching
 function showCatalog(subject) {
   document.querySelectorAll('.catalog-content').forEach(el => el.style.display = 'none');
