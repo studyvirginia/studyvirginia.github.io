@@ -1,10 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virginia SOL Study Assistant | AI-Powered SOL Test Prep & Practice Questions</title>
+<meta name="description" content="Free AI-powered Virginia SOL study tool. 8,500+ practice questions, released tests, study guides for all 70 SOL courses K-12. Master Math, Science, English & History SOL exams.">
+<meta name="keywords" content="Virginia SOL, SOL practice test, SOL study guide, Virginia Standards of Learning, SOL prep, SOL questions, Virginia SOL test, SOL math, SOL science, SOL reading, SOL history">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://solprep.com">
+
+<!-- Open Graph / Social Media Preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Virginia SOL Study Assistant | AI-Powered SOL Test Prep">
+<meta property="og:description" content="Free AI-powered Virginia SOL study tool. 8,500+ practice questions, released tests, study guides for all 70 SOL courses K-12.">
+<meta property="og:url" content="https://solprep.com">
+<meta property="og:image" content="https://solprep.com/og-preview.png">
+<meta property="og:site_name" content="VA SOL Study Assistant">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Virginia SOL Study Assistant | AI-Powered SOL Test Prep">
+<meta name="twitter:description" content="Free AI-powered Virginia SOL study tool. 8,500+ practice questions for all 70 SOL courses K-12.">
+<meta name="twitter:image" content="https://solprep.com/og-preview.png">
+
+<!-- Structured Data / Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "VA SOL Study Assistant",
+  "url": "https://solprep.com",
+  "logo": "https://solprep.com/logo.png",
+  "description": "AI-powered study tool for Virginia Standards of Learning (SOL). 70 courses supported K-12.",
+  "areaServed": "Virginia, USA",
+  "educationalLevel": ["Elementary School", "Middle School", "High School"],
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "student"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "VA SOL Study Assistant",
+  "url": "https://solprep.com",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "AI-powered study tool with 8,500+ SOL practice questions, released tests, and study guides for all Virginia SOL courses."
+}
+</script>
+
 <!-- Google Analytics - Only loads after consent -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   
   function loadGoogleAnalytics() {
-    if (document.querySelector('script[src*="googletagmanager"]')) return; // Already loaded
+    // Prevent duplicate loading
+    if (document.querySelector('script[src*="googletagmanager"]')) return;
     
     const script = document.createElement('script');
     script.async = true;
@@ -25,3 +86,621 @@
     loadGoogleAnalytics();
   }
 </script>
+
+<style>
+  /* Global Reset */
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  body { background: #fafafa; color: #333; line-height: 1.7; }
+  a { text-decoration: none; color: inherit; }
+  
+  /* Sticky Nav */
+  nav { position: sticky; top: 0; background: rgba(255,255,255,0.98); display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); z-index: 1000; }
+  nav .logo { font-weight: 700; font-size: 1.3rem; color: #5a67d8; cursor: pointer; }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul li a { font-weight: 500; cursor: pointer; transition: color 0.2s; color: #666; }
+  nav ul li a:hover { color: #5a67d8; }
+  nav .cta-btn { padding: 0.6rem 1.4rem; background: #5a67d8; color: #fff; font-weight: 600; border-radius: 6px; transition: all 0.2s; }
+  nav .cta-btn:hover { background: #4c51bf; }
+  
+  /* Hero Section */
+  .hero { text-align: center; padding: 4rem 2rem 5rem; background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%); }
+  .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; line-height: 1.3; color: #1a202c; }
+  .hero .domain-badge { font-size: 1.1rem; margin-bottom: 1rem; color: #5a67d8; font-weight: 700; }
+  .hero .subtitle { font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 500; color: #4a5568; }
+  .hero .stats-line { font-size: 0.95rem; margin-bottom: 2rem; color: #718096; }
+  .hero .cta { padding: 0.9rem 2rem; background: #5a67d8; color: #fff; font-weight: 600; border-radius: 6px; font-size: 1rem; transition: all 0.2s; display: inline-block; }
+  .hero .cta:hover { background: #4c51bf; }
+  
+  /* Trust Badge */
+  .trust-badge { margin-top: 1.5rem; font-size: 0.9rem; color: #4a5568; font-weight: 500; }
+  
+  /* Section Titles */
+  .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.8rem; text-align: center; color: #2d3748; }
+  .section .section-subtitle { max-width: 650px; margin: 0 auto 2.5rem auto; text-align: center; color: #718096; font-size: 1rem; }
+  
+  /* Problem Section - Red accents, no background */
+  .problem-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+  .problem-card { background: #fff; padding: 1.8rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); transition: all 0.3s; border-left: 3px solid #fc8181; }
+  .problem-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left-width: 5px; }
+  .problem-card .icon { font-size: 2rem; margin-bottom: 0.8rem; opacity: 0.8; }
+  .problem-card h3 { font-size: 1.2rem; margin-bottom: 0.7rem; color: #c53030; font-weight: 600; }
+  .problem-card p { color: #4a5568; margin-bottom: 0.8rem; line-height: 1.6; font-size: 0.95rem; }
+  .problem-card .source { font-size: 0.85rem; color: #5a67d8; font-weight: 500; display: block; }
+  .problem-card .source:hover { text-decoration: underline; }
+  
+  /* Stats Section */
+  .stats-section { background: #f7fafc; padding: 3.5rem 2rem; }
+  .stats-container { max-width: 1100px; margin: 0 auto; }
+  .stats-row { margin-bottom: 2.5rem; }
+  .stats-row h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; text-align: center; color: #2d3748; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; text-align: center; }
+  .stat-card { background: #fff; padding: 1.8rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); transition: all 0.3s; }
+  .stat-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-3px); }
+  .stat-card h4 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; color: #5a67d8; }
+  .stat-card p { font-weight: 500; color: #4a5568; font-size: 0.9rem; line-height: 1.4; }
+  
+  /* App Features Section */
+  .app-features { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; align-items: start; }
+  .features-list h3 { font-size: 1.3rem; margin-bottom: 1.5rem; color: #2d3748; font-weight: 700; }
+  .feature-item { background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 1rem; transition: all 0.3s; }
+  .feature-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-2px); }
+  .feature-item .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .feature-item h4 { font-size: 1.1rem; margin-bottom: 0.5rem; color: #2d3748; font-weight: 600; }
+  .feature-item p { color: #4a5568; font-size: 0.9rem; line-height: 1.5; }
+  
+  /* Timeline */
+  .timeline { position: relative; }
+  .timeline h3 { font-size: 1.3rem; margin-bottom: 1.5rem; color: #2d3748; font-weight: 700; }
+  .timeline::before { content: ''; position: absolute; left: 20px; top: 60px; bottom: 20px; width: 2px; background: #cbd5e0; }
+  .timeline-item { position: relative; padding-left: 50px; margin-bottom: 1.5rem; transition: all 0.3s; }
+  .timeline-item:hover { padding-left: 55px; }
+  .timeline-item .step-number { position: absolute; left: 8px; background: #5a67d8; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; }
+  .timeline-item h4 { font-size: 1.05rem; margin-bottom: 0.4rem; color: #2d3748; font-weight: 600; }
+  .timeline-item p { color: #4a5568; font-size: 0.9rem; line-height: 1.5; }
+  
+  /* Course Catalog */
+  .catalog-tabs { display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .catalog-tab { padding: 0.7rem 1.3rem; background: #edf2f7; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s; color: #4a5568; font-size: 0.9rem; }
+  .catalog-tab.active { background: #5a67d8; color: white; }
+  .catalog-tab:hover { background: #e2e8f0; }
+  .catalog-tab.active:hover { background: #4c51bf; }
+  .catalog-content { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .catalog-two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .catalog-column h3 { font-size: 1.2rem; margin-bottom: 1.2rem; color: #2d3748; font-weight: 700; text-align: center; }
+  .catalog-content .course-category { margin-bottom: 1.5rem; }
+  .catalog-content .course-category h4 { font-size: 1.05rem; margin-bottom: 0.7rem; color: #5a67d8; font-weight: 600; }
+  .catalog-content .course-category ul { list-style: none; padding-left: 0; }
+  .catalog-content .course-category ul li { padding: 0.25rem 0; color: #4a5568; font-size: 0.9rem; }
+  .catalog-content .course-category ul li.sol-tested { font-weight: 600; color: #2d3748; }
+  .catalog-content .course-category ul li.sol-tested::before { content: '⭐ '; margin-right: 0.3rem; }
+  .catalog-content .course-category ul li.indent { padding-left: 1.2rem; font-size: 0.85rem; }
+  .catalog-content .course-category ul li.indent::before { content: '• '; margin-right: 0.3rem; }
+  .catalog-column ul { list-style: none; padding-left: 0; }
+  .catalog-column ul li { padding: 0.4rem 0; color: #4a5568; font-size: 0.95rem; line-height: 1.6; }
+  .catalog-column ul li.sol-tested { font-weight: 600; color: #2d3748; }
+  .catalog-column ul li.sol-tested::before { content: '⭐ '; margin-right: 0.5rem; }
+  
+  /* App Embed Section */
+  .app-section { text-align: center; padding: 4rem 2rem; background: #fff; }
+  .app-section h2 { margin-bottom: 0.8rem; color: #2d3748; }
+  .app-section .app-subtitle { max-width: 650px; margin: 0 auto 1rem; color: #718096; }
+  .app-controls { margin-bottom: 1rem; }
+  .app-controls .fullscreen-btn { padding: 0.6rem 1.2rem; background: #5a67d8; color: #fff; font-weight: 600; border-radius: 6px; font-size: 0.9rem; cursor: pointer; border: none; transition: all 0.2s; }
+  .app-controls .fullscreen-btn:hover { background: #4c51bf; }
+  .app-section .iframe-container { position: relative; width: 100%; max-width: 900px; margin: 0 auto; }
+  .app-section iframe { width: 100%; height: 700px; border: none; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+  
+  /* Footer */
+  footer { background: #2d3748; color: #cbd5e0; padding: 2.5rem 2rem; }
+  .footer-content { max-width: 1100px; margin: 0 auto; }
+  .footer-section { margin-bottom: 1.5rem; }
+  .footer-section h4 { margin-bottom: 0.8rem; font-size: 1rem; color: #e2e8f0; font-weight: 600; }
+  .footer-section ul { list-style: none; columns: 2; -webkit-columns: 2; -moz-columns: 2; column-gap: 2rem; }
+  .footer-section ul li { padding: 0.3rem 0; font-size: 0.85rem; line-height: 1.5; break-inside: avoid; }
+  .footer-section ul li a { transition: color 0.2s; }
+  .footer-section ul li a:hover { color: #fff; }
+  .footer-bottom { text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; }
+  footer a { color: #90cdf4; }
+
+  /* Cookie Banner */
+  .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(45, 55, 72, 0.98); backdrop-filter: blur(10px); color: #fff; padding: 1.5rem 2rem; box-shadow: 0 -2px 10px rgba(0,0,0,0.2); z-index: 10000; display: none; animation: slideUp 0.4s ease; }
+  .cookie-banner.show { display: block; }
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  .cookie-content { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .cookie-text { flex: 1; min-width: 300px; }
+  .cookie-text p { font-size: 0.9rem; line-height: 1.6; color: #e2e8f0; margin-bottom: 0.5rem; }
+  .cookie-text a { color: #90cdf4; text-decoration: underline; }
+  .cookie-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .cookie-btn { padding: 0.7rem 1.5rem; border-radius: 6px; font-weight: 600; cursor: pointer; border: none; font-size: 0.9rem; transition: all 0.2s; }
+  .cookie-accept { background: #48bb78; color: white; }
+  .cookie-accept:hover { background: #38a169; }
+  .cookie-decline { background: #e2e8f0; color: #2d3748; }
+  .cookie-decline:hover { background: #cbd5e0; }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 1.9rem; }
+    .hero .subtitle { font-size: 1rem; }
+    .section h2 { font-size: 1.7rem; }
+    .catalog-two-column { grid-template-columns: 1fr; }
+    .footer-section ul { columns: 1; }
+    .app-features { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+    .app-controls .fullscreen-btn { display: none; }
+    .stat-card h4 { font-size: 2.2rem !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="logo" onclick="window.location.href='#top'">VA SOL Study Assistant</div>
+  <ul>
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#app">Our App</a></li>
+  </ul>
+  <a href="#app" class="cta-btn">Study Now</a>
+</nav>
+
+<!-- Hero -->
+<header class="hero" id="top">
+  <h1>Master Your Virginia SOL Courses with AI-Powered Study Tools</h1>
+  <p class="domain-badge">solprep.com</p>
+  <p class="subtitle">Free AI-powered study assistant for Virginia Standards of Learning (SOL) test preparation</p>
+  <p class="stats-line">70+ SOL Courses • 8,500+ Practice Questions • K-12 Coverage • All Subject Areas</p>
+  <a href="#app" class="cta">Start Studying Free</a>
+  <div class="trust-badge">
+    <span>Aligned with Virginia Department of Education SOL Standards</span>
+  </div>
+</header>
+
+<!-- Problem Section -->
+<section class="section" id="problem">
+  <h2>Why Virginia SOL Preparation Is More Critical Than Ever</h2>
+  <p class="section-subtitle">Virginia students face increasing academic challenges and higher stakes for SOL performance</p>
+  <div class="problem-cards">
+    <div class="problem-card">
+      <div class="icon">📊</div>
+      <h3>Higher SOL Passing Scores Required</h3>
+      <p>The Virginia Board of Education is planning to raise SOL passing scores in future years, requiring students to achieve higher scores for verified credits needed for high school graduation.</p>
+      <a class="source" href="https://virginiamercury.com/2025/11/14/higher-sol-cut-scores-coming-but-not-this-year-virginia-board-says/" target="_blank" rel="noopener">Higher SOL cut scores coming (Virginia Mercury)</a>
+    </div>
+    <div class="problem-card">
+      <div class="icon">🎓</div>
+      <h3>SOL Tests Now Count 10% of Final Grades</h3>
+      <p>Starting in the 2026-2027 school year, SOL test scores will count for 10% of students' final grades to raise student performance. Passing scores (400+) are also required to earn verified credits for graduation.</p>
+      <a class="source" href="https://www.wavy.com/news/virginia/sol-scores-to-account-for-10-of-students-final-grade-to-raise-student-performance/" target="_blank" rel="noopener">SOL scores account for 10% of final grade (WAVY.com)</a>
+    </div>
+    <div class="problem-card">
+      <div class="icon">📉</div>
+      <h3>Pandemic Learning Loss Still Impacts Students</h3>
+      <p>Virginia continues to struggle with recovering from pandemic learning loss, with 2025 data showing persistent achievement gaps across the state that impact SOL test performance.</p>
+      <a class="source" href="https://www.washingtonpost.com/education/2025/08/27/virginia-sol-scores-pandemic-learning-loss/" target="_blank" rel="noopener">Virginia struggles with pandemic learning loss (Washington Post)</a>
+    </div>
+  </div>
+</section>
+
+<!-- Solution / Stats Section -->
+<section class="stats-section" id="solution">
+  <div class="stats-container">
+    <h2 style="color: #2d3748; margin-bottom: 0.8rem;">Our Solution: Comprehensive AI-Powered SOL Study Platform</h2>
+    <p class="section-subtitle" style="color: #4a5568; margin-bottom: 2.5rem;">Everything Virginia students need to succeed on SOL exams</p>
+    
+    <div class="stats-row">
+      <h3>Study Resources Included</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h4><span class="counter" data-target="8500">8,500</span>+</h4>
+          <p>Released SOL Practice Questions</p>
+        </div>
+        <div class="stat-card">
+          <h4><span class="counter" data-target="200">200</span>+</h4>
+          <p>Official Released SOL Tests</p>
+        </div>
+        <div class="stat-card">
+          <h4><span class="counter" data-target="15">15</span>+</h4>
+          <p>Years of Historical Test Content</p>
+        </div>
+        <div class="stat-card">
+          <h4>Complete</h4>
+          <p>Virginia SOL Curriculum Coverage</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="stats-row">
+      <h3>Coverage & Reach</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h4><span class="counter" data-target="1246285">1,246,285</span>+</h4>
+          <p>Virginia public school students (2025-2026)</p>
+        </div>
+        <div class="stat-card">
+          <h4><span class="counter" data-target="70">70</span>+</h4>
+          <p>SOL Courses Supported</p>
+        </div>
+        <div class="stat-card">
+          <h4><span class="counter" data-target="23">23</span>+</h4>
+          <p>SOL-Tested Courses with State Exams</p>
+        </div>
+        <div class="stat-card">
+          <h4><span class="counter" data-target="4">4</span></h4>
+          <p>Core Subject Areas Covered</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our App Section -->
+<section class="section" id="how-it-works">
+  <h2>How Our AI-Powered SOL Study System Works</h2>
+  <p class="section-subtitle">Four powerful study modes to help you master Virginia SOL content and ace your exams</p>
+  <div class="app-features">
+    <div class="features-list">
+      <h3>Study Modes</h3>
+      <div class="feature-item">
+        <h4>📚 1. Review Mode - Build Foundation</h4>
+        <p>Access comprehensive notes, study guides, topic outlines, and digital flashcards to build strong foundational understanding of SOL content.</p>
+      </div>
+      <div class="feature-item">
+        <h4>🎯 2. Mastery Mode - Deepen Knowledge</h4>
+        <p>Achieve expert-level understanding with memory techniques, pattern recognition, test-taking strategies, shortcuts, and real-world applications.</p>
+      </div>
+      <div class="feature-item">
+        <h4>📝 3. Practice Mode - Apply Skills</h4>
+        <p>Work through 8,500+ released SOL questions with adaptive practice that adjusts to your level, plus full-length practice SOL tests.</p>
+      </div>
+      <div class="feature-item">
+        <h4>📊 4. Progress Mode - Track Growth</h4>
+        <p>Monitor your diagnostic performance, practice improvement, test scores, and completed assignments to see your progress over time.</p>
+      </div>
+    </div>
+    
+    <div class="timeline">
+      <h3>Student Success Path</h3>
+      <div class="timeline-item">
+        <div class="step-number">1</div>
+        <h4>Select Your SOL Course</h4>
+        <p>Choose from 70 Virginia SOL courses across Mathematics, Science, English Reading & Writing, and History & Social Science</p>
+      </div>
+      <div class="timeline-item">
+        <div class="step-number">2</div>
+        <h4>Complete Diagnostic Assessment</h4>
+        <p>Take an initial diagnostic test to identify your current strengths and areas needing improvement</p>
+      </div>
+      <div class="timeline-item">
+        <div class="step-number">3</div>
+        <h4>Study with Review Mode</h4>
+        <p>Build solid foundational knowledge using notes, comprehensive study guides, and interactive flashcards</p>
+      </div>
+      <div class="timeline-item">
+        <div class="step-number">4</div>
+        <h4>Master Content with Mastery Mode</h4>
+        <p>Develop expert understanding using advanced memory techniques, shortcuts, and real-world applications</p>
+      </div>
+      <div class="timeline-item">
+        <div class="step-number">5</div>
+        <h4>Practice with Real SOL Questions</h4>
+        <p>Apply your knowledge through adaptive practice sessions and complete full-length practice SOL tests</p>
+      </div>
+      <div class="timeline-item">
+        <div class="step-number">6</div>
+        <h4>Monitor Progress & Improvement</h4>
+        <p>Track your diagnostic scores, practice performance, and overall improvement over time</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Course Catalog -->
+<section class="section" id="courses" style="background: #f7fafc;">
+  <h2>All Virginia SOL Courses Supported (K-12)</h2>
+  <p class="section-subtitle">70 courses aligned to Virginia Standards of Learning across all grade levels and subjects</p>
+  <div class="catalog-tabs">
+    <div class="catalog-tab" onclick="showCatalog('math')">Mathematics SOL</div>
+    <div class="catalog-tab" onclick="showCatalog('science')">Science SOL</div>
+    <div class="catalog-tab active" onclick="showCatalog('english')">English SOL</div>
+    <div class="catalog-tab" onclick="showCatalog('history')">History SOL</div>
+  </div>
+  
+  <!-- MATHEMATICS -->
+  <div class="catalog-content" id="catalog-math" style="display: none;">
+    <div class="catalog-two-column">
+      <div class="catalog-column">
+        <h3>Elementary & Middle School Math SOL</h3>
+        <ul>
+          <li>Kindergarten Mathematics SOL</li>
+          <li>Grade 1 Mathematics SOL</li>
+          <li>Grade 2 Mathematics SOL</li>
+          <li class="sol-tested">Grade 3 Mathematics SOL (State Tested)</li>
+          <li class="sol-tested">Grade 4 Mathematics SOL (State Tested)</li>
+          <li class="sol-tested">Grade 5 Mathematics SOL (State Tested)</li>
+          <li class="sol-tested">Grade 6 Mathematics SOL (State Tested)</li>
+          <li class="sol-tested">Grade 7 Mathematics SOL (State Tested)</li>
+          <li class="sol-tested">Grade 8 Mathematics SOL (State Tested)</li>
+        </ul>
+      </div>
+      
+      <div class="catalog-column">
+        <h3>High School Math SOL Courses</h3>
+        <ul>
+          <li class="sol-tested">Algebra I SOL (State Tested)</li>
+          <li class="sol-tested">Geometry SOL (State Tested)</li>
+          <li class="sol-tested">Algebra II SOL (State Tested)</li>
+          <li>Algebra, Functions & Data Analysis SOL</li>
+          <li>Trigonometry SOL</li>
+          <li>Data Science SOL</li>
+          <li>Mathematical Analysis SOL</li>
+          <li>Discrete Mathematics SOL</li>
+          <li>Probability & Statistics SOL</li>
+          <li>Computer Mathematics SOL</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- SCIENCE -->
+  <div class="catalog-content" id="catalog-science" style="display: none;">
+    <div class="catalog-two-column">
+      <div class="catalog-column">
+        <h3>Elementary & Middle School Science SOL</h3>
+        <ul>
+          <li>Kindergarten Science SOL</li>
+          <li>Grade 1 Science SOL</li>
+          <li>Grade 2 Science SOL</li>
+          <li class="sol-tested">Grade 3 Science SOL (State Tested)</li>
+          <li>Grade 4 Science SOL</li>
+          <li class="sol-tested">Grade 5 Science SOL (State Tested)</li>
+          <li>Grade 6 Science SOL</li>
+          <li>Grade 7 Life Science SOL</li>
+          <li class="sol-tested">Grade 8 Physical Science SOL (State Tested)</li>
+        </ul>
+      </div>
+      
+      <div class="catalog-column">
+        <h3>High School Science SOL Courses</h3>
+        <ul>
+          <li class="sol-tested">Biology I SOL (State Tested)</li>
+          <li class="sol-tested">Chemistry I SOL (State Tested)</li>
+          <li class="sol-tested">Earth Science I SOL (State Tested)</li>
+          <li>Physics I SOL</li>
+          <li>Environmental Science SOL</li>
+          <li>Biology II: Genetics SOL</li>
+          <li>Biology II: Anatomy & Physiology SOL</li>
+          <li>Biology II: Ecology SOL</li>
+          <li>Biology II: Advanced Survey SOL</li>
+          <li>Chemistry II: Advanced Survey SOL</li>
+          <li>Physics II: Advanced Survey SOL</li>
+          <li>Earth Science II: Oceanography SOL</li>
+          <li>Earth Science II: Astronomy SOL</li>
+          <li>Earth Science II: Geology SOL</li>
+          <li>Earth Science II: Advanced Survey SOL</li>
+          <li>Environmental Science II SOL</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ENGLISH -->
+  <div class="catalog-content" id="catalog-english" style="display: block;">
+    <div class="catalog-two-column">
+      <div class="catalog-column">
+        <h3>Elementary & Middle School English SOL</h3>
+        <ul>
+          <li>Kindergarten English SOL</li>
+          <li>Grade 1 English SOL</li>
+          <li>Grade 2 English SOL</li>
+          <li class="sol-tested">Grade 3 Reading SOL (State Tested)</li>
+          <li class="sol-tested">Grade 4 Reading SOL (State Tested)</li>
+          <li class="sol-tested">Grade 5 Reading SOL (State Tested)</li>
+          <li class="sol-tested">Grade 6 Reading SOL (State Tested)</li>
+          <li class="sol-tested">Grade 7 Reading SOL (State Tested)</li>
+          <li class="sol-tested">Grade 8 Reading SOL (State Tested)</li>
+        </ul>
+      </div>
+      
+      <div class="catalog-column">
+        <h3>High School English SOL Courses</h3>
+        <ul>
+          <li>Grade 9 English SOL</li>
+          <li>Grade 10 English SOL</li>
+          <li class="sol-tested">Grade 11 Reading SOL (State Tested)</li>
+          <li class="sol-tested">Grade 11 Writing SOL (State Tested)</li>
+          <li class="sol-tested">Grade 12 Reading SOL (State Tested)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- HISTORY -->
+  <div class="catalog-content" id="catalog-history" style="display:none;">
+    <div class="catalog-two-column">
+      <div class="catalog-column">
+        <h3>Elementary & Middle School History SOL</h3>
+        <ul>
+          <li>Kindergarten History & Social Science SOL</li>
+          <li>Grade 1 History & Social Science SOL</li>
+          <li>Grade 2 History & Social Science SOL</li>
+          <li class="sol-tested">Grade 3 History SOL (State Tested)</li>
+          <li class="sol-tested">Grade 4 Virginia Studies SOL (State Tested)</li>
+          <li class="sol-tested">Grade 5 US History to 1865 SOL (State Tested)</li>
+          <li class="sol-tested">Grade 6 US History: 1865-Present SOL (State Tested)</li>
+          <li class="sol-tested">Grade 7 Civics & Economics SOL (State Tested)</li>
+          <li class="sol-tested">Grade 8 World Geography SOL (State Tested)</li>
+        </ul>
+      </div>
+      
+      <div class="catalog-column">
+        <h3>High School History SOL Courses</h3>
+        <ul>
+          <li class="sol-tested">Grade 9 World History to 1500 A.D. SOL (State Tested)</li>
+          <li class="sol-tested">Grade 10 World History: 1500-Present SOL (State Tested)</li>
+          <li class="sol-tested">Grade 11 Virginia & US History SOL (State Tested)</li>
+          <li>Grade 12 Virginia & US Government SOL</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <p style="text-align:center; margin-top:1.5rem; color:#718096; font-size:0.9rem;"><strong>⭐ = SOL State Tested Course</strong> (requires passing state assessment for verified graduation credit)</p>
+</section>
+
+<!-- App Embed -->
+<section class="app-section" id="app">
+  <h2>Free Virginia SOL Study Assistant - Start Now</h2>
+  <p class="app-subtitle">AI-powered tutor ready to help you master SOL content and prepare for exams</p>
+  <div class="app-controls">
+    <button class="fullscreen-btn" onclick="openFullscreen()">🔍 Open Study Assistant in Full Screen</button>
+  </div>
+  <div class="iframe-container">
+    <iframe id="sol-app" src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc" height="700px" frameborder="0" allow="clipboard-write" title="Virginia SOL Study Assistant - AI Powered SOL Test Prep" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4>Official Virginia SOL Resources Used</h4>
+      <ul>
+        <li><a href="https://virginiamercury.com/2025/11/14/higher-sol-cut-scores-coming-but-not-this-year-virginia-board-says/" target="_blank" rel="noopener">Higher SOL cut scores coming (Virginia Mercury)</a></li>
+        <li><a href="https://www.wavy.com/news/virginia/sol-scores-to-account-for-10-of-students-final-grade-to-raise-student-performance/" target="_blank" rel="noopener">SOL scores account for 10% of final grade (WAVY.com)</a></li>
+        <li><a href="https://www.washingtonpost.com/education/2025/08/27/virginia-sol-scores-pandemic-learning-loss/" target="_blank" rel="noopener">Virginia pandemic learning loss data (Washington Post)</a></li>
+        <li><a href="https://www.doe.virginia.gov/teaching-learning-assessment/instruction" target="_blank" rel="noopener">K-12 Standards & Instruction (Virginia DOE)</a></li>
+        <li><a href="https://www.doe.virginia.gov/teaching-learning-assessment/student-assessment/virginia-sol-assessment-program" target="_blank" rel="noopener">Virginia SOL Assessment Program (Virginia DOE)</a></li>
+        <li><a href="https://www.doe.virginia.gov/teaching-learning-assessment/student-assessment/sol-practice-items-all-subjects" target="_blank" rel="noopener">SOL Practice Items All Subjects (Virginia DOE)</a></li>
+        <li><a href="https://www.doe.virginia.gov/teaching-learning-assessment/student-assessment/sol-practice-items-all-subjects/released-tests-item-sets-all-subjects" target="_blank" rel="noopener">Released SOL Tests & Item Sets (Virginia DOE)</a></li>
+        <li><a href="http://solpass.org/" target="_blank" rel="noopener">SOLpass.org Practice Tests</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 VA SOL Study Assistant | Virginia Standards of Learning Test Preparation</p>
+  </div>
+</footer>
+
+<!-- Cookie Consent Banner -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-content">
+    <div class="cookie-text">
+      <p><strong>🍪 We use cookies</strong></p>
+      <p>We use cookies to monitor website functionality and infrastructure to improve your experience. By clicking 'Accept,' you consent to our use of cookies.</p>
+    </div>
+    <div class="cookie-buttons">
+      <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accept</button>
+      <button class="cookie-btn cookie-decline" onclick="declineCookies()">Decline</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Cookie Consent Functions
+function acceptCookies() {
+  localStorage.setItem('cookieConsent', 'accepted');
+  document.getElementById('cookieBanner').classList.remove('show');
+  loadGoogleAnalytics();
+}
+
+function declineCookies() {
+  localStorage.setItem('cookieConsent', 'declined');
+  document.getElementById('cookieBanner').classList.remove('show');
+}
+
+// Show banner if user hasn't made a choice
+window.addEventListener('DOMContentLoaded', function() {
+  const consent = localStorage.getItem('cookieConsent');
+  if (!consent) {
+    setTimeout(function() {
+      document.getElementById('cookieBanner').classList.add('show');
+    }, 1000);
+  }
+});
+
+// Catalog tab switching
+function showCatalog(subject) {
+  document.querySelectorAll('.catalog-content').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.catalog-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('catalog-' + subject).style.display = 'block';
+  
+  document.querySelectorAll('.catalog-tab').forEach(tab => {
+    if (tab.getAttribute('onclick').includes(subject)) {
+      tab.classList.add('active');
+    }
+  });
+}
+
+// Fullscreen function
+function openFullscreen() {
+  const iframe = document.getElementById('sol-app');
+  if (iframe.requestFullscreen) {
+    iframe.requestFullscreen();
+  } else if (iframe.webkitRequestFullscreen) {
+    iframe.webkitRequestFullscreen();
+  } else if (iframe.msRequestFullscreen) {
+    iframe.msRequestFullscreen();
+  }
+}
+
+// Animated counters
+function animateCounters() {
+  const isMobile = window.innerWidth <= 768;
+  const counters = document.querySelectorAll('.counter');
+  const speed = 200;
+  
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    
+    if (isMobile) {
+      counter.innerText = target.toLocaleString();
+    } else {
+      const updateCount = () => {
+        const current = +counter.innerText.replace(/,/g, '');
+        const increment = target / speed;
+        
+        if (current < target) {
+          counter.innerText = Math.ceil(current + increment).toLocaleString();
+          setTimeout(updateCount, 10);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      };
+      updateCount();
+    }
+  });
+}
+
+// Trigger counter animation when visible
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+const statsSection = document.querySelector('.stats-section');
+if (statsSection) {
+  observer.observe(statsSection);
+}
+
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
