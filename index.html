@@ -6,6 +6,19 @@
 <title>VA SOL Study Assistant - AI-Powered Virginia SOL Tool</title>
 <meta name="description" content="AI-powered study tool for Virginia Standards of Learning (SOL). 70 courses supported K-12.">
 
+<!-- Open Graph / Social Media Preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="VA SOL Study Assistant">
+<meta property="og:description" content="AI-powered study tool for Virginia Standards of Learning (SOL). 70 courses supported K-12.">
+<meta property="og:url" content="https://solprep.com">
+<meta property="og:image" content="https://solprep.com/og-preview.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VA SOL Study Assistant">
+<meta name="twitter:description" content="AI-powered study tool for Virginia Standards of Learning (SOL). 70 courses supported K-12.">
+<meta name="twitter:image" content="https://solprep.com/og-preview.png">
+
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DHD1KSS512"></script>
 <script>
@@ -32,7 +45,8 @@
   
   /* Hero Section */
   .hero { text-align: center; padding: 4rem 2rem 5rem; background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%); }
-  .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.3; color: #1a202c; }
+  .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; line-height: 1.3; color: #1a202c; }
+  .hero .domain-badge { font-size: 1.1rem; margin-bottom: 1rem; color: #5a67d8; font-weight: 700; }
   .hero .subtitle { font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 500; color: #4a5568; }
   .hero .stats-line { font-size: 0.95rem; margin-bottom: 2rem; color: #718096; }
   .hero .cta { padding: 0.9rem 2rem; background: #5a67d8; color: #fff; font-weight: 600; border-radius: 6px; font-size: 1rem; transition: all 0.2s; display: inline-block; }
@@ -40,7 +54,6 @@
   
   /* Trust Badge */
   .trust-badge { margin-top: 1.5rem; font-size: 0.9rem; color: #4a5568; font-weight: 500; }
-  .domain-badge { display: block; margin-top: 0.5rem; font-size: 0.85rem; color: #5a67d8; font-weight: 600; }
   
   /* Section Titles */
   .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
@@ -94,8 +107,9 @@
   .catalog-tab:hover { background: #e2e8f0; }
   .catalog-tab.active:hover { background: #4c51bf; }
   .catalog-content { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-  .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-  .catalog-content .course-category { margin-bottom: 0; }
+  .catalog-two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .catalog-column h3 { font-size: 1.2rem; margin-bottom: 1.2rem; color: #2d3748; font-weight: 700; text-align: center; }
+  .catalog-content .course-category { margin-bottom: 1.5rem; }
   .catalog-content .course-category h4 { font-size: 1.05rem; margin-bottom: 0.7rem; color: #5a67d8; font-weight: 600; }
   .catalog-content .course-category ul { list-style: none; padding-left: 0; }
   .catalog-content .course-category ul li { padding: 0.25rem 0; color: #4a5568; font-size: 0.9rem; }
@@ -131,7 +145,7 @@
     .hero h1 { font-size: 1.9rem; }
     .hero .subtitle { font-size: 1rem; }
     .section h2 { font-size: 1.7rem; }
-    .catalog-grid { grid-template-columns: 1fr; }
+    .catalog-two-column { grid-template-columns: 1fr; }
     .footer-section ul { columns: 1; }
     .app-features { grid-template-columns: 1fr; }
     nav ul { display: none; }
@@ -158,12 +172,12 @@
 <!-- Hero -->
 <section class="hero" id="top">
   <h1>Master Your Virginia SOL Courses</h1>
+  <p class="domain-badge">solprep.com</p>
   <p class="subtitle">AI-powered study tool for Standards of Learning (SOL) courses and exams</p>
   <p class="stats-line">Supports 70 courses • Covers all Virginia SOL standards • K-12</p>
   <a href="#app" class="cta">Study Now</a>
   <div class="trust-badge">
     <span>Built for Virginia Standards of Learning (SOL)</span>
-    <span class="domain-badge">solprep.com</span>
   </div>
 </section>
 
@@ -253,29 +267,24 @@
     <div class="features-list">
       <h3>Study Modes</h3>
       <div class="feature-item">
+        <div class="icon">📚</div>
+        <h4>1. Review</h4>
+        <p>Foundational learning with notes, study guides, outlines, and flashcards to build understanding.</p>
+      </div>
+      <div class="feature-item">
         <div class="icon">🎯</div>
-        <h4>Diagnostic Assessment</h4>
-        <p>Take a quick diagnostic to identify your strengths and weaknesses across all SOL content strands and standards.</p>
+        <h4>2. Mastery</h4>
+        <p>Expert-level understanding with mnemonics, patterns, tips, tricks, shortcuts, and real-world connections.</p>
       </div>
       <div class="feature-item">
         <div class="icon">📝</div>
-        <h4>Practice Questions</h4>
-        <p>Access 8,500+ released SOL questions organized by topic, with instant feedback and detailed explanations.</p>
+        <h4>3. Practice</h4>
+        <p>8,500+ released SOL questions with adaptive practice and full-length practice tests to prepare for exams.</p>
       </div>
       <div class="feature-item">
-        <div class="icon">📚</div>
-        <h4>AI Study Guides</h4>
-        <p>Get personalized study materials generated by AI covering key concepts, formulas, and examples for your course.</p>
-      </div>
-      <div class="feature-item">
-        <div class="icon">🗓️</div>
-        <h4>Custom Study Plans</h4>
-        <p>Receive a personalized study schedule based on your test date and diagnostic results to maximize your preparation.</p>
-      </div>
-      <div class="feature-item">
-        <div class="icon">✍️</div>
-        <h4>Practice Tests</h4>
-        <p>Take full-length practice tests from released SOL exams to simulate the real testing experience.</p>
+        <div class="icon">📊</div>
+        <h4>4. Progress</h4>
+        <p>Track your diagnostic performance, practice improvement, test scores, and completed work.</p>
       </div>
     </div>
     
@@ -328,9 +337,9 @@
   
   <!-- MATHEMATICS -->
   <div class="catalog-content" id="catalog-math">
-    <div class="catalog-grid">
-      <div class="course-category">
-        <h4>Elementary</h4>
+    <div class="catalog-two-column">
+      <div class="catalog-column">
+        <h3>K-8 (Elementary & Middle School)</h3>
         <ul>
           <li>Kindergarten Math</li>
           <li>Grade 1 Math</li>
@@ -338,44 +347,43 @@
           <li>Grade 3 Math</li>
           <li>Grade 4 Math</li>
           <li>Grade 5 Math</li>
-        </ul>
-      </div>
-      <div class="course-category">
-        <h4>Middle School</h4>
-        <ul>
           <li>Grade 6 Math</li>
           <li>Grade 7 Math</li>
           <li>Grade 8 Math</li>
         </ul>
       </div>
-      <div class="course-category">
-        <h4>High School - SOL Tested</h4>
-        <ul>
-          <li class="sol-tested">Algebra I</li>
-          <li class="sol-tested">Geometry</li>
-          <li class="sol-tested">Algebra II</li>
-        </ul>
-      </div>
-      <div class="course-category">
-        <h4>High School Electives</h4>
-        <ul>
-          <li>Algebra, Functions & Data Analysis</li>
-          <li>Trigonometry</li>
-          <li>Data Science</li>
-          <li>Mathematical Analysis</li>
-          <li>Discrete Mathematics</li>
-          <li>Probability & Statistics</li>
-          <li>Computer Mathematics</li>
-        </ul>
+      
+      <div class="catalog-column">
+        <h3>High School</h3>
+        <div class="course-category">
+          <h4>Core</h4>
+          <ul>
+            <li class="sol-tested">Algebra I</li>
+            <li class="sol-tested">Geometry</li>
+            <li class="sol-tested">Algebra II</li>
+          </ul>
+        </div>
+        <div class="course-category">
+          <h4>Electives</h4>
+          <ul>
+            <li>Algebra, Functions & Data Analysis</li>
+            <li>Trigonometry</li>
+            <li>Data Science</li>
+            <li>Mathematical Analysis</li>
+            <li>Discrete Mathematics</li>
+            <li>Probability & Statistics</li>
+            <li>Computer Mathematics</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
   
   <!-- SCIENCE -->
   <div class="catalog-content" id="catalog-science" style="display:none;">
-    <div class="catalog-grid">
-      <div class="course-category">
-        <h4>Elementary</h4>
+    <div class="catalog-two-column">
+      <div class="catalog-column">
+        <h3>K-8 (Elementary & Middle School)</h3>
         <ul>
           <li>Kindergarten Science</li>
           <li>Grade 1 Science</li>
@@ -383,58 +391,52 @@
           <li>Grade 3 Science</li>
           <li>Grade 4 Science</li>
           <li>Grade 5 Science</li>
-        </ul>
-      </div>
-      <div class="course-category">
-        <h4>Middle School</h4>
-        <ul>
           <li>Grade 6 Science</li>
           <li>Grade 7 Life Science</li>
           <li>Grade 8 Physical Science</li>
         </ul>
       </div>
-      <div class="course-category">
-        <h4>High School - SOL Tested</h4>
-        <ul>
-          <li class="sol-tested">Biology I</li>
-          <li class="sol-tested">Chemistry I</li>
-          <li class="sol-tested">Earth Science I</li>
-        </ul>
-      </div>
-      <div class="course-category">
-        <h4>High School Core</h4>
-        <ul>
-          <li>Physics I</li>
-          <li>Environmental Science</li>
-        </ul>
-      </div>
-      <div class="course-category">
-        <h4>High School Advanced</h4>
-        <ul>
-          <li>Biology II</li>
-          <li class="indent">Genetics</li>
-          <li class="indent">Anatomy & Physiology</li>
-          <li class="indent">Ecology</li>
-          <li class="indent">Advanced Survey</li>
-          <li>Chemistry II: Advanced Survey</li>
-          <li>Physics II: Advanced Survey</li>
-          <li>Earth Science II</li>
-          <li class="indent">Oceanography</li>
-          <li class="indent">Astronomy</li>
-          <li class="indent">Geology</li>
-          <li class="indent">Advanced Survey</li>
-          <li>Environmental Science II</li>
-          <li class="indent">Level II Expanded</li>
-        </ul>
+      
+      <div class="catalog-column">
+        <h3>High School</h3>
+        <div class="course-category">
+          <h4>Core</h4>
+          <ul>
+            <li class="sol-tested">Biology I</li>
+            <li class="sol-tested">Chemistry I</li>
+            <li class="sol-tested">Earth Science I</li>
+            <li>Physics I</li>
+            <li>Environmental Science</li>
+          </ul>
+        </div>
+        <div class="course-category">
+          <h4>Electives</h4>
+          <ul>
+            <li>Biology II</li>
+            <li class="indent">Genetics</li>
+            <li class="indent">Anatomy & Physiology</li>
+            <li class="indent">Ecology</li>
+            <li class="indent">Advanced Survey</li>
+            <li>Chemistry II: Advanced Survey</li>
+            <li>Physics II: Advanced Survey</li>
+            <li>Earth Science II</li>
+            <li class="indent">Oceanography</li>
+            <li class="indent">Astronomy</li>
+            <li class="indent">Geology</li>
+            <li class="indent">Advanced Survey</li>
+            <li>Environmental Science II</li>
+            <li class="indent">Level II Expanded</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
   
   <!-- ENGLISH -->
   <div class="catalog-content" id="catalog-english" style="display:none;">
-    <div class="catalog-grid">
-      <div class="course-category">
-        <h4>Elementary</h4>
+    <div class="catalog-two-column">
+      <div class="catalog-column">
+        <h3>K-8 (Elementary & Middle School)</h3>
         <ul>
           <li>Kindergarten English</li>
           <li>Grade 1 English</li>
@@ -442,33 +444,32 @@
           <li class="sol-tested">Grade 3 English</li>
           <li class="sol-tested">Grade 4 English</li>
           <li class="sol-tested">Grade 5 English</li>
-        </ul>
-      </div>
-      <div class="course-category">
-        <h4>Middle School</h4>
-        <ul>
           <li class="sol-tested">Grade 6 English</li>
           <li class="sol-tested">Grade 7 English</li>
           <li class="sol-tested">Grade 8 English</li>
         </ul>
       </div>
-      <div class="course-category">
-        <h4>High School</h4>
-        <ul>
-          <li>Grade 9 English</li>
-          <li>Grade 10 English</li>
-          <li class="sol-tested">Grade 11 English</li>
-          <li>Grade 12 English</li>
-        </ul>
+      
+      <div class="catalog-column">
+        <h3>High School</h3>
+        <div class="course-category">
+          <h4>Core</h4>
+          <ul>
+            <li>Grade 9 English</li>
+            <li>Grade 10 English</li>
+            <li class="sol-tested">Grade 11 English</li>
+            <li>Grade 12 English</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
   
   <!-- HISTORY -->
   <div class="catalog-content" id="catalog-history" style="display:none;">
-    <div class="catalog-grid">
-      <div class="course-category">
-        <h4>Elementary</h4>
+    <div class="catalog-two-column">
+      <div class="catalog-column">
+        <h3>K-8 (Elementary & Middle School)</h3>
         <ul>
           <li>Kindergarten History</li>
           <li>Grade 1 History</li>
@@ -476,24 +477,23 @@
           <li>Grade 3 History</li>
           <li class="sol-tested">Grade 4 Virginia Studies</li>
           <li class="sol-tested">Grade 5 US History to 1865</li>
-        </ul>
-      </div>
-      <div class="course-category">
-        <h4>Middle School</h4>
-        <ul>
           <li>Grade 6 US History: 1865-Present</li>
-          <li>Grade 7 World Geography</li>
-          <li class="sol-tested">Grade 8 Civics & Economics</li>
+          <li class="sol-tested">Grade 7 Civics & Economics</li>
+          <li class="sol-tested">Grade 8 World Geography</li>
         </ul>
       </div>
-      <div class="course-category">
-        <h4>High School</h4>
-        <ul>
-          <li class="sol-tested">Grade 9 World History to 1500 A.D.</li>
-          <li class="sol-tested">Grade 10 World History: 1500-Present</li>
-          <li class="sol-tested">Grade 11 Virginia & US History</li>
-          <li>Grade 12 Virginia & US Government</li>
-        </ul>
+      
+      <div class="catalog-column">
+        <h3>High School</h3>
+        <div class="course-category">
+          <h4>Core</h4>
+          <ul>
+            <li class="sol-tested">Grade 9 World History to 1500 A.D.</li>
+            <li class="sol-tested">Grade 10 World History: 1500-Present</li>
+            <li class="sol-tested">Grade 11 Virginia & US History</li>
+            <li>Grade 12 Virginia & US Government</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -503,11 +503,6 @@
 
 <!-- App Embed -->
 <section class="app-section" id="app">
-  <h2>VA SOL Study Assistant</h2>
-  <p class="app-subtitle">Chat with the AI tutor now</p>
-  <div class="app-controls">
-    <button class="fullscreen-btn" onclick="openFullscreen()">🔍 Click to Open in Full Screen</button>
-  </div>
   <div class="iframe-container">
     <iframe id="sol-app" src="https://www.playlab.ai/embedded/cmkg0wsvf05eqnc0u2kg5xioc" height="700px" frameborder="0" allow="clipboard-write" title="VA SOL Study Assistant"></iframe>
   </div>
