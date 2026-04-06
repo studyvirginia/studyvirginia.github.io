@@ -712,35 +712,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 </script>
-
-//New!: scroll to bottom
-<script>
-const iframe = document.getElementById('sol-app');
-
-let userInteracted = false;
-let lastReload = Date.now();
-
-// Detect user interaction with iframe area
-iframe.addEventListener('mouseenter', () => userInteracted = true);
-iframe.addEventListener('mouseleave', () => {
-  // allow auto-scroll again after leaving
-  setTimeout(() => userInteracted = false, 2000);
-});
-
-// Periodically "snap to bottom" by reloading iframe
-setInterval(() => {
-  if (!userInteracted) {
-    const now = Date.now();
-
-    // prevent too frequent reloads
-    if (now - lastReload > 5000) {
-      const src = iframe.src;
-      iframe.src = src; // reload iframe
-      lastReload = now;
-    }
-  }
-}, 3000);
-</script>
-
+  
 </body>
 </html>
