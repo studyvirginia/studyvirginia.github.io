@@ -270,6 +270,11 @@
   </div>
 </header>
 
+  <!-- CONTACT NOW BUTTON -->
+<button id="contactNowBtn" style="padding:16px 32px; font-size:1.2rem; background:#007bff; color:white; border:none; border-radius:4px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+  Contact Now
+</button>
+
 <!-- Problem Section -->
 <section class="section" id="problem">
   <h2>Why Virginia SOL Preparation Is More Critical Than Ever</h2>
@@ -610,6 +615,15 @@
   </div>
 </div>
 
+  <!-- CONTACT MODAL POPUP -->
+<div id="contactModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:9999;">
+  <div style="background:#fff; margin:10% auto; padding:32px 16px; border-radius:8px; width:90%; max-width:400px; position:relative; text-align:center;">
+    <button id="modalCloseBtn" style="position:absolute; top:12px; right:16px; background:none; border:none; font-size:2rem; color:#999; cursor:pointer;">&times;</button>
+    <h2>Contact Us</h2>
+    <p>Email us at:</p>
+    <a href="mailto:lincolnljmarine@gmail.com" style="font-size:1.2rem; color:#007bff;">lincolnljmarine@gmail.com</a>
+  </div>
+</div>
 <script>
 // Cookie Consent Functions
 function acceptCookies() {
@@ -711,6 +725,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// Open modal when button clicked
+document.getElementById('contactNowBtn').onclick = function() {
+  document.getElementById('contactModal').style.display = 'block';
+};
+// Close modal on X button
+document.getElementById('modalCloseBtn').onclick = function() {
+  document.getElementById('contactModal').style.display = 'none';
+};
+// Close modal if clicking outside modal content
+document.getElementById('contactModal').onclick = function(e) {
+  if (e.target === this) this.style.display = 'none';
+};
+  
 </script>
   
 </body>
