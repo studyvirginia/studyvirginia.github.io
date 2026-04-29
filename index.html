@@ -9,23 +9,19 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://solprep.com">
 
-<!-- Favicon / App Icons -->
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-<!-- iOS / Apple -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180.png">
 <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="VA SOL Study Assistant">
 
-<!-- PWA / Android -->
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#ffffff">
 
-<!-- Open Graph / Social Media Preview -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Virginia SOL Study Assistant | AI-Powered SOL Test Prep">
 <meta property="og:description" content="AI-powered Virginia SOL study tool. 8,500+ practice questions, released tests, study guides for all 70 SOL courses K-12.">
@@ -33,13 +29,11 @@
 <meta property="og:image" content="https://solprep.com/og-preview.png">
 <meta property="og:site_name" content="VA SOL Study Assistant">
 
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Virginia SOL Study Assistant | AI-Powered SOL Test Prep">
 <meta name="twitter:description" content="AI-powered Virginia SOL study tool. 8,500+ practice questions for all 70 SOL courses K-12.">
 <meta name="twitter:image" content="https://solprep.com/og-preview.png">
 
-<!-- Structured Data / Schema.org -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -69,7 +63,6 @@
 }
 </script>
 
-<!-- Google Analytics - Only loads after consent -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -104,14 +97,23 @@
   body { background: #fafafa; color: #333; line-height: 1.7; }
   a { text-decoration: none; color: inherit; }
   
-/* Sticky Nav */
+  /* Sticky Nav */
   nav { position: sticky; top: 0; background: rgba(255,255,255,0.98); display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); z-index: 1000; }
   nav .logo { font-weight: 700; font-size: 1.3rem; color: #5a67d8; cursor: pointer; }
   nav ul { list-style: none; display: flex; gap: 2rem; }
   nav ul li a { font-weight: 500; cursor: pointer; transition: color 0.2s; color: #666; }
   nav ul li a:hover { color: #5a67d8; }
+  
+  /* Navigation Actions Container */
+  nav .nav-actions { display: flex; align-items: center; gap: 1rem; }
+  
+  /* Study Now Button */
   nav .cta-btn { padding: 0.6rem 1.4rem; background: #5a67d8; color: #fff; font-weight: 600; border-radius: 6px; transition: all 0.2s; }
   nav .cta-btn:hover { background: #4c51bf; }
+  
+  /* Contact Us Button */
+  nav .contact-btn { padding: 0.5rem 1.3rem; background: transparent; color: #5a67d8; font-weight: 600; border: 2px solid #5a67d8; border-radius: 6px; cursor: pointer; transition: all 0.2s; font-size: 1rem; }
+  nav .contact-btn:hover { background: #ebedf9; }
   
   /* Hero Section */
   .hero { text-align: center; padding: 4rem 2rem 5rem; background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%); }
@@ -238,6 +240,11 @@
     .footer-section ul { columns: 1; }
     .app-features { grid-template-columns: 1fr; }
     nav ul { display: none; }
+    
+    /* Ensure dual buttons fit neatly on mobile */
+    nav .nav-actions { gap: 0.5rem; }
+    nav .contact-btn, nav .cta-btn { padding: 0.5rem 0.8rem; font-size: 0.9rem; }
+    
     .app-controls .fullscreen-btn { display: none; }
     .stat-card h4 { font-size: 2.2rem !important; }
   }
@@ -245,7 +252,6 @@
 </head>
 <body>
 
-<!-- Navigation -->
 <nav>
   <div class="logo" onclick="window.location.href='#top'">VA SOL Study Assistant</div>
   <ul>
@@ -255,10 +261,13 @@
     <li><a href="#courses">Courses</a></li>
     <li><a href="#app">Our App</a></li>
   </ul>
-  <a href="#app" class="cta-btn">Study Now</a>
+  
+  <div class="nav-actions">
+    <button id="contactNowBtn" class="contact-btn">Contact Us</button>
+    <a href="#app" class="cta-btn">Study Now</a>
+  </div>
 </nav>
 
-<!-- Hero -->
 <header class="hero" id="top">
   <h1>Master Your Virginia SOL Courses with AI-Powered Study Tools</h1>
   <p class="domain-badge">solprep.com</p>
@@ -270,12 +279,6 @@
   </div>
 </header>
 
-  <!-- CONTACT NOW BUTTON -->
-<button id="contactNowBtn" style="padding:16px 32px; font-size:1.2rem; background:#007bff; color:white; border:none; border-radius:4px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
-  Contact Now
-</button>
-
-<!-- Problem Section -->
 <section class="section" id="problem">
   <h2>Why Virginia SOL Preparation Is More Critical Than Ever</h2>
   <p class="section-subtitle">Virginia students face increasing academic challenges and higher stakes for SOL performance</p>
@@ -301,7 +304,6 @@
   </div>
 </section>
 
-<!-- Solution / Stats Section -->
 <section class="stats-section" id="solution">
   <div class="stats-container">
     <h2 style="color: #2d3748; margin-bottom: 0.8rem;">Our Solution: Comprehensive AI-Powered SOL Study Platform</h2>
@@ -353,7 +355,6 @@
   </div>
 </section>
 
-<!-- Our App Section -->
 <section class="section" id="how-it-works">
   <h2>How Our AI-Powered SOL Study System Works</h2>
   <p class="section-subtitle">Four powerful study modes to help you master Virginia SOL content and ace your exams</p>
@@ -414,7 +415,6 @@
   </div>
 </section>
 
-<!-- Course Catalog -->
 <section class="section" id="courses" style="background: #f7fafc;">
   <h2>All Virginia SOL Courses Supported (K-12)</h2>
   <p class="section-subtitle">70 courses aligned to Virginia Standards of Learning across all grade levels and subjects</p>
@@ -425,7 +425,6 @@
     <div class="catalog-tab" onclick="showCatalog('history')">History SOL</div>
   </div>
   
-  <!-- MATHEMATICS -->
   <div class="catalog-content" id="catalog-math" style="display: block;">
     <div class="catalog-two-column">
       <div class="catalog-column">
@@ -461,7 +460,6 @@
     </div>
   </div>
   
-  <!-- SCIENCE -->
   <div class="catalog-content" id="catalog-science" style="display: none;">
     <div class="catalog-two-column">
       <div class="catalog-column">
@@ -503,7 +501,6 @@
     </div>
   </div>
   
-  <!-- ENGLISH -->
   <div class="catalog-content" id="catalog-english" style="display: none;">
     <div class="catalog-two-column">
       <div class="catalog-column">
@@ -534,7 +531,6 @@
     </div>
   </div>
   
-  <!-- HISTORY -->
   <div class="catalog-content" id="catalog-history" style="display:none;">
     <div class="catalog-two-column">
       <div class="catalog-column">
@@ -567,7 +563,6 @@
   <p style="text-align:center; margin-top:1.5rem; color:#718096; font-size:0.9rem;"><strong>⭐ = SOL State Tested Course</strong> (requires passing state assessment for verified graduation credit)</p>
 </section>
 
-<!-- App Embed -->
 <section class="app-section" id="app">
   <h2>Virginia SOL Study Assistant - Start Now</h2>
   <p class="app-subtitle">AI-powered tutor ready to help you master SOL content and prepare for exams</p>
@@ -579,7 +574,6 @@
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
   <div class="footer-content">
     <div class="footer-section">
@@ -601,7 +595,6 @@
   </div>
 </footer>
 
-<!-- Cookie Consent Banner -->
 <div class="cookie-banner" id="cookieBanner">
   <div class="cookie-content">
     <div class="cookie-text">
@@ -615,7 +608,6 @@
   </div>
 </div>
 
-  <!-- CONTACT MODAL POPUP -->
 <div id="contactModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:9999;">
   <div style="background:#fff; margin:10% auto; padding:32px 16px; border-radius:8px; width:90%; max-width:400px; position:relative; text-align:center;">
     <button id="modalCloseBtn" style="position:absolute; top:12px; right:16px; background:none; border:none; font-size:2rem; color:#999; cursor:pointer;">&times;</button>
@@ -624,6 +616,7 @@
     <a href="mailto:lincolnljmarine@gmail.com" style="font-size:1.2rem; color:#007bff;">lincolnljmarine@gmail.com</a>
   </div>
 </div>
+
 <script>
 // Cookie Consent Functions
 function acceptCookies() {
